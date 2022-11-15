@@ -1,0 +1,14 @@
+<header>
+    <div class="wrapper">
+        <div class="adjacent-elements">
+            <a class="logo-wrapper" rel="author" href="/">
+                <img id="logo" src="{{ .Site.Params.logo }}" />
+            </a>
+
+            <h1 class="title">{{ .Site.Title }}</h1>
+
+        </div>
+
+        <a class="site-about btn" rel="author" href='{{ "/about" | absLangURL }}'>About</a>
+    </div>
+</header>

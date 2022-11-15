@@ -1,0 +1,29 @@
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ $light_style := resources.Get "sass/light.scss" | toCSS | minify | fingerprint }}
+
+    {{ $dark_style := resources.Get "sass/dark.scss" | toCSS | minify | fingerprint }}
+
+    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+
+    <link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
+        integrity="{{ $light_style.Data.Integrity }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ $dark_style.Permalink }}" media="(prefers-color-scheme: dark)"
+        integrity="{{ $dark_style.Data.Integrity }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+
+    {{ $title := print .Site.Title " | " .Title }}
+
+    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+
+    <title>{{ $title }}</title>
+
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+
+</head>
