@@ -1,14 +1,15 @@
 <header>
     <div class="wrapper">
         <div class="adjacent-elements">
-            <a class="logo-wrapper" rel="author" href="/">
+            <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
                 <img id="logo" src="{{ .Site.Params.logo }}" />
             </a>
 
             <h1 class="title">{{ .Site.Title }}</h1>
-
         </div>
 
         <a class="site-about btn" rel="author" href='{{ "/about" | absLangURL }}'>About</a>
     </div>
+
+    {{- partial "allLanguages.html" . -}}
 </header>
