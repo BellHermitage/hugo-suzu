@@ -1,0 +1,12 @@
+---
+
+music:
+  one: "Music"
+  other: "Music"
+
+translations:
+  one: "Translation"
+  other: "Translations"
+
+also_in:
+  other: "Also available in"

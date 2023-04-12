@@ -6,9 +6,11 @@
     <div>
         {{ with .Params.tags }}
         {{ range . }}
-        {{ $href := print (absURL "tags/") (urlize .) }}
-        <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
+        {{ $href := print (absLangURL "tags/") (urlize .) }}
+        <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href | absLangURL }}">{{ . }}</a>
         {{ end }}
         {{ end }}
+
     </div>
+    {{ partial "i18nlist.html" . }}
 </div>

@@ -1,13 +1,14 @@
 {{ define "main" }}
 <article>
-    <header>
+    <header class="post">
         <h1 class="post-title">{{ .Title }}</h1>
         {{ partial "metadata.html" . }}
     </header>
 
+    <nav class="toc">
+        {{ .TableOfContents }}
+    </nav>
+
     {{ .Content }}
 </article>
-<aside>
-    {{ .TableOfContents }}
-</aside>
 {{ end }}

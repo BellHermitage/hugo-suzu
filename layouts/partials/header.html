@@ -1,5 +1,5 @@
-<header>
-    <div class="wrapper">
+<header class="page-header">
+    <nav>
         <div class="adjacent-elements">
             <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
                 <img id="logo" src="{{ .Site.Params.logo }}" />
@@ -8,8 +8,8 @@
             <h1 class="title">{{ .Site.Title }}</h1>
         </div>
 
-        <a class="site-about btn" rel="author" href='{{ "/about" | absLangURL }}'>About</a>
-    </div>
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+    </nav>
 
-    {{- partial "allLanguages.html" . -}}
+    {{ partial "allLanguages.html" . }}
 </header>
