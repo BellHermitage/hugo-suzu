@@ -10,13 +10,20 @@
 
     {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
 
+    {{ $print_style := resources.Get "sass/print.scss" | toCSS | minify | fingerprint }}
+
     <link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
-        integrity="{{ $light_style.Data.Integrity }}">
+        integrity="{{ $light_style.Data.Integrity }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ $dark_style.Permalink }}" media="(prefers-color-scheme: dark)"
-        integrity="{{ $dark_style.Data.Integrity }}">
+        integrity="{{ $dark_style.Data.Integrity }}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
+
+
+    <link rel="stylesheet" type="text/css" href="{{ $print_style.Permalink }}"
+        integrity="{{ $print_style.Data.Integrity }}" media="print" />
+
 
     {{ $title := print .Site.Title " | " .Title }}
 
