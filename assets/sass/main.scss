@@ -1,13 +1,34 @@
 :root {
     color-scheme: light dark;
+
+    --max-page-width: 60%;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 html, body {
     margin: 0 auto;
     height: 100%;
     min-height: 100%;
+    line-height: 1.5;
 
     scroll-behavior: smooth;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.3125rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2.652rem;
+    --font-size-4xl: 4rem;
+
+    --border-size-sm: 1px;
+    --border-size-md: 2px;
+    --border-size-lg: 3px;
 }
 
 body {
@@ -16,6 +37,7 @@ body {
 
     background: var(--page-bg);
     color: var(--text);
+
 
     transition:
         color var(--duration) var(--timing),
@@ -27,176 +49,20 @@ body {
     flex-direction: column;
 }
 
+.readable-width {
+    width: var(--max-page-width);
+    margin: 0 auto;
+}
+
 main {
     flex: auto;
 }
 
-header {
-    // padding: 0;
-    // margin: 0 auto;
-    // width: 50%;
-    flex: none;
-
-    &.page-header {
-        margin: 0 auto;
-        width: 50%;
-        border-bottom: 0.05rem solid var(--separator);
-    }
-
-    // &.post {
-    //     border-bottom: 0.05rem solid var(--separator);
-    // }
-
-    & nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    & ul, & ol {
-        list-style-type: none;
-    }
-
-    & .items { 
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.25rem;
-    }
-
-    & #logo {
-        width: 3rem;
-    }
-
-    & .translations {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0;
-
-        list-style-type: none;
-
-        // & li:not(:last-child)::after {
-        //     content: ',';
-        // }
-    }
-
+hr {
+    width: 100%;
 }
 
-footer {
-    // border-top: 0.05rem solid var(--separator);
-    margin: 1rem 0;
-    flex: none;
-
-    & .wrapper {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-    }
-
-    & .footer-col {
-        display: flex;
-        flex-direction: column;
-    }
-
-    & .footer-row {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    & .contact-list, & .social-media-list {
-        list-style: none;
-        margin-left: 0;
-        padding-left: 0; 
-    }
-}
-
-.post-title {
-    font-size: 2.5rem;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-thickness: 0.25rem;
-    // text-transform: uppercase;
-}
-
-.post-metadata {
-    margin-bottom: 3rem;
-}
-
-
-article {
-    & > h1 {
-        border-left: 0.5rem solid var(--text);
-        padding-left: 0.5rem;
-    }
-
-    & > h2 {
-        border-left: 1rem solid var(--text);
-        padding-left: 0.5rem;
-    }
-
-    & > h3 {
-        border-left: 1.5rem solid var(--text);
-        padding-left: 0.5rem;
-    }
-
-    & img {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        margin: auto;
-        width: 50%;
-
-        padding: 0.5rem;
-        border: 0.1rem solid var(--text);
-    }
-}
-
-article nav.toc {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    float: right;
-    border: 0.1rem solid var(--text);
-    padding: 0.5rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-
-    & a {
-        text-decoration: none;
-    }
-
-    & ul, & ol {
-        list-style-type: none;
-        padding-inline-start: 1rem;
-
-        counter-reset: toc-counter;
-
-        & li::before {
-            content: counters(toc-counter, ".") " ";
-            counter-increment: toc-counter;
-
-            color: var(--text);
-        }
-    }
-
-    & > ol {
-        padding: 0;
-    }
-}
-
-.wrapper {
-    margin: 0 auto;
-    width: 50%;
-}
+@import '_header', '_footer', '_post';
 
 .adjacent-elements {
     display: flex;
@@ -213,4 +79,16 @@ article nav.toc {
     flex-direction: column;
     justify-content: start;
     // align-items: flex-start;
+}
+
+@media screen and (max-width: 1300px) {
+    :root {
+        --max-page-width: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    :root {
+        --max-page-width: 95%;
+    }
 }

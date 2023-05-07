@@ -1,5 +1,11 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
+
+{{ if .Content }}
+<p>{{ .Content }}</p>
+<hr />
+{{ end }}
+
 {{ range .Pages.ByPublishDate.Reverse }}
 <div class="post-list-elem">
     <div class="post-header">

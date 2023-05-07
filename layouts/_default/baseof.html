@@ -4,9 +4,15 @@
 
 <body>
     {{- partial "header.html" . -}}
-    <main class="wrapper">
+
+    <hr />
+
+    <main class="readable-width">
         {{- block "main" . }}{{- end }}
     </main>
+
+    <hr />
+
     {{- partial "footer.html" . -}}
     {{- block "scripts" . }}{{- end }}
 </body>

@@ -1,0 +1,29 @@
+footer {
+    // border-top: 0.05rem solid var(--separator);
+    margin: 1rem 0;
+    flex: none;
+
+    & .wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    & .footer-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .footer-row {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    & .contact-list, & .social-media-list {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0; 
+    }
+}

@@ -5,10 +5,13 @@
         {{ partial "metadata.html" . }}
     </header>
 
-    <nav class="toc">
-        {{ .TableOfContents }}
-    </nav>
-
-    {{ .Content }}
+    <div class="wrapper">
+        <div class="post-content">
+            {{ .Content }}
+        </div>
+        <aside class="toc">
+            {{ .TableOfContents }}
+        </aside>
+    </div>
 </article>
 {{ end }}

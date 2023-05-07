@@ -1,0 +1,118 @@
+.post-title {
+    font-size: var(--font-size-3xl);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.25rem;
+}
+
+.post-metadata {
+    margin-bottom: var(--font-size-md);
+}
+
+article .wrapper {
+    display: flex;
+    gap: var(--font-size-2xl);
+    flex-wrap: wrap-reverse;
+}
+
+
+article .post-content {
+    flex-grow: 9999;
+    flex-basis: 300px;
+
+    & h1 {
+        border-left: 0.5rem solid;
+        padding-left: 0.5rem;
+    }
+
+    & h2 {
+        border-left: 1rem solid var(--text);
+        padding-left: 0.5rem;
+    }
+
+    & h3 {
+        border-left: 1.5rem solid var(--text);
+        padding-left: 0.5rem;
+    }
+
+    & img {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin: auto;
+        width: 50%;
+
+        padding: 0.5rem;
+        border: 0.1rem solid var(--text);
+    }
+}
+
+
+aside.toc {
+    flex-basis: 250px;
+    flex-grow: 1;
+    overflow-y: visible;
+}
+
+@media screen and (max-width: 700px) {
+    article .post-content {
+        flex-basis: 300px;
+    }
+
+    aside.toc {
+        flex-basis: 300px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    article .post-content {
+        flex-basis: 500px;
+    }
+
+    aside.toc {
+        flex-basis: 250px;
+    }
+}
+
+aside nav#TableOfContents {
+    top: var(--font-size-md);
+    position: sticky;
+    border-left: 2px solid var(--text);
+    padding: 0 var(--font-size-md);
+    // margin-left: var(--font-size-xl);
+
+    & a {
+        text-decoration: none;
+    }
+
+    & ul, & ol {
+        list-style-type: none;
+        padding-inline-start: 1rem;
+
+        counter-reset: toc-counter;
+
+        & li::before {
+            content: counters(toc-counter, ".") " ";
+            counter-increment: toc-counter;
+
+            color: var(--text);
+        }
+    }
+
+    & > ol {
+        padding: 0;
+    }
+}
+
+// @media screen and (max-width: 800px) {
+//     article .wrapper {
+//         grid-auto-columns: 1fr;
+//     }
+// }
+
+// @media screen and (max-width: 700px) {
+//     aside.toc {
+//         display: none;
+//     }
+// }
