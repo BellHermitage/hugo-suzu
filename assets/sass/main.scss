@@ -62,8 +62,6 @@ hr {
     width: 100%;
 }
 
-@import '_header', '_footer', '_post';
-
 .adjacent-elements {
     display: flex;
     gap: 1rem;
@@ -92,3 +90,8 @@ hr {
         --max-page-width: 95%;
     }
 }
+
+
+@import '_header';
+@import '_footer';
+@import '_post';

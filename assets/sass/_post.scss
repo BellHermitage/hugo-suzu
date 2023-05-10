@@ -6,7 +6,7 @@
 }
 
 .post-metadata {
-    margin-bottom: var(--font-size-md);
+    margin-block-end: var(--font-size-md);
 }
 
 article .wrapper {
@@ -17,22 +17,24 @@ article .wrapper {
 
 
 article .post-content {
+    --section-padding: 0.5rem;
+
     flex-grow: 9999;
     flex-basis: 300px;
 
     & h1 {
-        border-left: 0.5rem solid;
-        padding-left: 0.5rem;
+        border-inline-start: 0.5rem solid;
+        padding-inline-start: var(--section-padding);
     }
 
     & h2 {
-        border-left: 1rem solid var(--text);
-        padding-left: 0.5rem;
+        border-inline-start: 1rem solid var(--text);
+        padding-inline-start: var(--section-padding);
     }
 
     & h3 {
-        border-left: 1.5rem solid var(--text);
-        padding-left: 0.5rem;
+        border-inline-start: 1.5rem solid var(--text);
+        padding-inline-start: var(--section-padding);
     }
 
     & img {
@@ -40,19 +42,29 @@ article .post-content {
         flex-direction: row;
         align-items: center;
 
-        margin: auto;
+        margin-inline: auto;
         width: 50%;
 
         padding: 0.5rem;
         border: 0.1rem solid var(--text);
     }
+
+    & h1:target, & h2:target, & h3:target, & h4:target, & h5:target, & section:target {
+        --tbg: var(--target-bg, var(--accent));
+        background: var(--tbg);
+    }
+
+    & a[href^="http"]::after {
+        content: ' \29C9';
+        text-decoration: none;
+    }
 }
+
 
 
 aside.toc {
     flex-basis: 250px;
     flex-grow: 1;
-    overflow-y: visible;
 }
 
 @media screen and (max-width: 700px) {
@@ -65,22 +77,46 @@ aside.toc {
     }
 }
 
-@media screen and (max-width: 1300px) {
-    article .post-content {
-        flex-basis: 500px;
-    }
-
-    aside.toc {
-        flex-basis: 250px;
-    }
-}
-
 aside nav#TableOfContents {
     top: var(--font-size-md);
     position: sticky;
-    border-left: 2px solid var(--text);
+    border-inline-start: var(--border-size-md) solid;
     padding: 0 var(--font-size-md);
-    // margin-left: var(--font-size-xl);
+    overflow-y: scroll;
+    max-height: 35rem;
+
+    // Shadow code taken from CSS-Tricks:
+    // https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/
+    background:
+      /* Shadow Cover TOP */
+      linear-gradient(
+        var(--page-bg) 30%,
+        rgba(255, 255, 255, 0)
+      ) center top,
+
+      /* Shadow Cover BOTTOM */
+      linear-gradient(
+        rgba(255, 255, 255, 0), 
+        var(--page-bg) 70%
+      ) center bottom,
+
+      /* Shadow TOP */
+      radial-gradient(
+        farthest-side at 50% 0,
+        var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
+        rgba(0, 0, 0, 0)
+      ) center top,
+
+      /* Shadow BOTTOM */
+      radial-gradient(
+        farthest-side at 50% 100%,
+        var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
+        rgba(0, 0, 0, 0)
+      ) center bottom;
+
+    background-repeat: no-repeat;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+    background-attachment: local, local, scroll, scroll;
 
     & a {
         text-decoration: none;
@@ -102,6 +138,21 @@ aside nav#TableOfContents {
 
     & > ol {
         padding: 0;
+    }
+}
+
+
+@media screen and (max-width: 1300px) {
+    article .post-content {
+        flex-basis: 500px;
+    }
+
+    aside.toc {
+        flex-basis: 250px;
+    }
+
+    aside nav#TableOfContents {
+        max-height: 25rem;
     }
 }
 
