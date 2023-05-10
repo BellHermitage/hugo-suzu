@@ -54,6 +54,27 @@ body {
     margin: 0 auto;
 }
 
+a#link-to-main {
+    --margin: var(--font-size-sm);
+    position: absolute;
+
+    top: 0;
+    left: var(--margin);
+    padding: 4px;
+    border: var(--border-size-sm) solid;
+
+    color: var(--text);
+    background: var(--page-bg);
+    transform: translateY(-100%);
+    text-decoration: none;
+
+    transition: transform 300ms ease;
+
+    &:focus-visible {
+        transform: translateY(var(--margin));
+    }
+}
+
 main {
     flex: auto;
 }
