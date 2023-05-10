@@ -3,6 +3,10 @@ nav, footer, .translations, .page-header {
     display: none !important;
 }
 
-.wrapper {
+.readable-width {
     width: 100%;
+}
+
+aside.toc {
+    flex-basis: 0px;
 }
