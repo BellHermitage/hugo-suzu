@@ -1,14 +1,13 @@
 header {
+    --font-size: var(--font-size-2xl);
+
     flex: none;
+    font-size: var(--font-size);
 
     &.page-header {
         // border-block-end: var(--border-size-md) solid;
         margin-block-start: var(--font-size-md);
     }
-
-    // &.post {
-    //     border-block-end: 0.05rem solid var(--separator);
-    // }
 
     & nav {
         display: flex;
@@ -28,11 +27,15 @@ header {
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        font-size: 1.25rem;
+        font-size: var(--font-size-md);
     }
 
-    & #logo {
-        width: 3rem;
+    & .logo-wrapper {
+        line-height: 0;
+    }
+
+    & img#logo {
+        width: calc(var(--font-size) * 3);
     }
 
     & .translations {

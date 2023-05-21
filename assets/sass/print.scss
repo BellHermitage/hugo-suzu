@@ -10,3 +10,13 @@ nav, footer, .translations, .page-header {
 aside.toc {
     flex-basis: 0px;
 }
+
+article  h1,
+article  h2,
+article  h3,
+article  h4,
+article  h5,
+article  p,
+article table {
+    max-width: 100%;
+}
