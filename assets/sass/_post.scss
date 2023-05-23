@@ -1,4 +1,8 @@
 
+article {
+    --max-text-width: 70ch;
+}
+
 article  h1,
 article  h2,
 article  h3,
@@ -6,7 +10,7 @@ article  h4,
 article  h5,
 article  p,
 article table {
-    max-width: 70ch;
+    max-width: var(--max-text-width);
 }
 
 .post-title {
@@ -22,29 +26,39 @@ article table {
 }
 
 article .wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: fit-content(Min(100%, var(--max-text-width))) auto;
     gap: var(--font-size-3xl);
-    flex-wrap: wrap-reverse;
 }
 
 article .post-content {
     --section-padding: 0.5rem;
+    --section-margin-base: var(--font-size-3xl);
 
-    flex: 1.5 20rem;
+
+    & :first-child {
+        margin-block-start: 0;
+    }
 
     & h1 {
         border-inline-start: 0.5rem solid;
         padding-inline-start: var(--section-padding);
+
+        &:not(:first-child) {
+            margin-block-start: calc(2 * var(--section-margin-base));
+        }
     }
 
     & h2 {
         border-inline-start: 1rem solid var(--text);
         padding-inline-start: var(--section-padding);
+        margin-block-start: calc(1.5 * var(--section-margin-base));
     }
 
     & h3 {
         border-inline-start: 1.5rem solid var(--text);
         padding-inline-start: var(--section-padding);
+        margin-block-start: calc(0.5 * var(--section-margin-base));
     }
 
     & img {
@@ -70,34 +84,36 @@ article .post-content {
     }
 }
 
-aside.toc {
-    flex: 1 auto;
-}
-
-
 @media screen and (max-width: 1300px) {
-    // article .post-content {
-    //     // flex-basis: 500px;
-    // }
-
-    aside.toc {
-        flex-basis: 20rem;
-    }
-
     aside nav#TableOfContents {
         max-height: 25rem;
     }
 }
 
-// @media screen and (max-width: 700px) {
-//     article .post-content {
-//         // flex-basis: 300px;
-//     }
+
+// NOTE: This hack is needed to place the ToC before the content at smalle
+//       screen sizes.
+//       Remember that the ToC comes _after_ the content in the HTML to have it
+//       go on the right side of the page.
 //
-//     aside.toc {
-//         // flex: none;
-//     }
-// }
+//       Here we create two rows and place the items accordingly.
+//
+//       Exchanging the positions in the HTML results in the same hack but done
+//       on the columns. Life is hard.
+@media screen and (max-width: 800px) {
+    article .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: [toc] auto [content] auto;
+    }
+
+    article .post-content {
+        grid-row: content;
+    }
+
+    article aside.toc {
+        grid-row: toc;
+    }
+}
 
 aside nav#TableOfContents {
     top: var(--font-size-md);
@@ -163,15 +179,3 @@ aside nav#TableOfContents {
     }
 }
 
-
-// @media screen and (max-width: 800px) {
-//     article .wrapper {
-//         grid-auto-columns: 1fr;
-//     }
-// }
-
-// @media screen and (max-width: 700px) {
-//     aside.toc {
-//         display: none;
-//     }
-// }
