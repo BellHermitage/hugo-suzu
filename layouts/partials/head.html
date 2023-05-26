@@ -4,13 +4,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{ $light_style := resources.Get "sass/light.scss" | toCSS | minify | fingerprint }}
+    {{ $opts := dict "transpiler" "dartsass" }}
 
-    {{ $dark_style := resources.Get "sass/dark.scss" | toCSS | minify | fingerprint }}
+    {{ $light_style := resources.Get "sass/light.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+    {{ $dark_style := resources.Get "sass/dark.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $print_style := resources.Get "sass/print.scss" | toCSS | minify | fingerprint }}
+    {{ $style := resources.Get "sass/main.scss" | toCSS $opts | minify | fingerprint }}
+
+    {{ $print_style := resources.Get "sass/print.scss" | toCSS $opts | minify | fingerprint }}
 
     <link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
         integrity="{{ $light_style.Data.Integrity }}" />

@@ -1,3 +1,4 @@
+@use 'mixins' as *;
 
 article {
     --max-text-width: 70ch;
@@ -27,7 +28,8 @@ article table {
 
 article .wrapper {
     display: grid;
-    grid-template-columns: fit-content(Min(100%, var(--max-text-width))) auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: [toc] auto [content] auto;
     gap: var(--font-size-3xl);
 }
 
@@ -35,12 +37,13 @@ article .post-content {
     --section-padding: 0.5rem;
     --section-margin-base: var(--font-size-3xl);
 
+    grid-row: content;
 
-    & :first-child {
+    > :first-child {
         margin-block-start: 0;
     }
 
-    & h1 {
+    h1 {
         border-inline-start: 0.5rem solid;
         padding-inline-start: var(--section-padding);
 
@@ -49,19 +52,19 @@ article .post-content {
         }
     }
 
-    & h2 {
+    h2 {
         border-inline-start: 1rem solid var(--text);
         padding-inline-start: var(--section-padding);
         margin-block-start: calc(1.5 * var(--section-margin-base));
     }
 
-    & h3 {
+    h3 {
         border-inline-start: 1.5rem solid var(--text);
         padding-inline-start: var(--section-padding);
         margin-block-start: calc(0.5 * var(--section-margin-base));
     }
 
-    & img {
+    img {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -70,58 +73,41 @@ article .post-content {
         width: 50%;
 
         padding: 0.5rem;
-        border: 0.1rem solid var(--text);
+        border: var(--border-size-sm) solid;
+        box-shadow: var(--border-size-md) var(--border-size-md);
     }
 
-    & h1:target, & h2:target, & h3:target, & h4:target, & h5:target, & section:target {
+    blockquote, table, img {
+        margin-block: var(--font-size-2xl);
+    }
+
+
+    :target {
         --tbg: var(--target-bg, var(--accent));
         background: var(--tbg);
     }
 
-    & a[href^="http"]::after {
+    a[href^="http"]::after {
         content: ' \29C9';
         text-decoration: none;
     }
 }
 
-@media screen and (max-width: 1300px) {
-    aside nav#TableOfContents {
-        max-height: 25rem;
-    }
-}
 
-
-// NOTE: This hack is needed to place the ToC before the content at smalle
-//       screen sizes.
-//       Remember that the ToC comes _after_ the content in the HTML to have it
-//       go on the right side of the page.
-//
-//       Here we create two rows and place the items accordingly.
-//
-//       Exchanging the positions in the HTML results in the same hack but done
-//       on the columns. Life is hard.
-@media screen and (max-width: 800px) {
-    article .wrapper {
-        grid-template-columns: 1fr;
-        grid-template-rows: [toc] auto [content] auto;
-    }
-
-    article .post-content {
-        grid-row: content;
-    }
-
-    article aside.toc {
-        grid-row: toc;
-    }
+article aside.toc {
+    grid-row: toc;
 }
 
 aside nav#TableOfContents {
+    --_border-color: var(--accent, var(--text));
     top: var(--font-size-md);
     position: sticky;
-    border-inline-start: var(--border-size-md) solid;
+    border: var(--border-size-md) solid var(--_border-color);
+    box-shadow: var(--border-size-md) var(--border-size-md) var(--_border-color);
     padding: 0 var(--font-size-md);
     overflow-y: scroll;
-    max-height: 35rem;
+    max-height: 80vh;
+    max-height: 80svh;
 
     // Shadow code taken from CSS-Tricks:
     // https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/
@@ -156,17 +142,17 @@ aside nav#TableOfContents {
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
     background-attachment: local, local, scroll, scroll;
 
-    & a {
+    a {
         text-decoration: none;
     }
 
-    & ul, & ol {
+    ul, ol {
         list-style-type: none;
         padding-inline-start: 1rem;
 
         counter-reset: toc-counter;
 
-        & li::before {
+        li::before {
             content: counters(toc-counter, ".") " ";
             counter-increment: toc-counter;
 
@@ -174,8 +160,74 @@ aside nav#TableOfContents {
         }
     }
 
-    & > ol {
+    > ol {
         padding: 0;
+    }
+}
+
+
+// NOTE: This hack is needed to place the ToC before the content at smaller
+//       screen sizes.
+//       Remember that the ToC comes _after_ the content in the HTML to have it
+//       go on the right side of the page.
+//
+//       Here we create two rows and place the items accordingly.
+//
+//       Exchanging the positions in the HTML results in the same hack but done
+//       on the columns. Life is hard.
+@include tablet {
+    article .wrapper {
+        grid-template-columns: fit-content(Min(100%, var(--max-text-width))) fit-content(100%);
+        grid-template-rows: none;
+    }
+
+
+}
+
+article table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: var(--font-size-md);
+    // background: var(--table-bg);
+    border: var(--border-size-sm) solid;
+    box-shadow: var(--border-size-md) var(--border-size-md);
+
+    th, td, caption {
+        padding: var(--font-size-md);
+    }
+
+    th {
+        text-align: left;
+        background: var(--table-th-bg);
+    }
+
+    tr:nth-of-type(2n) {
+        background: var(--table-even-bg);
+    }
+}
+
+
+@include mobile {
+    article table  {
+        th:nth-of-type(1) {
+            display: none;
+        }
+
+        td:nth-of-type(1) {
+            display: none;
+        }
+    }
+}
+
+article blockquote {
+    padding: var(--font-size-md);
+    // border-inline-start: var(--border-size-xl) solid var(--accent);
+    // background: var(--blockquote-bg);
+    border: var(--border-size-sm) solid;
+    box-shadow: var(--border-size-md) var(--border-size-md);
+
+    p {
+        margin: 0;
     }
 }
 

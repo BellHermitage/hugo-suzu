@@ -9,4 +9,10 @@
 
    --accent: hsl(10deg, 100%, 85%);
    --target-bg: var(--accent);
+
+   --table-bg: hsl(10deg, 100%, 85%);
+   --table-even-bg: hsl(0 0% 0% / 0.05);
+   --table-th-bg: hsl(0 0% 0% / 0.1);
+
+   --blockquote-bg: hsl(10deg, 100%, 90%);
 }

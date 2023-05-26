@@ -10,4 +10,10 @@
 
    --scroll-shadow: rgba(255, 255, 255, 0.2);
    --accent: hsl(-10deg 70% 25%);
+
+   --table-bg: hsl(-10deg, 70%, 25%);
+   --table-even-bg: hsl(0 0% 100% / 0.05);
+   --table-th-bg: hsl(0 0% 100% / 0.1);
+
+   --blockquote-bg: hsl(-10deg, 70%, 10%);
 }

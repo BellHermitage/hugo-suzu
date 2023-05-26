@@ -1,0 +1,27 @@
+$mobile-screen: 30rem;
+$tablet-screen: 50rem;
+$desktop-screen: 70rem;
+
+@mixin mobile {
+    @media only screen and (max-width: $mobile-screen) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media only screen and (min-width: ($tablet-screen)) {
+        @content;
+    }
+}
+
+@mixin from-tablet() {
+    @media only screen and (min-width: $tablet-screen) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop-screen) {
+        @content;
+    }
+}
