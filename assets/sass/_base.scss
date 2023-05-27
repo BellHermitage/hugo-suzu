@@ -53,7 +53,7 @@ body {
 }
 
 .readable-width {
-    width: var(--max-page-width);
+    width: Min(var(--max-page-width), 70.5rem);
     margin: 0 auto;
 }
 
@@ -101,16 +101,4 @@ hr {
     flex-direction: column;
     justify-content: start;
     // align-items: flex-start;
-}
-
-// @include tablet {
-//     :root {
-//         --max-page-width: 85%;
-//     }
-// }
-
-@include desktop {
-    :root {
-        --max-page-width: 70%;
-    }
 }
