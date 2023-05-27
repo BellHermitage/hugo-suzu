@@ -1,29 +1,39 @@
 footer {
     // border-top: 0.05rem solid var(--separator);
-    margin: 1rem 0;
+    margin-block-start: var(--font-size-md);
     flex: none;
 
-    & .wrapper {
+    .wrapper {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
     }
 
-    & .footer-col {
+    .footer-col {
         display: flex;
         flex-direction: column;
     }
 
-    & .footer-row {
+    .footer-row {
         display: flex;
         justify-content: center;
         flex-direction: column;
         gap: 0.25rem;
     }
 
-    & .contact-list, & .social-media-list {
+    .contact-list, .social-media-list {
         list-style: none;
         margin-inline-start: 0;
         padding-inline-start: 0; 
+    }
+
+    .web-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: var(--font-size-md);
+        padding-block: var(--font-size-md);
+
+        justify-content: space-between;
+        align-items: center;
     }
 }

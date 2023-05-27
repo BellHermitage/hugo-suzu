@@ -54,7 +54,7 @@ body {
 
 .readable-width {
     width: Min(var(--max-page-width), 70.5rem);
-    margin: 0 auto;
+    margin-inline: auto;
 }
 
 a#link-to-main {
@@ -79,7 +79,7 @@ a#link-to-main {
 }
 
 main {
-    flex: auto;
+    margin-block: var(--font-size-md);
 }
 
 hr {

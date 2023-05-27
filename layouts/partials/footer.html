@@ -16,5 +16,27 @@
             </ul>
         </div>
     </div>
+    <div class="web-buttons">
+        <!--
+            Credits:
+            https://buttoncollection.neocities.org/
+            https://anlucas.neocities.org/88x31Buttons
 
+            Done for fun
+        -->
+        {{ $th := resources.Get "buttons/2hu.gif" }}
+        <img src="{{ $th.Permalink }}" />
+
+        {{ $cookie := resources.Get "buttons/nocookie.gif" }}
+        <img src="{{ $cookie.Permalink }}" />
+
+        {{ $neovim := resources.Get "buttons/neovim.gif" }}
+        <img src="{{ $neovim.Permalink }}" />
+
+        {{ $trans := resources.Get "buttons/transnow2.gif" }}
+        <img src="{{ $trans.Permalink }}" />
+
+        {{ $bun := resources.Get "buttons/bunbrowser.gif" }}
+        <img src="{{ $bun.Permalink }}" />
+    </div>
 </footer>

@@ -19,7 +19,7 @@ article table {
     text-decoration: underline;
     text-decoration-style: dotted;
     text-decoration-thickness: 0.25rem;
-    margin-block-end: var(--font-size-sm);
+    margin-block: 0 var(--font-size-md);
 }
 
 .post-metadata {
