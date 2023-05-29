@@ -72,9 +72,9 @@ article .post-content {
         margin-inline: auto;
         width: 50%;
 
-        padding: 0.5rem;
+        // padding: 0.5rem;
         border: var(--border-size-sm) solid;
-        box-shadow: var(--border-size-md) var(--border-size-md);
+        box-shadow: var(--box-offset) var(--box-offset);
     }
 
     blockquote, table, img {
@@ -102,8 +102,8 @@ aside nav#TableOfContents {
     --_border-color: var(--accent, var(--text));
     top: var(--font-size-md);
     position: sticky;
-    border: var(--border-size-md) solid var(--_border-color);
-    box-shadow: var(--border-size-md) var(--border-size-md) var(--_border-color);
+    border: var(--border-size-sm) solid var(--_border-color);
+    box-shadow: var(--box-offset) var(--box-offset) var(--_border-color);
     padding: 0 var(--font-size-md);
     overflow-y: scroll;
     max-height: 80vh;
@@ -190,7 +190,7 @@ article table {
     padding: var(--font-size-md);
     // background: var(--table-bg);
     border: var(--border-size-sm) solid;
-    box-shadow: var(--border-size-md) var(--border-size-md);
+    box-shadow: var(--box-offset) var(--box-offset);
 
     th, td, caption {
         padding: var(--font-size-md);
@@ -221,10 +221,8 @@ article table {
 
 article blockquote {
     padding: var(--font-size-md);
-    // border-inline-start: var(--border-size-xl) solid var(--accent);
-    // background: var(--blockquote-bg);
     border: var(--border-size-sm) solid;
-    box-shadow: var(--border-size-md) var(--border-size-md);
+    box-shadow: var(--box-offset) var(--box-offset);
 
     p {
         margin: 0;

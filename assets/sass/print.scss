@@ -1,5 +1,5 @@
 
-nav, footer, .translations, .page-header {
+nav, hr, footer, .translations, .page-header {
     display: none !important;
 }
 
@@ -7,16 +7,10 @@ nav, footer, .translations, .page-header {
     width: 100%;
 }
 
-aside.toc {
-    flex-basis: 0px;
+article {
+    --max-text-width: 100%;
 }
 
-article  h1,
-article  h2,
-article  h3,
-article  h4,
-article  h5,
-article  p,
-article table {
-    max-width: 100%;
+article .wrapper {
+    display: block;
 }

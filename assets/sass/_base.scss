@@ -29,10 +29,12 @@ html {
     --font-size-3xl: 2.652rem;
     --font-size-4xl: 4rem;
 
-    --border-size-sm: 1px;
-    --border-size-md: 2px;
-    --border-size-lg: 3px;
-    --border-size-xl: 5px;
+    --border-size-sm: 2px;
+    --border-size-md: 4px;
+    --border-size-lg: 8px;
+    --border-size-xl: 16px;
+
+    --box-offset: var(--border-size-md);
 }
 
 body {

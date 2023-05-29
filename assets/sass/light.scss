@@ -1,11 +1,11 @@
 :root {
    --page-bg: #FFFEFF;
-   --text: #000;
+   --text: hsl(0 0% 0%);
    --link: var(--text);
    --link-background: transparent;
    --link-hover: var(--background-color);
    --link-hover-background: var(--text);
-   --separator: #000;
+   --separator: var(--text);
 
    --accent: hsl(10deg, 100%, 85%);
    --target-bg: var(--accent);
