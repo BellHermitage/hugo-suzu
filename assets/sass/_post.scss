@@ -4,6 +4,20 @@ article {
     --max-text-width: 70ch;
 }
 
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    font-family: Suzu Sans;
+}
+
+article pre,
+article code {
+    font-family: Suzu Mono;
+}
+
 article  h1,
 article  h2,
 article  h3,
