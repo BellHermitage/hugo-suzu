@@ -124,9 +124,6 @@ body {
         background-color var(--duration) var(--timing);
 
     font-family: Suzu Sans;
-
-    display: flex;
-    flex-direction: column;
 }
 
 .readable-width {
@@ -163,6 +160,10 @@ hr {
     width: 100%;
 }
 
+[aria-disabled="true"] {
+    display: none;
+}
+
 .adjacent-elements {
     display: flex;
     gap: 1rem;
@@ -178,4 +179,18 @@ hr {
     flex-direction: column;
     justify-content: start;
     // align-items: flex-start;
+}
+
+#wei {
+    border: solid red var(--border-size-lg);
+    padding: var(--font-size-lg);
+    margin-block-end: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
+
+    // box-shadow: red var(--border-size-xl) var(--border-size-xl);
+
+    & > span {
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+    }
 }

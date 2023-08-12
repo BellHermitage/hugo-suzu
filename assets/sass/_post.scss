@@ -198,6 +198,22 @@ aside nav#TableOfContents {
 
 }
 
+// @include desktop {
+//     article .music-comment {
+//         display: grid;
+//         grid-template-columns: 1fr 1fr;
+//         gap: 1rem;
+//
+//         :last-child {
+//             grid-column: 2;
+//         }
+//
+//         :first-child {
+//             grid-column: 1;
+//         }
+//     }
+// }
+
 article table {
     width: 100%;
     border-collapse: collapse;

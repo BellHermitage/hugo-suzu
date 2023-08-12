@@ -11,8 +11,8 @@ features = []
 min_version = "0.41.0"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "BellHermitage"
+  homepage = "https://github.com/BellHermitage/hugo-suzu"
 
 # If porting an existing theme
 [original]

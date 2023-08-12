@@ -4,6 +4,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{- range .AlternativeOutputFormats }}
+    {{ printf `
+    <link rel="%s" type="%s" href="%s" hreflang="%s" />` .Rel .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML
+    }}
+    {{- end }}
+
     {{ $opts := dict "transpiler" "dartsass" }}
 
     {{ $light_style := resources.Get "sass/light.scss" | toCSS $opts | minify | fingerprint }}
@@ -34,5 +40,10 @@
     <title>{{ $title }}</title>
 
     <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+
+
+    {{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
+    <link rel="preload" href="{{ $themejs.Permalink }}" as="script" />
+    <script defer src="{{ $themejs.Permalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>
 
 </head>
