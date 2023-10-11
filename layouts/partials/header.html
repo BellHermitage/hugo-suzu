@@ -1,7 +1,7 @@
 <header class="page-header readable-width">
     <a id="link-to-main" href="#the-content">Link to content!</a>
-    <nav>
-        <div class="adjacent-elements">
+    <div class="adjacent-elements">
+        <div class="navigation-container-logo adjacent-elements">
             <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
                 <img id="logo" src="{{ .Site.Params.logo }}" />
             </a>
@@ -9,8 +9,11 @@
             <h1 class="title">{{ .Site.Title }}</h1>
         </div>
 
-        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    </nav>
+        <nav>
+            {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+        </nav>
+    </div>
+
 
     {{ partial "allLanguages.html" . }}
 

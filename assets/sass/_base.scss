@@ -160,6 +160,22 @@ hr {
     width: 100%;
 }
 
+a {
+    color: var(--link);
+
+    &:hover, &:focus {
+        color: var(--link-hover);
+    }
+
+    &:active {
+        color: var(--link-active, var(--link-hover));
+    }
+
+    &:visited {
+        color: var(--link-visited);
+    }
+}
+
 [aria-disabled="true"] {
     display: none;
 }
@@ -186,8 +202,6 @@ hr {
     padding: var(--font-size-lg);
     margin-block-end: var(--font-size-3xl);
     font-size: var(--font-size-2xl);
-
-    // box-shadow: red var(--border-size-xl) var(--border-size-xl);
 
     & > span {
         font-size: var(--font-size-3xl);
