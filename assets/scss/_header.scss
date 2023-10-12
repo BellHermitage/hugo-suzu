@@ -9,6 +9,17 @@ header {
         margin-block-start: var(--font-size-md);
     }
 
+    #breadcrumbs {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0;
+        line-height: 0;
+
+        align-items: center;
+
+        list-style-type: none;
+    }
+
     & nav {
         display: flex;
         flex-direction: row;
@@ -57,18 +68,18 @@ header {
         list-style-type: none;
     }
 
-    & .logo-wrapper {
+    .logo-wrapper {
         line-height: 0;
 
         & img {
-            width: calc(var(--font-size) * 4);
+            width: calc(var(--font-size) * 2);
         }
     }
 
-    & .navigation-container-logo {
-        gap: 3rem;
-        font-size: var(--font-size-2xl);
-    }
+    // .navigation-container-logo {
+    //     gap: 3rem;
+    //     font-size: var(--font-size-2xl);
+    // }
 
     & .translations {
         display: flex;

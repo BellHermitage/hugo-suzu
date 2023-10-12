@@ -1,13 +1,23 @@
 <header class="page-header readable-width">
     <a id="link-to-main" href="#the-content">Link to content!</a>
     <div class="adjacent-elements">
-        <div class="navigation-container-logo adjacent-elements">
-            <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
-                <img id="logo" src="{{ .Site.Params.logo }}" />
-            </a>
 
-            <h1 class="title">{{ .Site.Title }}</h1>
-        </div>
+        <!-- <h1 class="title">{{ .Site.Title }}</h1> -->
+
+        <ul id="breadcrumbs">
+            <li>
+                <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
+                    <img id="logo" src="{{ .Site.Params.logo }}" />
+                </a>
+            </li>
+            <span>/</span>
+
+            {{- range .Ancestors.Reverse }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            <span>/</span>
+            {{- end }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        </ul>
 
         <nav>
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}

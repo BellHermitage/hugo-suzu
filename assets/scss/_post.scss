@@ -58,8 +58,16 @@ article .post-content {
     }
 
     h1 {
-        border-inline-start: 0.5rem solid;
-        padding-inline-start: var(--section-padding);
+        // border-inline-start: 0.5rem solid;
+        // padding-inline-start: var(--section-padding);
+
+        counter-reset: h2-counter;
+
+        &::before {
+            content: counter(h1-counter) " ";
+        }
+
+        counter-increment: h1-counter;
 
         &:not(:first-child) {
             margin-block-start: calc(2 * var(--section-margin-base));
@@ -67,15 +75,44 @@ article .post-content {
     }
 
     h2 {
-        border-inline-start: 1rem solid var(--text);
-        padding-inline-start: var(--section-padding);
-        margin-block-start: calc(1.5 * var(--section-margin-base));
+        counter-reset: h3-counter;
+
+        &::before {
+            content: counter(h1-counter) "." counter(h2-counter) " ";
+        }
+        counter-increment: h2-counter;
+
+        // border-inline-start: var(--section-padding) solid var(--text);
+        // padding-inline-start: var(--section-padding);
+        // margin-block-start: calc(1.5 * var(--section-margin-base));
     }
 
     h3 {
-        border-inline-start: 1.5rem solid var(--text);
-        padding-inline-start: var(--section-padding);
-        margin-block-start: calc(0.5 * var(--section-margin-base));
+        counter-reset: h4-counter;
+        counter-increment: h3-counter;
+
+        &::before {
+            content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) " ";
+        }
+
+
+        // border-inline-start: calc(var(--section-padding) * 2) solid var(--text);
+        // padding-inline-start: var(--section-padding);
+        // margin-block-start: calc(0.5 * var(--section-margin-base));
+    }
+
+    h4 {
+        counter-increment: h4-counter;
+
+        &::before {
+            content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) " ";
+        }
+    }
+
+    h1::before, h2::before, h3::before, h4::before {
+        color: var(--section-counter-color);
+        font-size: 2em;
+        font-weight: 700;
     }
 
     img {
@@ -95,6 +132,17 @@ article .post-content {
         margin-block: var(--font-size-2xl);
     }
 
+    figure {
+        h1::before,
+        h2::before,
+        h3::before,
+        h4::before,
+        h5::before,
+        h6::before {
+            content: none;
+        }
+    }
+
 
     :target {
         --tbg: var(--target-bg, var(--accent));
@@ -103,7 +151,22 @@ article .post-content {
 
     a[href^="http"]::after {
         content: ' \29C9';
+        display: inline-block;
+        // position: relative;
+
+        padding-inline-start: 0.1em;
+        // bottom: 0.5em;
+        // font-size: 1.25em;
+
         text-decoration: none;
+    }
+
+    li[status="online"]::marker {
+        content: '🌕 ';
+    }
+
+    li[status="offline"]::marker {
+        content: '🌑 ';
     }
 }
 
@@ -194,8 +257,6 @@ aside nav#TableOfContents {
         grid-template-columns: fit-content(Min(100%, var(--max-text-width))) fit-content(100%);
         grid-template-rows: none;
     }
-
-
 }
 
 // @include desktop {

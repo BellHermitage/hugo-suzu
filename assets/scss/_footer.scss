@@ -29,11 +29,22 @@ footer {
 
     .web-buttons {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(5, max-content);
         gap: var(--font-size-md);
         padding-block: var(--font-size-md);
 
         justify-content: space-between;
         align-items: center;
+
+        // div {
+        //     width: 100%;
+        // }
+
+        // img {
+        //     min-width: 100%;
+        //     min-height: 100%;
+        //     object-fit: cover;
+        // }
+
     }
 }

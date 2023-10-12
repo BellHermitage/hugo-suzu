@@ -11,32 +11,6 @@
     box-sizing: border-box;
 }
 
-html {
-    margin: 0 auto;
-    height: 100%;
-    min-height: 100%;
-    line-height: 1.5;
-
-    scroll-behavior: smooth;
-    background: var(--page-bg);
-
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.3125rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 2.652rem;
-    --font-size-4xl: 4rem;
-
-    --border-size-sm: 2px;
-    --border-size-md: 4px;
-    --border-size-lg: 8px;
-    --border-size-xl: 16px;
-
-    --box-offset: var(--border-size-md);
-}
-
 @font-face {
     font-family: 'Suzu Sans';
     src: local('system-ui'),
@@ -113,6 +87,33 @@ html {
          local('Segoe UI Symbol');
 }
 
+html {
+    margin: 0 auto;
+    height: 100%;
+    min-height: 100%;
+    line-height: 1.5;
+
+    scroll-behavior: smooth;
+    background: var(--page-bg);
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.3125rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2.652rem;
+    --font-size-4xl: 4rem;
+
+    --border-size-sm: 2px;
+    --border-size-md: 4px;
+    --border-size-lg: 8px;
+    --border-size-xl: 16px;
+
+    --box-offset: var(--border-size-md);
+}
+
+
 body {
     --duration: 1s;
     --timing: ease;
@@ -124,6 +125,14 @@ body {
         background-color var(--duration) var(--timing);
 
     font-family: Suzu Sans;
+
+    /* Let the footer stick to the bottom of the page
+     *
+     */
+    display: grid;
+    grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
+    min-height: 100%;
+    margin-block: 0;
 }
 
 .readable-width {
@@ -154,10 +163,16 @@ a#link-to-main {
 
 main {
     margin-block: var(--font-size-md);
+
+    > :first-child {
+        margin-block-start: 0;
+    }
 }
 
 hr {
     width: 100%;
+    border: none;
+    border-bottom: 2px dashed;
 }
 
 a {

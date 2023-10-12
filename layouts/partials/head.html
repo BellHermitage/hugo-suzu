@@ -12,13 +12,13 @@
 
     {{ $opts := dict "transpiler" "dartsass" }}
 
-    {{ $light_style := resources.Get "sass/light.scss" | toCSS $opts | minify | fingerprint }}
+    {{ $light_style := resources.Get "scss/light.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $dark_style := resources.Get "sass/dark.scss" | toCSS $opts | minify | fingerprint }}
+    {{ $dark_style := resources.Get "scss/dark.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $style := resources.Get "sass/main.scss" | toCSS $opts | minify | fingerprint }}
+    {{ $style := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $print_style := resources.Get "sass/print.scss" | toCSS $opts | minify | fingerprint }}
+    {{ $print_style := resources.Get "scss/print.scss" | toCSS $opts | minify | fingerprint }}
 
     <link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
         integrity="{{ $light_style.Data.Integrity }}" />
