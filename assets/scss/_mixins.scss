@@ -1,5 +1,5 @@
 $mobile-screen: 30rem;
-$tablet-screen: 50rem;
+$tablet-screen: 45rem;
 $desktop-screen: 70rem;
 
 @mixin mobile {
@@ -9,7 +9,7 @@ $desktop-screen: 70rem;
 }
 
 @mixin tablet() {
-    @media only screen and (min-width: ($tablet-screen)) {
+    @media only screen and (min-width: $tablet-screen) {
         @content;
     }
 }

@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 footer {
     // border-top: 0.05rem solid var(--separator);
     margin-block-start: var(--font-size-md);
@@ -29,7 +31,7 @@ footer {
 
     .web-buttons {
         display: grid;
-        grid-template-columns: repeat(5, max-content);
+        grid-template-columns: repeat(auto-fit, minmax(88px, max-content));
         gap: var(--font-size-md);
         padding-block: var(--font-size-md);
 
@@ -46,5 +48,11 @@ footer {
         //     object-fit: cover;
         // }
 
+    }
+}
+
+@include mobile {
+    footer .wrapper {
+        flex-direction: column-reverse;
     }
 }

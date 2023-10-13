@@ -19,13 +19,14 @@
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         </ul>
 
-        <nav>
+        <div class="adjacent-elements">
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-        </nav>
+
+            {{ partial "allLanguages.html" . }}
+        </div>
     </div>
 
 
-    {{ partial "allLanguages.html" . }}
 
     {{ partial "wei.html" . }}
 </header>

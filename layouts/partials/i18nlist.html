@@ -1,12 +1,9 @@
 {{ if .IsTranslated }}
 <div class="translations">
-    <h4>{{ i18n "translations" }}</h4>
-    <ul class="translations">
+    <p><b>{{ i18n "translations" }}</b>:
         {{ range .Translations }}
-        <li>
-            <a href="{{ .Permalink }}">{{ .Lang }}</a>
-        </li>
+        <a href="{{ .Permalink }}">{{ .Lang }}</a>;
         {{ end }}
-    </ul>
+    </p>
 </div>
 {{ end }}

@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 header {
     --font-size: var(--font-size-2xl);
 
@@ -18,14 +20,26 @@ header {
         align-items: center;
 
         list-style-type: none;
+
+        overflow-x: scroll;
+        overflow-y: hidden;
+
+        > * {
+            min-width: fit-content;
+        }
+
     }
 
-    & nav {
+    nav {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    nav ul {
+        padding: 0;
     }
 
     // & .items { 
@@ -37,7 +51,7 @@ header {
     //     font-size: var(--font-size-md);
     // }
 
-    & nav ul a {
+    nav ul a {
         --_clr: var(--text);
 
         color: var(--_clr);
@@ -81,18 +95,28 @@ header {
     //     font-size: var(--font-size-2xl);
     // }
 
-    & .translations {
-        display: flex;
+    // .translations {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: start;
+    //     gap: 0.5rem;
+    //     padding: 0;
+    //
+    //     list-style-type: none;
+    // }
+}
+
+@include tablet {
+    header nav {
         flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0;
-
-        list-style-type: none;
-
-        // & li:not(:last-child)::after {
-        //     content: ',';
-        // }
     }
 
+    header .translations {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    // header #breadcrumbs > :not(li:first-of-type):not(li:last-of-type):not(span:first-of-type) {
+    //     display: none;
+    // }
 }

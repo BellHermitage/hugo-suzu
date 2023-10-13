@@ -1,6 +1,9 @@
-<ul class="translations">
-    <li>{{ T "also_in" }}:</li>
-    {{ range $.Site.Home.AllTranslations }}
-    <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
-    {{ end }}
-</ul>
+<div class="dropdown-initiator" role="navigation" aria-haspopup="true" tabindex="0">
+    <span>🌐</span>
+    <!-- TODO:  Permalink to the current page. -->
+    <ul class="dropdown" aria-label="submenu">
+        {{ range $.Site.Home.AllTranslations }}
+        <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+    </ul>
+</div>
