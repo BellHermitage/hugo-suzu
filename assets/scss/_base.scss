@@ -105,6 +105,7 @@ html {
     --font-size-3xl: 2.652rem;
     --font-size-4xl: 4rem;
 
+    --border-size-xs: 1px;
     --border-size-sm: 2px;
     --border-size-md: 4px;
     --border-size-lg: 8px;
@@ -213,7 +214,9 @@ a {
 }
 
 .dropdown {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     margin: 0;
     padding: 0;
@@ -230,11 +233,14 @@ a {
     li > * {
         padding: 0 var(--font-size-xs);
     }
+
+    transition: opacity 250ms ease-in-out;
 }
 
 .dropdown-initiator {
     cursor: pointer;
     position: relative;
+
 }
 
 .dropdown-initiator:hover > .dropdown,
@@ -242,7 +248,8 @@ a {
 .dropdown-initiator:focus > .dropdown,
 .dropdown-initiator:focus-visible > .dropdown,
 .dropdown-initiator:focus-within > .dropdown {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
 }
 
 

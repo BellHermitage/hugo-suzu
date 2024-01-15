@@ -168,6 +168,24 @@ article .post-content {
     li[status="offline"]::marker {
         content: '🌑 ';
     }
+
+    details {
+        --_border-color: var(--accent, var(--text));
+        border: var(--border-size-xs) solid var(--_border-color);
+        // background-color:
+        //     var(--_border-color);
+        padding: 0 var(--font-size-sm);
+
+        > summary {
+            font-weight: 700;
+            margin: var(--font-size-md) 0;
+        }
+
+        > summary:hover {
+            cursor: pointer;
+
+        }
+    }
 }
 
 

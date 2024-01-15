@@ -1,12 +1,16 @@
 {{ define "main" }}
 <article>
+    {{ if eq (.Params.hideMeta | default false) false }}
     <header class="post">
-        <h1 class="post-title">{{ .Title }}</h1>
+        <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
+
         {{ partial "metadata.html" . }}
+
     </header>
+    {{ end }}
 
     <div class="wrapper">
-        <div class="post-content">
+        <div class="post-content" data-pagefind-body>
             {{ .Content }}
         </div>
         <aside class="toc">

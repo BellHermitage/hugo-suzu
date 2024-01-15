@@ -45,5 +45,4 @@
     {{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
     <link rel="preload" href="{{ $themejs.Permalink }}" as="script" />
     <script defer src="{{ $themejs.Permalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>
-
 </head>
