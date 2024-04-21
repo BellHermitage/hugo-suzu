@@ -5,12 +5,16 @@
         <!-- <h1 class="title">{{ .Site.Title }}</h1> -->
 
         <ul id="breadcrumbs">
-            <li>
+            {{ if .Site.Params.logo }}
+            <li class="logo-wrapper">
                 <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
                     <img id="logo" src="{{ .Site.Params.logo }}" />
                 </a>
             </li>
             <span>/</span>
+            {{ else }}
+            <span>~</span>
+            {{ end }}
 
             {{- range .Ancestors.Reverse }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>

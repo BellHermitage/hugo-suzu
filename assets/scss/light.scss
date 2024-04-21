@@ -1,20 +1,20 @@
 :root {
-   --page-bg: #FFFEFF;
-   --text: hsl(0 0% 0%);
-   --link: var(--text);
-   --link-background: transparent;
-   --link-hover: var(--background-color);
-   --link-hover-background: var(--text);
-   --separator: var(--text);
+    --page-bg: #FFFEFF;
+    --text: hsl(0 0% 0%);
+    --link: var(--text);
+    --link-background: transparent;
+    --link-hover: var(--background-color);
+    --link-hover-background: var(--text);
+    --separator: var(--text);
 
-   --accent: hsl(10deg, 100%, 85%);
-   --target-bg: var(--accent);
+    --accent: hsl(10deg, 100%, 85%);
+    --target-bg: var(--accent);
 
-   --table-bg: hsl(10deg, 100%, 85%);
-   --table-even-bg: hsl(0 0% 0% / 0.05);
-   --table-th-bg: hsl(0 0% 0% / 0.1);
+    --table-bg: hsl(10deg, 100%, 85%);
+    --table-even-bg: hsl(0 0% 0% / 0.05);
+    --table-th-bg: hsl(0 0% 0% / 0.1);
 
-   --section-counter-color: hsl(-25deg 100% 60%);
+    --section-counter-color: hsl(-25deg 100% 60%);
 
-   --blockquote-bg: hsl(10deg, 100%, 90%);
+    --blockquote-bg: hsl(10deg, 100%, 90%);
 }

@@ -15,7 +15,7 @@ header {
         display: flex;
         gap: 0.5rem;
         padding: 0;
-        line-height: 0;
+        // line-height: 0;
 
         align-items: center;
 
@@ -24,7 +24,7 @@ header {
         overflow-x: scroll;
         overflow-y: hidden;
 
-        > * {
+        >* {
             min-width: fit-content;
         }
 
@@ -68,17 +68,20 @@ header {
             background-color 250ms ease,
             color 250ms ease;
 
-        &:visited, &:active {
+        &:visited,
+        &:active {
             color: var(--_clr);
         }
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: var(--_clr);
             color: var(--page-bg);
         }
     }
 
-    & nav ul, & nav ol {
+    & nav ul,
+    & nav ol {
         list-style-type: none;
     }
 

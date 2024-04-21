@@ -3,14 +3,13 @@
     {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
     <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
 
-    <div>
+    <div class="tags">
         {{ with .Params.tags }}
         {{ range . }}
         {{ $href := print (absLangURL "tags/") (urlize .) }}
         <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href | absLangURL }}">{{ . }}</a>
         {{ end }}
         {{ end }}
-
     </div>
     {{ partial "i18nlist.html" . }}
 </div>

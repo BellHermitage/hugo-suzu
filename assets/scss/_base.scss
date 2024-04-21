@@ -7,84 +7,86 @@
 }
 
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 @font-face {
     font-family: 'Suzu Sans';
     src: local('system-ui'),
-         local('-apple-system'),
-         local('BlinkMacSystemFont'),
-         local('Verdana'),
-         local('Segoe UI'),
-         local('Roboto'),
-         local('Oxygen'),
-         local('Ubuntu'),
-         local('Cantarell'),
-         local('Open Sans'),
-         local('Helvetica Neue'),
-         local('sans-serif'),
-         local('ヒラギノ角ゴ ProN'),
-         local('Hiragino Kaku Gothic ProN'),
-         local('游ゴシック'),
-         local('游ゴシック体'),
-         local('YuGothic'),
-         local('Yu Gothic'),
-         local('メイリオ'),
-         local('Meiryo'),
-         local('ＭＳ ゴシック'),
-         local('MS Gothic'),
-         local('HiraKakuProN-W3'),
-         local('TakaoExゴシック'),
-         local('TakaoExGothic'),
-         local('MotoyaLCedar'),
-         local('Droid Sans Japanese'),
-         local('Noto Sans CJK JP'),
-         local('IPAmGothic'),
-         local('Apple Color Emoji'),
-         local('Segoe UI Emoji'),
-         local('Segoe UI Symbol');
+        local('-apple-system'),
+        local('BlinkMacSystemFont'),
+        local('Verdana'),
+        local('Segoe UI'),
+        local('Roboto'),
+        local('Oxygen'),
+        local('Ubuntu'),
+        local('Cantarell'),
+        local('Open Sans'),
+        local('Helvetica Neue'),
+        local('sans-serif'),
+        local('ヒラギノ角ゴ ProN'),
+        local('Hiragino Kaku Gothic ProN'),
+        local('游ゴシック'),
+        local('游ゴシック体'),
+        local('YuGothic'),
+        local('Yu Gothic'),
+        local('メイリオ'),
+        local('Meiryo'),
+        local('ＭＳ ゴシック'),
+        local('MS Gothic'),
+        local('HiraKakuProN-W3'),
+        local('TakaoExゴシック'),
+        local('TakaoExGothic'),
+        local('MotoyaLCedar'),
+        local('Droid Sans Japanese'),
+        local('Noto Sans CJK JP'),
+        local('IPAmGothic'),
+        local('Apple Color Emoji'),
+        local('Segoe UI Emoji'),
+        local('Segoe UI Symbol');
 }
 
 @font-face {
     font-family: 'Suzu Serif';
     src: local('Georgia'),
-         local('Times New Roman'),
-         local('Palatino'),
-         local('Baskerville'),
-         local('serif'),
-         local('ヒラギノ明朝 ProN'),
-         local('Hiragino Mincho ProN'),
-         local('游明朝'),
-         local('游明朝体'),
-         local('YuMincho'),
-         local('Yu Mincho'),
-         local('ＭＳ 明朝'),
-         local('MS Mincho'),
-         local('HiraMinProN-W3'),
-         local('TakaoEx明朝'),
-         local('TakaoExMincho'),
-         local('MotoyaLCedar'),
-         local('Noto Serif CJK JP'),
-         local('IPAexMincho'),
-         local('Apple Color Emoji'),
-         local('Segoe UI Emoji'),
-         local('Segoe UI Symbol');
+        local('Times New Roman'),
+        local('Palatino'),
+        local('Baskerville'),
+        local('serif'),
+        local('ヒラギノ明朝 ProN'),
+        local('Hiragino Mincho ProN'),
+        local('游明朝'),
+        local('游明朝体'),
+        local('YuMincho'),
+        local('Yu Mincho'),
+        local('ＭＳ 明朝'),
+        local('MS Mincho'),
+        local('HiraMinProN-W3'),
+        local('TakaoEx明朝'),
+        local('TakaoExMincho'),
+        local('MotoyaLCedar'),
+        local('Noto Serif CJK JP'),
+        local('IPAexMincho'),
+        local('Apple Color Emoji'),
+        local('Segoe UI Emoji'),
+        local('Segoe UI Symbol');
 }
 
 @font-face {
     font-family: 'Suzu Mono';
     src: local('SFMono-Regular'),
-         local('Menlo'),
-         local('Monaco'),
-         local('Consolas'),
-         local('Liberation Mono'),
-         local('Courier New'),
-         local('monospace'),
-         local('Apple Color Emoji'),
-         local('Segoe UI Emoji'),
-         local('Segoe UI Symbol');
+        local('Menlo'),
+        local('Monaco'),
+        local('Consolas'),
+        local('Liberation Mono'),
+        local('Courier New'),
+        local('monospace'),
+        local('Apple Color Emoji'),
+        local('Segoe UI Emoji'),
+        local('Segoe UI Symbol');
 }
 
 html {
@@ -133,7 +135,7 @@ body {
     display: grid;
     grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
     min-height: 100%;
-    margin-block: 0;
+    margin: 0;
 }
 
 .readable-width {
@@ -173,13 +175,14 @@ main {
 hr {
     width: 100%;
     border: none;
-    border-bottom: 2px dashed;
+    border-bottom: 1px dashed;
 }
 
 a {
     color: var(--link);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: var(--link-hover);
     }
 
@@ -230,7 +233,7 @@ a {
 
     list-style-type: none;
 
-    li > * {
+    li>* {
         padding: 0 var(--font-size-xs);
     }
 
@@ -243,11 +246,11 @@ a {
 
 }
 
-.dropdown-initiator:hover > .dropdown,
-.dropdown-initiator:active > .dropdown,
-.dropdown-initiator:focus > .dropdown,
-.dropdown-initiator:focus-visible > .dropdown,
-.dropdown-initiator:focus-within > .dropdown {
+.dropdown-initiator:hover>.dropdown,
+.dropdown-initiator:active>.dropdown,
+.dropdown-initiator:focus>.dropdown,
+.dropdown-initiator:focus-visible>.dropdown,
+.dropdown-initiator:focus-within>.dropdown {
     visibility: visible;
     opacity: 1;
 }
@@ -259,10 +262,34 @@ a {
     margin-block-end: var(--font-size-3xl);
     font-size: var(--font-size-2xl);
 
-    & > span {
+    &>span {
         font-size: var(--font-size-3xl);
         font-weight: 700;
     }
+}
+
+[memphis-bg],
+[chinese-bg] {
+    position: relative;
+
+    &::before {
+        content: '';
+        z-index: -1000;
+        position: absolute;
+        inset: 0;
+    }
+}
+
+[memphis-bg]::before {
+    opacity: 0.05;
+    background-size: cover;
+    background-image: var(--memphis-bg);
+}
+
+[chinese-bg]::before {
+    opacity: 0.05;
+    background-size: cover;
+    background-image: var(--chinese-bg);
 }
 
 @include tablet {

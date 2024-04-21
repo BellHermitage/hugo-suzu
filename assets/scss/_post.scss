@@ -13,25 +13,37 @@ article h6 {
     font-family: Suzu Sans;
 }
 
+article h1 {
+    font-size: var(--font-size-3xl);
+}
+
+article h2 {
+    font-size: var(--font-size-2xl);
+}
+
+article h3 {
+    font-size: var(--font-size-xl);
+}
+
 article pre,
 article code {
     font-family: Suzu Mono;
 }
 
-article  h1,
-article  h2,
-article  h3,
-article  h4,
-article  h5,
-article  p,
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article p,
 article table {
     max-width: var(--max-text-width);
 }
 
 .post-title {
     font-size: var(--font-size-3xl);
-    text-decoration: underline;
-    text-decoration-style: dotted;
+    // text-decoration: underline;
+    // text-decoration-style: dotted;
     text-decoration-thickness: 0.25rem;
     margin-block: 0 var(--font-size-md);
 }
@@ -47,11 +59,13 @@ article .wrapper {
     gap: var(--font-size-3xl);
 }
 
+article .wrapper .post-content {
+    grid-row: content;
+}
+
 article .post-content {
     --section-padding: 0.5rem;
     --section-margin-base: var(--font-size-3xl);
-
-    grid-row: content;
 
     > :first-child {
         margin-block-start: 0;
@@ -63,9 +77,9 @@ article .post-content {
 
         counter-reset: h2-counter;
 
-        &::before {
-            content: counter(h1-counter) " ";
-        }
+        // &::before {
+        //     content: counter(h1-counter) " ";
+        // }
 
         counter-increment: h1-counter;
 
@@ -78,8 +92,9 @@ article .post-content {
         counter-reset: h3-counter;
 
         &::before {
-            content: counter(h1-counter) "." counter(h2-counter) " ";
+            content: counter(h2-counter) " ";
         }
+
         counter-increment: h2-counter;
 
         // border-inline-start: var(--section-padding) solid var(--text);
@@ -92,7 +107,7 @@ article .post-content {
         counter-increment: h3-counter;
 
         &::before {
-            content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) " ";
+            content: counter(h2-counter) "." counter(h3-counter) " ";
         }
 
 
@@ -105,13 +120,16 @@ article .post-content {
         counter-increment: h4-counter;
 
         &::before {
-            content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) " ";
+            content: counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) " ";
         }
     }
 
-    h1::before, h2::before, h3::before, h4::before {
+    h1::before,
+    h2::before,
+    h3::before,
+    h4::before {
         color: var(--section-counter-color);
-        font-size: 2em;
+        font-size: 1.25em;
         font-weight: 700;
     }
 
@@ -128,11 +146,14 @@ article .post-content {
         box-shadow: var(--box-offset) var(--box-offset);
     }
 
-    blockquote, table, img {
+    blockquote,
+    table,
+    img {
         margin-block: var(--font-size-2xl);
     }
 
     figure {
+
         h1::before,
         h2::before,
         h3::before,
@@ -155,8 +176,6 @@ article .post-content {
         // position: relative;
 
         padding-inline-start: 0.1em;
-        // bottom: 0.5em;
-        // font-size: 1.25em;
 
         text-decoration: none;
     }
@@ -176,12 +195,12 @@ article .post-content {
         //     var(--_border-color);
         padding: 0 var(--font-size-sm);
 
-        > summary {
+        >summary {
             font-weight: 700;
             margin: var(--font-size-md) 0;
         }
 
-        > summary:hover {
+        >summary:hover {
             cursor: pointer;
 
         }
@@ -189,7 +208,7 @@ article .post-content {
 }
 
 
-article aside.toc {
+article .wrapper aside.toc {
     grid-row: toc;
 }
 
@@ -207,31 +226,23 @@ aside nav#TableOfContents {
     // Shadow code taken from CSS-Tricks:
     // https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/
     background:
-      /* Shadow Cover TOP */
-      linear-gradient(
-        var(--page-bg) 30%,
-        rgba(255, 255, 255, 0)
-      ) center top,
+        /* Shadow Cover TOP */
+        linear-gradient(var(--page-bg) 30%,
+            rgba(255, 255, 255, 0)) center top,
 
-      /* Shadow Cover BOTTOM */
-      linear-gradient(
-        rgba(255, 255, 255, 0), 
-        var(--page-bg) 70%
-      ) center bottom,
+        /* Shadow Cover BOTTOM */
+        linear-gradient(rgba(255, 255, 255, 0),
+            var(--page-bg) 70%) center bottom,
 
-      /* Shadow TOP */
-      radial-gradient(
-        farthest-side at 50% 0,
-        var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
-        rgba(0, 0, 0, 0)
-      ) center top,
+        /* Shadow TOP */
+        radial-gradient(farthest-side at 50% 0,
+            var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
+            rgba(0, 0, 0, 0)) center top,
 
-      /* Shadow BOTTOM */
-      radial-gradient(
-        farthest-side at 50% 100%,
-        var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
-        rgba(0, 0, 0, 0)
-      ) center bottom;
+        /* Shadow BOTTOM */
+        radial-gradient(farthest-side at 50% 100%,
+            var(--scroll-shadow, rgba(0, 0, 0, 0.2)),
+            rgba(0, 0, 0, 0)) center bottom;
 
     background-repeat: no-repeat;
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
@@ -241,11 +252,17 @@ aside nav#TableOfContents {
         text-decoration: none;
     }
 
-    ul, ol {
+    ul,
+    ol {
         list-style-type: none;
-        padding-inline-start: 1rem;
+        padding-inline-start: 0;
 
         counter-reset: toc-counter;
+
+        >li ul,
+        >li ol {
+            padding-inline-start: 1rem;
+        }
 
         li::before {
             content: counters(toc-counter, ".") " ";
@@ -255,7 +272,7 @@ aside nav#TableOfContents {
         }
     }
 
-    > ol {
+    >ol {
         padding: 0;
     }
 }
@@ -274,6 +291,7 @@ aside nav#TableOfContents {
     article .wrapper {
         grid-template-columns: fit-content(Min(100%, var(--max-text-width))) fit-content(100%);
         grid-template-rows: none;
+        justify-content: space-between;
     }
 }
 
@@ -301,7 +319,9 @@ article table {
     border: var(--border-size-sm) solid;
     box-shadow: var(--box-offset) var(--box-offset);
 
-    th, td, caption {
+    th,
+    td,
+    caption {
         padding: var(--font-size-md);
     }
 
@@ -317,7 +337,7 @@ article table {
 
 
 @include mobile {
-    article table  {
+    article table {
         th:nth-of-type(1) {
             display: none;
         }
@@ -338,3 +358,28 @@ article blockquote {
     }
 }
 
+// See _defauls/list.html
+// This is the single sub-article in a list of articles.
+article.post-list-elem {
+    border-inline-start: 4px solid var(--accent);
+    padding-inline-start: 1rem;
+
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .title {
+            line-height: 0;
+        }
+
+        .post-metadata {
+            margin: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+}

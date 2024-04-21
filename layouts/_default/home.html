@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article>
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+</article>
+
+{{ if (ge site.RegularPages 1) }}
+<section>
+    <h2>Latest entries</h2>
+    {{ range site.RegularPages }}
+    {{ partial "list-subpost.html" . }}
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}

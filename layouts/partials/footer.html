@@ -1,21 +1,35 @@
 <footer class="readable-width" data-pagefind-ignore="all">
     <div class="wrapper">
+        {{ if .Site.Params.contacts }}
         <div class="footer-col">
             <ul class="footer-row contact-list">
-                <li class="p-name">本居 小鈴</li>
-                <li><a class="u-email" href="mailto:contact@suzunaan.org">contact@suzunaan.org</a></li>
+                {{ if .Site.Params.contacts.name }}
+                <li class="p-name">{{ .Site.Params.contacts.name }}</li>
+                {{ end }}
+                {{ if .Site.Params.contacts.email }}
+                <li><a class="u-email" href="mailto:{{ .Site.Params.contacts.email }}">{{ .Site.Params.contacts.email
+                        }}</a></li>
+                {{ end }}
             </ul>
 
+            {{ if .Site.Params.subtitle }}
             <div class="footer-row">
-                <p>A ringing library.</p>
+                <p>{{ .Site.Params.subtitle }}</p>
             </div>
+            {{ end }}
         </div>
+        {{ end }}
+        {{ if .Site.Params.subsites }}
         <div class="footer-col">
             <ul class="footer-row contact-list">
-                <li><a href="https://translations.suzunaan.org">Translations</a></li>
+                {{ range $subsite := $.Site.Params.subsites }}
+                <li><a href="https://{{ $subsite.link }}">{{ $subsite.name }}</a></li>
+                {{ end }}
             </ul>
         </div>
+        {{ end }}
     </div>
+    {{ if .Site.Params.webbuttons }}
     <div class="web-buttons">
         <!--
             Credits:
@@ -24,19 +38,10 @@
 
             Done for fun
         -->
-        {{ $th := resources.Get "buttons/2hu.gif" }}
-        <img src="{{ $th.Permalink }}" />
-
-        {{ $cookie := resources.Get "buttons/nocookie.gif" }}
-        <img src="{{ $cookie.Permalink }}" />
-
-        {{ $neovim := resources.Get "buttons/neovim.gif" }}
-        <img src="{{ $neovim.Permalink }}" />
-
-        {{ $trans := resources.Get "buttons/transnow2.gif" }}
-        <img src="{{ $trans.Permalink }}" />
-
-        {{ $bun := resources.Get "buttons/bunbrowser.gif" }}
-        <img src="{{ $bun.Permalink }}" />
+        {{ range $btn_link := .Site.Params.webbuttons }}
+        {{ $btn := resources.Get (printf "buttons/%s" $btn_link) }}
+        <img src="{{ $btn.Permalink }}" />
+        {{ end }}
     </div>
+    {{ end }}
 </footer>
