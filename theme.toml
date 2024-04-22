@@ -2,20 +2,20 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Suzu"
-license = "MIT"
-licenselink = "https://github.com/BellHermitage/hugo-suzu/blob/master/LICENSE"
+license = "AGPL-v3-or-later"
+licenselink = "https://git.suzunaan.org/Suzunaan/hugo-suzu/blob/master/LICENSE"
 description = "Hugo theme for Suzunaan"
 homepage = "https://suzunaan.org/"
-tags = []
+tags = ["blog"]
 features = []
 min_version = "0.41.0"
 
 [author]
-  name = "BellHermitage"
-  homepage = "https://github.com/BellHermitage/hugo-suzu"
+  name = "Suzunaan"
+  homepage = "https://git.suzunaan.org/Suzunaan/hugo-suzu"
 
 # If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+# [original]
+#   name = ""
+#   homepage = ""
+#   repo = ""

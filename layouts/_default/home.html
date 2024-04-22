@@ -8,7 +8,7 @@
 {{ if (ge site.RegularPages 1) }}
 <section>
     <h2>Latest entries</h2>
-    {{ range site.RegularPages }}
+    {{ range (where site.RegularPages "Params.ignore" "!=" "true") }}
     {{ partial "list-subpost.html" . }}
     {{ end }}
 </section>

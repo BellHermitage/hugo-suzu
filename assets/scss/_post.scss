@@ -220,7 +220,7 @@ aside nav#TableOfContents {
     position: sticky;
     border: var(--border-size-sm) solid var(--_border-color);
     box-shadow: var(--box-offset) var(--box-offset) var(--_border-color);
-    padding: 0 var(--font-size-md);
+    padding: var(--font-size-md);
     overflow-y: scroll;
     max-height: 80vh;
     max-height: 80svh;
@@ -355,6 +355,10 @@ article blockquote {
     box-shadow: var(--box-offset) var(--box-offset);
 }
 
+ article.post-list-elem + article.post-list-elem {
+    margin-block-start: var(--font-size-lg);
+}
+
 // See _defauls/list.html
 // This is the single sub-article in a list of articles.
 article.post-list-elem {
@@ -364,15 +368,12 @@ article.post-list-elem {
     --gap: var(--font-size-lg);
 
     header {
+        max-width: var(--max-text-width);
         display: flex;
         flex-direction: row;
-        // align-items: flex-start;
+        flex-wrap: wrap;
         gap: var(--gap);
-        // justify-content: space-between;
 
-        .title {
-            line-height: 0;
-        }
 
         *+*::before {
             content: '|';
@@ -392,7 +393,7 @@ article.post-list-elem {
         }
 
         .tags> :first-child {
-            margin-left: calc(var(--gap) / 2);
+            margin-inline-start: calc(var(--gap) / 2);
         }
     }
 }
