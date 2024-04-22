@@ -52,6 +52,10 @@ article table {
     margin-block-end: var(--font-size-md);
 }
 
+article {
+    font-size: var(--font-size-md);
+}
+
 article .wrapper {
     display: grid;
     grid-template-columns: 1fr;
@@ -364,22 +368,38 @@ article.post-list-elem {
     border-inline-start: 4px solid var(--accent);
     padding-inline-start: 1rem;
 
+    --gap: var(--font-size-lg);
+
     header {
         display: flex;
         flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
+        // align-items: flex-start;
+        gap: var(--gap);
+        // justify-content: space-between;
 
         .title {
             line-height: 0;
+        }
+
+        *+*::before {
+            content: '|';
         }
 
         .post-metadata {
             margin: 0;
 
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            flex-direction: row;
+
+            gap: var(--gap);
+        }
+
+        .tags *+*::before {
+            content: none;
+        }
+
+        .tags> :first-child {
+            margin-left: calc(var(--gap) / 2);
         }
     }
 }
