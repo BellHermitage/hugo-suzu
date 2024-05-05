@@ -75,6 +75,9 @@ article .wrapper .post-content {
 }
 
 article .post-content {
+    *+* {
+        margin-block-start: 0.5em;
+    }
 
     > :first-child {
         margin-block-start: 0;
@@ -168,6 +171,19 @@ article .post-content {
         }
     }
 
+    pre,
+    code {
+        background-color: var(--code-bg);
+    }
+
+    :not(pre) code {
+        padding-inline: 0.25em;
+    }
+
+    pre {
+        padding: var(--font-size-md);
+    }
+
 
     :target {
         --tbg: var(--target-bg, var(--accent));
@@ -177,7 +193,6 @@ article .post-content {
     a[href^="http"]::after {
         content: ' \29C9';
         display: inline-block;
-        // position: relative;
 
         padding-inline-start: 0.1em;
 
@@ -355,7 +370,7 @@ article blockquote {
     box-shadow: var(--box-offset) var(--box-offset);
 }
 
- article.post-list-elem + article.post-list-elem {
+article.post-list-elem+article.post-list-elem {
     margin-block-start: var(--font-size-lg);
 }
 
