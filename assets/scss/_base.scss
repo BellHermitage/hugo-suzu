@@ -2,6 +2,7 @@
 
 :root {
     color-scheme: light dark;
+    accent-color: var(--accent);
 
     --max-page-width: 95%;
 }
@@ -195,6 +196,10 @@ a {
     }
 }
 
+[id] {
+    scroll-margin-top: 3rem;
+}
+
 [aria-disabled="true"] {
     display: none;
 }
@@ -266,30 +271,6 @@ a {
         font-size: var(--font-size-3xl);
         font-weight: 700;
     }
-}
-
-[memphis-bg],
-[chinese-bg] {
-    position: relative;
-
-    &::before {
-        content: '';
-        z-index: -1000;
-        position: absolute;
-        inset: 0;
-    }
-}
-
-[memphis-bg]::before {
-    opacity: 0.05;
-    background-size: cover;
-    background-image: var(--memphis-bg);
-}
-
-[chinese-bg]::before {
-    opacity: 0.05;
-    background-size: cover;
-    background-image: var(--chinese-bg);
 }
 
 @include tablet {

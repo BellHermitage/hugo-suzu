@@ -79,6 +79,36 @@ article .post-content {
         margin-block-start: 0.5em;
     }
 
+    .link-anchor {
+        display: grid;
+        margin-block-start: 1.5em;
+        grid-template-columns: min-content auto min-content;
+        gap: 1rem;
+
+        > a {
+            text-decoration: none;
+            opacity: 0.75;
+            line-height: 1;
+            align-self: center;
+
+            &:hover {
+                text-decoration: underline;
+                text-underline-offset: 0.25em;
+                opacity: 1;
+            }
+
+            &:focus {
+                outline: 2px solid currentColor;
+                outline-offset: 0.15em;
+            }
+        }
+
+        &::before {
+            line-height: 1;
+        }
+    }
+
+
     > :first-child {
         margin-block-start: 0;
     }
@@ -187,7 +217,7 @@ article .post-content {
 
     :target {
         --tbg: var(--target-bg, var(--accent));
-        background: var(--tbg);
+        background: linear-gradient(45deg, var(--tbg), transparent 90%);
     }
 
     a[href^="http"]::after {
