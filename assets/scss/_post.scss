@@ -257,6 +257,7 @@ article .post-content {
 
 article .wrapper aside.toc {
     grid-row: toc;
+    margin: 0;
 }
 
 aside nav#TableOfContents {
@@ -336,7 +337,7 @@ aside nav#TableOfContents {
 //       on the columns. Life is hard.
 @include tablet {
     article .wrapper {
-        grid-template-columns: fit-content(Min(100%, var(--max-text-width))) fit-content(100%);
+        grid-template-columns: fit-content(Min(100%, var(--max-text-width))) minmax(20ch, max-content);
         grid-template-rows: none;
         justify-content: space-between;
     }
