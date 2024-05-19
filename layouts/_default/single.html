@@ -1,28 +1,27 @@
 {{ define "main" }}
 <article>
-    {{ if eq (.Params.hideMeta | default false) false }}
     <header class="post">
         <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
 
         {{ partial "metadata.html" . }}
 
     </header>
-    {{ end }}
 
-    <div class="wrapper">
-        <div class="post-content" data-pagefind-body>
-            {{ .Content }}
-        </div>
-        {{ with .TableOfContents }}
-        <!-- the variable is set -->
-        {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
-        <!-- the variable is not an empty navigation -->
-        <aside class="toc">
-            {{ . }}
-        </aside>
-        <!-- it's a dot because we are inside of a `with` -->
-        {{ end }}
-        {{ end }}
+    <div class="post-content" data-pagefind-body>
+    {{ if eq (.Params.hideMeta | default false) false }}
+    {{ end }}
+        {{ .Content }}
     </div>
+
+    {{ with .TableOfContents }}
+    <!-- the variable is set -->
+    {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
+    <!-- the variable is not an empty navigation -->
+    <aside class="toc">
+        {{ . }}
+    </aside>
+    <!-- it's a dot because we are inside of a `with` -->
+    {{ end }}
+    {{ end }}
 </article>
 {{ end }}

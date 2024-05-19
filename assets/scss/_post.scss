@@ -2,17 +2,38 @@
 
 article {
     --max-text-width: 70ch;
+
+    font-size: var(--font-size-md);
+    display: grid;
+
+    grid-template-columns:
+        [toc-start content-start]
+            fit-content(Min(100%, var(--max-text-width)))
+        [content-end toc-end];
+
+    grid-template-rows: [header] auto [toc] auto [content sidenotes] auto;
+
+    &:has(header) {
+        row-gap: 2rem;
+    }
 }
 
 article * {
     margin: 0;
 }
 
-article .post-content>*+*,
-article .wrapper>*+* {
-    margin-block-start: 1em;
+article header {
+    grid-column: content;
+    grid-row: header;
 }
 
+article aside:not(.toc) {
+    --_border-color: var(--accent, var(--text));
+    padding: var(--font-size-xs);
+
+    outline: var(--border-size-sm) solid var(--accent);
+    grid-column: sidenotes;
+}
 
 article h1,
 article h2,
@@ -40,42 +61,20 @@ article code {
     font-family: Suzu Mono;
 }
 
-article h1,
-article h2,
-article h3,
-article h4,
-article h5,
-article p,
-article table {
-    max-width: var(--max-text-width);
-}
-
-.post-title {
-    font-size: var(--font-size-3xl);
-    // text-decoration: underline;
-    // text-decoration-style: dotted;
-    text-decoration-thickness: 0.25rem;
-    // margin-block-start: 1em;
-}
-
-article {
-    font-size: var(--font-size-md);
-}
-
-article .wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: [toc] auto [content] auto;
-    gap: var(--font-size-3xl);
-
-}
-
-article .wrapper .post-content {
-    grid-row: content;
-}
 
 article .post-content {
-    *+* {
+    grid-column: content;
+    grid-row: content;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    > *:not(aside) {
+        grid-column: content;
+    }
+
+    > *+* {
         margin-block-start: 0.5em;
     }
 
@@ -180,7 +179,7 @@ article .post-content {
 
         // padding: 0.5rem;
         border: var(--border-size-sm) solid;
-        box-shadow: var(--box-offset) var(--box-offset);
+        box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
     }
 
     blockquote,
@@ -239,7 +238,7 @@ article .post-content {
 
     details {
         --_border-color: var(--accent, var(--text));
-        border: var(--border-size-xs) solid var(--_border-color);
+        border: var(--border-size-xs) solid;
         padding: 0 var(--font-size-sm);
 
         >summary {
@@ -255,17 +254,21 @@ article .post-content {
 }
 
 
-article .wrapper aside.toc {
+article aside.toc {
+    grid-column: toc;
     grid-row: toc;
+
     margin: 0;
 }
 
-aside nav#TableOfContents {
+article aside.toc nav#TableOfContents {
     --_border-color: var(--accent, var(--text));
-    top: var(--font-size-md);
+
     position: sticky;
-    border: var(--border-size-sm) solid var(--_border-color);
-    box-shadow: var(--box-offset) var(--box-offset) var(--_border-color);
+    top: var(--font-size-md);
+
+    outline: var(--border-size-sm) solid var(--_border-color);
+    box-shadow: var(--box-offset) calc(-1 * var(--box-offset)) var(--_border-color);
     padding: var(--font-size-md);
     overflow-y: scroll;
     max-height: 80vh;
@@ -336,35 +339,46 @@ aside nav#TableOfContents {
 //       Exchanging the positions in the HTML results in the same hack but done
 //       on the columns. Life is hard.
 @include tablet {
-    article .wrapper {
-        grid-template-columns: fit-content(Min(100%, var(--max-text-width))) minmax(20ch, max-content);
-        grid-template-rows: none;
-        justify-content: space-between;
+    article:has(aside.toc) {
+        grid-template-columns: [content] auto [toc] fit-content(100%) ;
+        grid-template-rows: [header] auto [toc content] auto;
+        // justify-content: space-between;
+
+        column-gap: 2rem;
+    }
+
+    article .post-content {
+        grid-template-columns: [content sidenotes] fit-content(Min(100%, var(--max-text-width)));
+        column-gap: var(--font-size-xs);
     }
 }
 
-// @include desktop {
-//     article .music-comment {
-//         display: grid;
-//         grid-template-columns: 1fr 1fr;
-//         gap: 1rem;
-//
-//         :last-child {
-//             grid-column: 2;
-//         }
-//
-//         :first-child {
-//             grid-column: 1;
-//         }
-//     }
-// }
+@include desktop {
+    article .post-content {
+        grid-template-columns:
+            [content-start]
+                fit-content(Min(100%, var(--max-text-width)))
+            [content-end sidenotes-start]
+                fit-content(20ch)
+            [sidenotes-end];
+
+    }
+
+    article aside:not(.toc) {
+        margin: 0;
+        outline: none;
+        border-inline-start: var(--border-size-sm) solid var(--accent);
+        padding: 0;
+        padding-inline-start: var(--font-size-xs);
+    }
+}
 
 article table {
     width: 100%;
     border-collapse: collapse;
     padding: var(--font-size-md);
     border: var(--border-size-sm) solid;
-    box-shadow: var(--box-offset) var(--box-offset);
+    box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
 
     th,
     td,
@@ -398,7 +412,7 @@ article table {
 article blockquote {
     padding: var(--font-size-md);
     border: var(--border-size-sm) solid;
-    box-shadow: var(--box-offset) var(--box-offset);
+    box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
 }
 
 article.post-list-elem+article.post-list-elem {

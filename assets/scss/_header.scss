@@ -7,11 +7,6 @@ header {
     flex: none;
     font-size: var(--font-size);
 
-    &.page-header {
-        // border-block-end: var(--border-size-md) solid;
-        margin-block-start: var(--font-size-md);
-    }
-
     #breadcrumbs {
         display: flex;
         gap: var(--gap);
