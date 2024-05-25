@@ -8,17 +8,17 @@
             {{ if .Site.Params.logo }}
             <li class="logo-wrapper">
                 <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
-                    <img id="logo" src="{{ .Site.Params.logo }}" />
+                    <img id="logo" src="{{ .Site.Params.logo }}" alt="Logo of the webpage." />
                 </a>
             </li>
-            <span>/</span>
+            <li>/</li>
             {{ else }}
-            <span>~</span>
+            <li>~</li>
             {{ end }}
 
             {{- range .Ancestors.Reverse }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            <span>/</span>
+            <li>/</li>
             {{- end }}
             <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
         </ul>

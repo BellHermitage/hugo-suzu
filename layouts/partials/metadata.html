@@ -3,6 +3,8 @@
     {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
     <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
 
+    {{ partial "i18nlist.html" . }}
+
     {{ with .Params.tags }}
     <div class="tags">
         {{ range . }}
@@ -11,5 +13,4 @@
         {{ end }}
     </div>
     {{ end }}
-    {{ partial "i18nlist.html" . }}
 </div>

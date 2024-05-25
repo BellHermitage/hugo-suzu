@@ -1,48 +1,36 @@
-<head>
+<meta charset="utf-8" />
 
-    <meta charset="utf-8" />
+{{- partial "head/meta.html" . -}}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $opts := dict "transpiler" "dartsass" }}
 
-    {{- range .AlternativeOutputFormats }}
-    {{ printf `
-    <link rel="%s" type="%s" href="%s" hreflang="%s" />` .Rel .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML
-    }}
-    {{- end }}
+{{ $light_style := resources.Get "scss/light.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $opts := dict "transpiler" "dartsass" }}
+{{ $dark_style := resources.Get "scss/dark.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $light_style := resources.Get "scss/light.scss" | toCSS $opts | minify | fingerprint }}
+{{ $style := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $dark_style := resources.Get "scss/dark.scss" | toCSS $opts | minify | fingerprint }}
+{{ $print_style := resources.Get "scss/print.scss" | toCSS $opts | minify | fingerprint }}
 
-    {{ $style := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
+<link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
+    integrity="{{ $light_style.Data.Integrity }}" />
 
-    {{ $print_style := resources.Get "scss/print.scss" | toCSS $opts | minify | fingerprint }}
+<link rel="stylesheet" type="text/css" href="{{ $dark_style.Permalink }}" media="(prefers-color-scheme: dark)"
+    integrity="{{ $dark_style.Data.Integrity }}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ $light_style.Permalink }}" media="(prefers-color-scheme: light)"
-        integrity="{{ $light_style.Data.Integrity }}" />
-
-    <link rel="stylesheet" type="text/css" href="{{ $dark_style.Permalink }}" media="(prefers-color-scheme: dark)"
-        integrity="{{ $dark_style.Data.Integrity }}" />
-
-    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
+<link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
 
 
-    <link rel="stylesheet" type="text/css" href="{{ $print_style.Permalink }}"
-        integrity="{{ $print_style.Data.Integrity }}" media="print" />
+<link rel="stylesheet" type="text/css" href="{{ $print_style.Permalink }}"
+    integrity="{{ $print_style.Data.Integrity }}" media="print" />
 
 
-    {{ $title := print .Site.Title " | " .Title }}
+{{ $title := print .Site.Title " | " .Title }}
 
-    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
 
-    <title>{{ $title }}</title>
+<title>{{ $title }}</title>
 
-    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
-
-
-    {{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
-    <link rel="preload" href="{{ $themejs.Permalink }}" as="script" />
-    <script defer src="{{ $themejs.Permalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>
-</head>
+{{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
+<link rel="preload" href="{{ $themejs.Permalink }}" as="script" />
+<script defer src="{{ $themejs.Permalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>

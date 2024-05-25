@@ -1,0 +1,21 @@
+{{ define "head" }}
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <script defer src="/pagefind/pagefind-ui.js"></script>
+
+    {{ $js := resources.Get "js/search.js" | minify  | fingerprint }}
+    <script defer src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<article>
+    <header>
+        <h1 class="post-title">{{ .Title }}</h1>
+    </header>
+
+    <div class="post-content">
+        {{ .Content }}
+
+        <div id="search"></div>
+    </div>
+</article>
+{{ end }}

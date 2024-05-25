@@ -40,7 +40,7 @@
         -->
         {{ range $btn_link := .Site.Params.webbuttons }}
         {{ $btn := resources.Get (printf "buttons/%s" $btn_link) }}
-        <img src="{{ $btn.Permalink }}" />
+        <img width="88px" height="31px" src="{{ $btn.Permalink }}" />
         {{ end }}
     </div>
     {{ end }}

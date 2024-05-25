@@ -7,25 +7,44 @@ article {
     display: grid;
 
     grid-template-columns:
-        [toc-start content-start]
+        [header-start toc-start content-start]
             fit-content(Min(100%, var(--max-text-width)))
-        [content-end toc-end];
+        [content-end toc-end] 1fr [header-end];
 
     grid-template-rows: [header] auto [toc] auto [content sidenotes] auto;
 
     &:has(header) {
-        row-gap: 2rem;
+        row-gap: 1rem;
     }
+}
+
+article + article {
+    margin-block-start: 5em;
 }
 
 article * {
     margin: 0;
 }
 
-article header {
+article > * {
     grid-column: content;
-    grid-row: header;
 }
+
+article header {
+    grid-column: header;
+    grid-row: header;
+
+    // > * + * {
+    //     margin-block-start: 0.25em;
+    // }
+
+    .post-metadata {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        justify-content: space-between;
+    }
+}
+
 
 article aside:not(.toc) {
     --_border-color: var(--accent, var(--text));
@@ -42,17 +61,25 @@ article h4,
 article h5,
 article h6 {
     font-family: Suzu Sans;
+    line-height: 1.1;
+    text-wrap: balance;
+    font-weight: 400;
 }
 
 article h1 {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
 }
 
 article h2 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
 }
 
 article h3 {
+    font-size: var(--font-size-2xl);
+}
+
+
+article h4 {
     font-size: var(--font-size-xl);
 }
 
@@ -75,30 +102,40 @@ article .post-content {
     }
 
     > *+* {
-        margin-block-start: 0.5em;
+        margin-block-start: 1em;
     }
 
     .link-anchor {
-        display: grid;
         margin-block-start: 1.5em;
-        grid-template-columns: min-content auto min-content;
-        gap: 1rem;
 
         > a {
+            justify-content: space-between;
+
             text-decoration: none;
-            opacity: 0.75;
             line-height: 1;
-            align-self: center;
+
+            &::after {
+                content: '⧉';
+                margin-inline-start: 0.5rem;
+                opacity: 0;
+                text-decoration: none;
+
+                transition: opacity 100ms;
+            }
 
             &:hover {
                 text-decoration: underline;
-                text-underline-offset: 0.25em;
-                opacity: 1;
+                text-underline-offset: 0.1em;
+            }
+
+            &:hover::after {
+                opacity: 0.5;
+                text-decoration: none;
             }
 
             &:focus {
                 outline: 2px solid currentColor;
-                outline-offset: 0.15em;
+                outline-offset: 0.1em;
             }
         }
 
@@ -166,7 +203,7 @@ article .post-content {
     h4::before {
         color: var(--section-counter-color);
         font-size: 1.25em;
-        font-weight: 700;
+        font-weight: 400;
     }
 
     img {
@@ -189,7 +226,6 @@ article .post-content {
     }
 
     figure {
-
         h1::before,
         h2::before,
         h3::before,
@@ -213,10 +249,9 @@ article .post-content {
         padding: var(--font-size-md);
     }
 
-
     :target {
         --tbg: var(--target-bg, var(--accent));
-        background: linear-gradient(45deg, var(--tbg), transparent 90%);
+        background: linear-gradient(45deg, var(--tbg), transparent 85%);
     }
 
     a[href^="http"]::after {
@@ -340,7 +375,7 @@ article aside.toc nav#TableOfContents {
 //       on the columns. Life is hard.
 @include tablet {
     article:has(aside.toc) {
-        grid-template-columns: [content] auto [toc] fit-content(100%) ;
+        grid-template-columns: [header-start content] auto [toc] fit-content(100%) [header-end];
         grid-template-rows: [header] auto [toc content] auto;
         // justify-content: space-between;
 
@@ -424,36 +459,7 @@ article.post-list-elem+article.post-list-elem {
 article.post-list-elem {
     border-inline-start: 4px solid var(--accent);
     padding-inline-start: 1rem;
+    grid-template-rows: [header] auto [content] 1fr;
 
     --gap: var(--font-size-lg);
-
-    header {
-        max-width: var(--max-text-width);
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--gap);
-
-
-        *+*::before {
-            content: '|';
-        }
-
-        .post-metadata {
-            margin: 0;
-
-            display: flex;
-            flex-direction: row;
-
-            gap: var(--gap);
-        }
-
-        .tags *+*::before {
-            content: none;
-        }
-
-        .tags> :first-child {
-            margin-inline-start: calc(var(--gap) / 2);
-        }
-    }
 }
