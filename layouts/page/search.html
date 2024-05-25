@@ -1,6 +1,6 @@
 {{ define "head" }}
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script defer src="/pagefind/pagefind-ui.js"></script>
+    <link href="{{ absURL "pagefind/pagefind-ui.css" }}" rel="stylesheet" />
+    <script defer src="{{ absURL "pagefind/pagefind-ui.js" }}"></script>
 
     {{ $js := resources.Get "js/search.js" | minify  | fingerprint }}
     <script defer src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
