@@ -6,6 +6,67 @@
 
     --max-page-width: 95%;
     --readable-width: 71rem;
+
+    --accent-subtle: color-mix(in oklch, var(--accent), var(--page-bg) 25%);
+
+    /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,6,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+    --fluid-step--3: clamp(0.5787rem, 0.5574rem + 0.1066vi, 0.64rem);
+    --fluid-step--2: clamp(0.6944rem, 0.6577rem + 0.1836vi, 0.8rem);
+    --fluid-step--1: clamp(0.8333rem, 0.7754rem + 0.2899vi, 1rem);
+    --fluid-step-0: clamp(1rem, 0.913rem + 0.4348vi, 1.25rem);
+    --fluid-step-1: clamp(1.2rem, 1.0739rem + 0.6304vi, 1.5625rem);
+    --fluid-step-2: clamp(1.44rem, 1.2615rem + 0.8924vi, 1.9531rem);
+    --fluid-step-3: clamp(1.728rem, 1.4799rem + 1.2407vi, 2.4414rem);
+    --fluid-step-4: clamp(2.0736rem, 1.7334rem + 1.7011vi, 3.0518rem);
+    --fluid-step-5: clamp(2.4883rem, 2.027rem + 2.3067vi, 3.8147rem);
+    --fluid-step-6: clamp(2.986rem, 2.366rem + 3.0998vi, 4.7684rem);
+
+    /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1240,20,1.25,6,3,&s=0.75|0.5|0.5,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+    --space-3xs: clamp(0.5rem, 0.4565rem + 0.2174vi, 0.625rem);
+    --space-2xs: clamp(0.5rem, 0.4565rem + 0.2174vi, 0.625rem);
+    --space-xs: clamp(0.75rem, 0.6848rem + 0.3261vi, 0.9375rem);
+    --space-s: clamp(1rem, 0.913rem + 0.4348vi, 1.25rem);
+    --space-m: clamp(1.5rem, 1.3696rem + 0.6522vi, 1.875rem);
+    --space-l: clamp(2rem, 1.8261rem + 0.8696vi, 2.5rem);
+    --space-xl: clamp(3rem, 2.7391rem + 1.3043vi, 3.75rem);
+    --space-2xl: clamp(4rem, 3.6522rem + 1.7391vi, 5rem);
+    --space-3xl: clamp(6rem, 5.4783rem + 2.6087vi, 7.5rem);
+
+    /* One-up pairs */
+    --space-3xs-2xs: clamp(0.5rem, 0.4565rem + 0.2174vi, 0.625rem);
+    --space-2xs-xs: clamp(0.5rem, 0.3478rem + 0.7609vi, 0.9375rem);
+    --space-xs-s: clamp(0.75rem, 0.5761rem + 0.8696vi, 1.25rem);
+    --space-s-m: clamp(1rem, 0.6957rem + 1.5217vi, 1.875rem);
+    --space-m-l: clamp(1.5rem, 1.1522rem + 1.7391vi, 2.5rem);
+    --space-l-xl: clamp(2rem, 1.3913rem + 3.0435vi, 3.75rem);
+    --space-xl-2xl: clamp(3rem, 2.3043rem + 3.4783vi, 5rem);
+    --space-2xl-3xl: clamp(4rem, 2.7826rem + 6.087vi, 7.5rem);
+
+    /* Custom pairs */
+    --space-s-l: clamp(1rem, 0.4783rem + 2.6087vi, 2.5rem);
+
+    /* @link https://utopia.fyi/grid/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+    --grid-max-width: 77.50rem;
+    --grid-gutter: var(--space-s-l, clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem));
+    --grid-columns: 12;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.3125rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2.652rem;
+    --font-size-4xl: 4rem;
+
+    --border-size-xs: 1px;
+    --border-size-sm: 2px;
+    --border-size-md: 4px;
+    --border-size-lg: 8px;
+    --border-size-xl: 16px;
+
+    --box-offset: var(--border-size-md);
 }
 
 *,
@@ -96,31 +157,19 @@ html {
     min-height: 100%;
     line-height: 1.5;
 
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+
     scroll-behavior: smooth;
     background: var(--page-bg);
-
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.3125rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 2.652rem;
-    --font-size-4xl: 4rem;
-
-    --border-size-xs: 1px;
-    --border-size-sm: 2px;
-    --border-size-md: 4px;
-    --border-size-lg: 8px;
-    --border-size-xl: 16px;
-
-    --box-offset: var(--border-size-md);
 }
-
 
 body {
     --duration: 1s;
     --timing: ease;
+
+    font-size: var(--fluid-step-0);
 
     color: var(--text);
 
@@ -130,44 +179,56 @@ body {
 
     font-family: Suzu Sans;
 
+    padding-block-start: var(--space-s-l);
+
     /* Let the footer stick to the bottom of the page
      *
      */
-    display: grid;
-
-    grid-template-columns: minmax(2.5%, 1fr) minmax(0, var(--readable-width)) minmax(2.5%, 1fr);
-    grid-template-rows:
-        repeat(2, auto)
-        1fr
-        repeat(2, auto);
-
-    grid-template-areas:
-        ". header ."
-        "header-spacing header-spacing header-spacing"
-        ". content  ."
-        "footer-spacing footer-spacing footer-spacing"
-        ".  footer . ";
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gutter);
 
     min-height: 100%;
     margin: 0;
 }
 
-body > header {
-    grid-area: header;
+body > main {
+    margin-block-end: auto;
 }
 
-body > header + hr {
-    grid-area: header-spacing;
+body > header,
+body > footer,
+body > main {
+    width: 100%;
 }
 
 
-body >  hr:last-of-type {
-    grid-area: footer-spacing;
+.u-container {
+    max-width: var(--grid-max-width);
+    padding-inline: var(--grid-gutter);
+    margin-inline: auto;
 }
 
-.readable-width {
-    // width: Min(var(--max-page-width), var(--readable-width));
-    // margin-inline: auto;
+.u-grid {
+    display: grid;
+    gap: var(--grid-gutter);
+}
+
+.u-flex {
+    display: flex;
+    gap: var(--grid-gutter);
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
 }
 
 a#link-to-main {
@@ -191,23 +252,16 @@ a#link-to-main {
     }
 }
 
-body > main {
-    grid-area: content;
-    margin-block: var(--font-size-md);
-
-    > :first-child {
-        margin-block-start: 0;
-    }
+ul, ol {
+    margin-block: 0;
 }
 
-body > footer {
-    grid-area: footer;
-}
 
 hr {
     width: 100%;
     border: none;
     border-bottom: 1px dashed;
+    margin-block: 0;
 }
 
 a {
@@ -228,21 +282,24 @@ a {
 }
 
 [id] {
-    scroll-margin-top: 1rem;
+    scroll-margin-top: var(--space-m);
 }
 
 [aria-disabled="true"] {
     display: none;
 }
 
+.flow > * + * {
+    margin-block-start: 1em;
+}
+
 .adjacent-elements {
     display: flex;
-    gap: var(--_gap, 1rem);
+    gap: var(--_gap, var(--space-s));
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
 }
-
 
 .adjacent-elements-col {
     display: flex;
@@ -270,7 +327,7 @@ a {
     list-style-type: none;
 
     li>* {
-        padding: 0 var(--font-size-xs);
+        padding: var(--space-xs);
     }
 
     transition: opacity 250ms ease-in-out;
@@ -293,13 +350,21 @@ a {
 
 
 #wei {
-    border: solid red var(--border-size-lg);
-    padding: var(--font-size-lg);
-    margin-block-end: var(--font-size-3xl);
-    font-size: var(--font-size-2xl);
+    border: solid red var(--border-size-md);
+    padding: var(--space-m);
+    margin-block: var(--space-m);
+    font-size: var(--fluid-step-0);
+
+    > * {
+      margin: 0;
+    }
+
+    > * + * {
+      margin-block-start: 1em;
+    }
 
     &>span {
-        font-size: var(--font-size-3xl);
+        font-size: var(--fluid-step-2);
         font-weight: 700;
     }
 }

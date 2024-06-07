@@ -1,26 +1,43 @@
-<header class="page-header readable-width ">
+{{ define "breadcrumb-home" }}
+    {{ if .Site.Params.logo }}
+    <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
+        <img id="logo" src="{{ .Site.Params.logo }}" alt="Logo of the webpage." />
+    </a>
+    {{ else }}
+    <a rel="author" href='{{ "/" | absLangURL }}'>
+        {{ if .Title }}
+            {{ .Title}}
+        {{ else }}
+        ~
+        {{ end }}
+    </a>
+    {{ end }}
+{{ end }}
+
+<header class="page-header u-container u-grid">
     <a id="link-to-main" href="#the-content">Link to content!</a>
     <div class="adjacent-elements">
 
         <!-- <h1 class="title">{{ .Site.Title }}</h1> -->
 
-        <ul id="breadcrumbs">
-            {{ if .Site.Params.logo }}
-            <li class="logo-wrapper">
-                <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
-                    <img id="logo" src="{{ .Site.Params.logo }}" alt="Logo of the webpage." />
-                </a>
-            </li>
-            <li>/</li>
-            {{ else }}
-            <li>~</li>
-            {{ end }}
-
+        <ul id="breadcrumbs" aria-label="Breadcrumb">
             {{- range .Ancestors.Reverse }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            <li>/</li>
+            <li>
+                {{ if .IsHome }}
+                    {{ template "breadcrumb-home" . }}
+                {{ else }}
+                    <a href="{{ .RelPermalink }}">
+                        {{ .Title }}
+                    </a>
+                {{ end }}
+            </li>
+            <li aria-hidden="true">/</li>
             {{- end }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ if .IsHome }}
+              {{ template "breadcrumb-home" . }}
+            {{ else }}
+            <li><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
+            {{ end }}
         </ul>
 
         <div class="adjacent-elements">

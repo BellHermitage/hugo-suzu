@@ -1,17 +1,17 @@
 @use 'mixins' as *;
 
 header {
-    --font-size: var(--font-size-2xl);
-    --gap: 0.5rem;
+    --font-size: var(--fluid-step-1);
+    --gap: var(--space-s);
 
     flex: none;
     font-size: var(--font-size);
 
-    #breadcrumbs {
+    [aria-label="Breadcrumb"] {
         display: flex;
-        gap: var(--gap);
+        gap: var(--space-3xs);
         padding: 0;
-        // line-height: 0;
+        line-height: 0;
 
         align-items: center;
 
@@ -35,33 +35,45 @@ header {
         gap: var(--gap);
     }
 
-    nav ul a {
+    nav ul li {
         --_clr: var(--text);
-
-        color: var(--_clr);
-        text-decoration: none;
+        --_clr-hover: var(--page-bg);
+        --_transition-duration: 250ms;
+        --_transition-function: ease-in-out;
 
         outline: var(--border-size-sm) solid var(--_clr);
+
+
+        transition: background-color var(--_transition-duration) var(--_transition-function);
+
+        a {
+            transition: color var(--_transition-duration) var(--_transition-function);
+        }
+
+        &:hover,
+        &:focus {
+            background-color: var(--_clr);
+
+            a {
+              color: var(--_clr-hover);
+            }
+        }
+    }
+
+    nav ul a {
+        color: var(--_clr);
+        text-decoration: none;
 
         /* Padding 25% of the font size */
         padding: 0.25em;
 
-        font-weight: 700;
-
-        transition:
-            background-color 250ms ease,
-            color 250ms ease;
+        font-weight: 400;
 
         &:visited,
         &:active {
             color: var(--_clr);
         }
 
-        &:hover,
-        &:focus {
-            background-color: var(--_clr);
-            color: var(--page-bg);
-        }
     }
 
     & nav ul,
@@ -73,7 +85,7 @@ header {
         line-height: 0;
 
         & img {
-            width: calc(var(--font-size) * 2);
+            width: var(--fluid-step-5);
         }
     }
 }

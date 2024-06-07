@@ -1,9 +1,9 @@
 @use 'mixins' as *;
 
 footer {
-    // border-top: 0.05rem solid var(--separator);
-    margin-block-start: var(--font-size-md);
-    flex: none;
+    ul, ol {
+        margin-block-start: 0;
+    }
 
     .wrapper {
         display: flex;
@@ -20,7 +20,7 @@ footer {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: var(--space-2xs);
     }
 
     .contact-list, .social-media-list {
@@ -32,11 +32,15 @@ footer {
     .web-buttons {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(88px, max-content));
-        gap: var(--font-size-md);
-        padding-block: var(--font-size-md);
+        gap: var(--space-xs);
+        padding-block: var(--space-s);
 
         justify-content: space-between;
         align-items: center;
+
+        > a {
+            line-height: 0;
+        }
 
         // div {
         //     width: 100%;
