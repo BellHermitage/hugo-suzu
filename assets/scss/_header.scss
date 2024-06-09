@@ -11,7 +11,8 @@ header {
         display: flex;
         gap: var(--space-3xs);
         padding: 0;
-        line-height: 0;
+
+        // Don't set line-height to zero, otherwise the layout would break.
 
         align-items: center;
 
@@ -31,6 +32,7 @@ header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
         gap: var(--gap);
     }
@@ -38,16 +40,14 @@ header {
     nav ul li {
         --_clr: var(--text);
         --_clr-hover: var(--page-bg);
-        --_transition-duration: 250ms;
-        --_transition-function: ease-in-out;
 
         outline: var(--border-size-sm) solid var(--_clr);
 
 
-        transition: background-color var(--_transition-duration) var(--_transition-function);
+        transition: background-color var(--base-transition-duration) var(--base-transition-function);
 
         a {
-            transition: color var(--_transition-duration) var(--_transition-function);
+            transition: color var(--base-transition-duration) var(--base-transition-function);
         }
 
         &:hover,
@@ -82,6 +82,7 @@ header {
     }
 
     .logo-wrapper {
+        display: block;
         line-height: 0;
 
         & img {
@@ -90,13 +91,13 @@ header {
     }
 }
 
-@include tablet {
-    header nav {
-        flex-direction: row;
-    }
-
-    header .translations {
-        flex-direction: row;
-        align-items: center;
-    }
-}
+// @include tablet {
+//     header nav {
+//         flex-direction: row;
+//     }
+//
+//     header .translations {
+//         flex-direction: row;
+//         align-items: center;
+//     }
+// }

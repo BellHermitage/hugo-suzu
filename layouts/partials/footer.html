@@ -41,9 +41,14 @@
         -->
         {{ range $btn := .Site.Params.webbuttons }}
         {{ $btn_link := resources.Get (printf "buttons/%s" $btn.file) }}
-        {{ if $btn.link }}<a href="{{ $btn.link }}">{{ end }}
+        {{ if $btn.link }}<a href="{{ $btn.link }}">
+        {{ else if $btn.page }}
+            {{ with $.Site.GetPage $btn.page }}
+                <a href="{{ .RelPermalink }}">
+            {{ end }}
+        {{ end }}
         <img width="88px" height="31px" alt="{{ $btn.alt }}" src="{{ $btn_link.Permalink }}" />
-        {{ if $btn.link }}</a>{{ end }}
+        {{ if (or $btn.link $btn.page) }}</a>{{ end }}
         {{ end }}
     </div>
     {{ end }}

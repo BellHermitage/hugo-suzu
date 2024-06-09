@@ -22,21 +22,21 @@
 
         <ul id="breadcrumbs" aria-label="Breadcrumb">
             {{- range .Ancestors.Reverse }}
-            <li>
-                {{ if .IsHome }}
-                    {{ template "breadcrumb-home" . }}
-                {{ else }}
-                    <a href="{{ .RelPermalink }}">
-                        {{ .Title }}
-                    </a>
-                {{ end }}
-            </li>
-            <li aria-hidden="true">/</li>
+                <li>
+                    {{ if .IsHome }}
+                        {{ template "breadcrumb-home" . }}
+                    {{ else }}
+                        <a href="{{ .RelPermalink }}">
+                            {{ .Title }}
+                        </a>
+                    {{ end }}
+                </li>
+                <li aria-hidden="true">/</li>
             {{- end }}
             {{ if .IsHome }}
-              {{ template "breadcrumb-home" . }}
+                <li>{{ template "breadcrumb-home" . }}</li>
             {{ else }}
-            <li><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
+                <li><a href="{{ .RelPermalink }}" aria-current="page">{{ .Title }}</a></li>
             {{ end }}
         </ul>
 

@@ -7,7 +7,10 @@
     --max-page-width: 95%;
     --readable-width: 71rem;
 
-    --accent-subtle: color-mix(in oklch, var(--accent), var(--page-bg) 25%);
+    --base-transition-duration: 150ms;
+    --base-transition-function: ease-in-out;
+
+    --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
 
     /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,6,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
@@ -157,6 +160,8 @@ html {
     min-height: 100%;
     line-height: 1.5;
 
+    hanging-punctuation: first last;
+
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
@@ -202,6 +207,10 @@ body > main {
     width: 100%;
 }
 
+p {
+    text-wrap: pretty;
+    max-width: 75ch;
+}
 
 .u-container {
     max-width: var(--grid-max-width);
@@ -245,7 +254,7 @@ a#link-to-main {
     transform: translateY(-100%);
     text-decoration: none;
 
-    transition: transform 300ms ease;
+    transition: transform var(--base-transition-duration) ease;
 
     &:focus-visible {
         transform: translateY(var(--margin));
@@ -296,17 +305,10 @@ a {
 .adjacent-elements {
     display: flex;
     gap: var(--_gap, var(--space-s));
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-}
-
-.adjacent-elements-col {
-    display: flex;
-    // gap: 1rem;
     flex-direction: row;
-    justify-content: start;
-    // align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dropdown {
@@ -316,6 +318,7 @@ a {
     position: absolute;
     margin: 0;
     padding: 0;
+    right: 0;
 
     flex-direction: column;
     align-items: start;
@@ -330,7 +333,7 @@ a {
         padding: var(--space-xs);
     }
 
-    transition: opacity 250ms ease-in-out;
+    transition: opacity var(--base-transition-duration) var(--base-transition-function);
 }
 
 .dropdown-initiator {
@@ -369,13 +372,13 @@ a {
     }
 }
 
-@include tablet {
-    .adjacent-elements {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .dropdown {
-        right: 0;
-    }
-}
+// @include tablet {
+//     .adjacent-elements {
+//         flex-direction: row;
+//         align-items: center;
+//     }
+//
+//     .dropdown {
+//         right: 0;
+//     }
+// }
