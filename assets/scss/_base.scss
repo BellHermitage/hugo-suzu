@@ -1,16 +1,41 @@
 @use 'mixins' as *;
 
 :root {
+    --accent: oklch(85% 85% 15deg);
+
     color-scheme: light dark;
     accent-color: var(--accent);
+
+    --accent-to-base-1:  color-mix(in oklch, var(--accent), var(--base-mix) 10%);
+    --accent-to-base-2:  color-mix(in oklch, var(--accent), var(--base-mix) 20%);
+    --accent-to-base-3:  color-mix(in oklch, var(--accent), var(--base-mix) 30%);
+    --accent-to-base-4:  color-mix(in oklch, var(--accent), var(--base-mix) 40%);
+    --accent-to-base-5:  color-mix(in oklch, var(--accent), var(--base-mix) 50%);
+    --accent-to-base-6:  color-mix(in oklch, var(--accent), var(--base-mix) 60%);
+    --accent-to-base-7:  color-mix(in oklch, var(--accent), var(--base-mix) 70%);
+    --accent-to-base-8:  color-mix(in oklch, var(--accent), var(--base-mix) 80%);
+
+    --accent-to-inverted-1: color-mix(in oklch, var(--accent), var(--inverted-mix) 10%);
+    --accent-to-inverted-2: color-mix(in oklch, var(--accent), var(--inverted-mix) 20%);
+    --accent-to-inverted-3: color-mix(in oklch, var(--accent), var(--inverted-mix) 30%);
+    --accent-to-inverted-4: color-mix(in oklch, var(--accent), var(--inverted-mix) 40%);
+    --accent-to-inverted-5: color-mix(in oklch, var(--accent), var(--inverted-mix) 50%);
+
+    --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
+
+    --heading-color: color-mix(in oklch, var(--text), var(--inverted-mix) 30%);
+    --section-counter-color: var(--heading-color);
+    --target-bg: var(--accent-to-base-4);
+
+    --card-hover-bg: var(--accent-to-base-6);
+
+    --table-hover-bg: var(--accent-to-base-6);
 
     --max-page-width: 95%;
     --readable-width: 71rem;
 
     --base-transition-duration: 150ms;
     --base-transition-function: ease-in-out;
-
-    --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
 
     /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,6,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 

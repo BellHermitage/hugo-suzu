@@ -63,7 +63,12 @@ article h6 {
     font-family: Suzu Sans;
     line-height: 1.1;
     text-wrap: balance;
-    font-weight: 400;
+    font-weight: 600;
+    color: var(--heading-color);
+
+    a {
+        color: var(--heading-color);
+    }
 }
 
 article h1 {
@@ -199,9 +204,8 @@ article .post-content {
     h2::before,
     h3::before,
     h4::before {
-        color: var(--section-counter-color);
-        font-size: 1.25em;
-        font-weight: 400;
+        color: var(--section-counter-color, var(--heading-color));
+        font-weight: 900;
     }
 
     figure,
@@ -449,7 +453,7 @@ article table {
     }
 
     tr:hover {
-        background-color: var(--accent-subtle);
+        background-color: var(--table-hover-bg);
     }
 }
 
@@ -472,15 +476,11 @@ article blockquote {
     box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
 }
 
-.subposts {
-    display: flex;
+.subpost-list {
+    display: grid;
     flex-wrap: wrap;
     gap: var(--grid-gutter);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-    > header {
-        flex-basis: 100%;
-    }
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25ch), 1fr));
 
     > article {
         flex: 1;
@@ -494,6 +494,7 @@ article blockquote {
     h2 {
         font-size: var(--fluid-step-2);
     }
+
 }
 
 // See _defaults/list.html
@@ -501,22 +502,18 @@ article blockquote {
 article.post-list-elem {
     --_outline-size: 2px;
     --_header-bg-clr: var(--card-header, var(--text));
-    --_header-bg-hover-clr: var(--card-header-hover, var(--text));
 
     gap: calc(var(--grid-gutter) / 2);
     flex-direction: column;
     border: var(--_outline-size) solid var(--_header-bg-clr);
 
-    transition: background-color var(--base-transition-duration) var(--base-transition-function),
-                border-color var(--base-transition-duration) var(--base-transition-function);
+    transition: opacity var(--base-transition-duration) var(--base-transition-function);
 
     > header {
         padding: var(--space-xs);
         // padding-block-end: 0;
         background-color: var(--_header-bg-clr);
         color: var(--page-bg);
-
-        transition: background-color var(--base-transition-duration) var(--base-transition-function);
 
         nav ul li,
         nal ol li {
@@ -530,16 +527,6 @@ article.post-list-elem {
     }
 
 
-    &:hover {
-        background-color: var(--accent-subtle, var(--accent));
-        border-color: var(--_header-bg-hover-clr);
-
-        > header {
-            background-color: var(--_header-bg-hover-clr);
-        }
-    }
-
-
     > .post-content {
         padding: var(--space-xs);
         padding-block-start: 0;
@@ -549,3 +536,10 @@ article.post-list-elem {
 
     // box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
 }
+
+.subpost-list:has(:hover) article.post-list-elem:not(:hover) {
+    /* --_header-bg-hover-clr: color-mix(in oklch, var(--_header-bg-clr), var(--page-bg) 90%) */
+
+    opacity: 0.80;
+}
+

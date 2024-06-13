@@ -10,13 +10,15 @@
     </div>
 
     {{ if (ge site.RegularPages 1) }}
-    <section class="subposts">
+    <section class="subposts flow">
         <header>
             <h2>Latest entries</h2>
         </header>
+        <div class="subpost-list">
         {{ range (where site.RegularPages "Params.ignore" "!=" "true") }}
             {{ partial "list-subpost.html" . }}
         {{ end }}
+        </div>
     {{ end }}
     </section>
 </article>

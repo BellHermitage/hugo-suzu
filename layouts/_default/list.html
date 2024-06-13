@@ -11,10 +11,12 @@
     <hr />
     {{ end }}
 
-    <section class="subposts">
+    <section class="subposts flow">
+        <div class="subpost-list">
         {{ range .Pages.ByPublishDate.Reverse }}
         {{ partial "list-subpost.html" . }}
         {{ end }}
+        </div>
     </section>
 
 </article>

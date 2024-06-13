@@ -1,15 +1,15 @@
 :root {
-    --page-bg: #FFFEFF;
-    --text: hsl(0 0% 0%);
+    --base-mix: white;
+    --inverted-mix: black;
+
+    --page-bg: oklch(99% 1% 34deg);
+
+    --text: oklch(30% 0 0deg);
     --link: var(--text);
     --link-background: transparent;
     --link-hover: var(--background-color);
     --link-hover-background: var(--text);
     --separator: var(--text);
-
-    --accent: hsl(10deg, 100%, 85%);
-    // --accent-subtle: hsl(10deg, 100%, 95%);
-    --target-bg: var(--accent);
 
     --table-bg: hsl(10deg, 100%, 85%);
     --table-even-bg: hsl(0 0% 0% / 0.05);
