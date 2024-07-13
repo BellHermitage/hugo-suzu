@@ -10,11 +10,11 @@
 
     <hr />
 
-    <main class="u-container" id="the-content">
+    <main class="region" id="the-content">
         {{- block "main" . }}{{- end }}
     </main>
 
-    <hr />
+    <hr class="region" data-region-start="auto" />
 
     {{- partial "footer.html" . -}}
     {{- block "scripts" . }}{{- end }}

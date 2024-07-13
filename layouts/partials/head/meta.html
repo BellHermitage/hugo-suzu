@@ -4,6 +4,8 @@
 
 <meta name="author" content="{{ if .Params.Author }}{{ .Params.Author }}{{ else if .Site.Params.default_author }}{{ .Site.Params.default_author }}{{ end }}" />
 
+<link type="text/plain" rel="author" href="{{ absURL "humans.txt" }}" />
+
 <meta name="robots" content="index,follow">
 
 {{ if isset .Site.Params "twitter" }}

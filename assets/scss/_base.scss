@@ -74,9 +74,11 @@
     /* Custom pairs */
     --space-s-l: clamp(1rem, 0.4783rem + 2.6087vi, 2.5rem);
 
+
     /* @link https://utopia.fyi/grid/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
     --grid-max-width: 77.50rem;
-    --grid-gutter: var(--space-s-l, clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem));
+    --gutter: var(--space-s-l, clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem));
+    --grid-gutter: var(--gutter);
     --grid-columns: 12;
 
     --font-size-xs: 0.75rem;
@@ -209,14 +211,14 @@ body {
 
     font-family: Suzu Sans;
 
-    padding-block-start: var(--space-s-l);
+    /* padding-block-start: var(--space-s-l); */
 
     /* Let the footer stick to the bottom of the page
      *
      */
+
     display: flex;
     flex-direction: column;
-    gap: var(--grid-gutter);
 
     min-height: 100%;
     margin: 0;
@@ -234,13 +236,7 @@ body > main {
 
 p {
     text-wrap: pretty;
-    max-width: 75ch;
-}
-
-.u-container {
-    max-width: var(--grid-max-width);
-    padding-inline: var(--grid-gutter);
-    margin-inline: auto;
+    max-inline-size: 75ch;
 }
 
 .u-grid {
@@ -299,7 +295,7 @@ hr {
 }
 
 a {
-    color: var(--link);
+    color: currentColor;
 
     &:hover,
     &:focus {
@@ -309,73 +305,25 @@ a {
     &:active {
         color: var(--link-active, var(--link-hover));
     }
-
-    &:visited {
-        color: var(--link-visited);
-    }
 }
 
 [id] {
     scroll-margin-top: var(--space-m);
 }
 
-[aria-disabled="true"] {
-    display: none;
-}
+@import 'compositions/flow';
+@import 'compositions/grid';
+@import 'compositions/cluster';
+@import 'compositions/repel';
+@import 'compositions/sidebar';
 
-.flow > * + * {
-    margin-block-start: 1em;
-}
+@import 'utilities/visually-hidden';
+@import 'utilities/wrapper';
+@import 'utilities/region';
+@import 'utilities/border';
+@import 'utilities/popout-box';
 
-.adjacent-elements {
-    display: flex;
-    gap: var(--_gap, var(--space-s));
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dropdown {
-    display: flex;
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    right: 0;
-
-    flex-direction: column;
-    align-items: start;
-    // gap: 0.5rem;
-
-    border: var(--border-size-sm) solid;
-    background-color: var(--page-bg);
-
-    list-style-type: none;
-
-    li>* {
-        padding: var(--space-xs);
-    }
-
-    transition: opacity var(--base-transition-duration) var(--base-transition-function);
-}
-
-.dropdown-initiator {
-    cursor: pointer;
-    position: relative;
-
-}
-
-.dropdown-initiator:hover>.dropdown,
-.dropdown-initiator:active>.dropdown,
-.dropdown-initiator:focus>.dropdown,
-.dropdown-initiator:focus-visible>.dropdown,
-.dropdown-initiator:focus-within>.dropdown {
-    visibility: visible;
-    opacity: 1;
-}
-
+@import 'blocks/dropdown';
 
 #wei {
     border: solid red var(--border-size-md);
@@ -397,13 +345,5 @@ a {
     }
 }
 
-// @include tablet {
-//     .adjacent-elements {
-//         flex-direction: row;
-//         align-items: center;
-//     }
-//
-//     .dropdown {
-//         right: 0;
-//     }
-// }
+@import 'themes/light.scss';
+@import 'themes/dark.scss';

@@ -1,0 +1,23 @@
+.cluster {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: var(--gutter, var(--space-s));
+
+    justify-content: var(--cluster-horizontal-alignment, flex-start);
+    align-items: var(--cluster-vertical-alignment, center);
+}
+
+.cluster[data-cluster-direction='vertical'] {
+  flex-direction: column;
+}
+
+.adjacent-elements {
+    display: flex;
+    gap: var(--_gap, var(--space-s));
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}

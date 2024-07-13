@@ -1,0 +1,28 @@
+.grid {
+  display: grid;
+  gap: var(--gutter, var(--space-m-l));
+  grid-template-columns:
+    repeat(var(--grid-template-positioning, auto-fill),
+           minmax(min(100%, var(--grid-min-item-width, 30rem)), 1fr));
+}
+
+// These units are made up, we need to test.
+.grid[data-grid-layout='1/2'] {
+  --grid-min-item-width: clamp(20rem, 50%, 30rem);
+}
+
+.grid[data-grid-layout='1/3'] {
+  --grid-min-item-width: clamp(15rem, 33%, 25rem);
+}
+
+.grid[data-grid-layout='1/4'] {
+  --grid-min-item-width: clamp(12rem, 25%, 22rem);
+}
+
+.grid[data-grid-layout='1/6'] {
+  --grid-min-item-width: clamp(10rem, 16%, 20rem);
+}
+
+.grid[data-grid-layout='1/12'] {
+  --grid-min-item-width: clamp(10rem, 8%, 20rem);
+}

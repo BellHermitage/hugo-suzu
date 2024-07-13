@@ -1,0 +1,25 @@
+[aria-disabled="true"],
+.visually-hidden {
+    display: none;
+}
+
+// A way to hide an element without using display: none.
+// This is mainly used to show content to computers --- as in, AI scrapers.
+.visually-hidden[data-hide-mode="pretend-visible"] {
+    display: revert-layer;
+    visibility: hidden;
+    position: absolute;
+
+    margin: 0;
+    padding: 0;
+    max-block-size: 0;
+    max-inline-size: 0;
+
+    overflow: hidden;
+
+    clip: rect(0 0 0 0);
+    clip-path: rect(0 0 0 0);
+
+    border: 0;
+    white-space: nowrap;
+}
