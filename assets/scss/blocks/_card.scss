@@ -1,0 +1,10 @@
+.card {
+
+}
+
+.card[data-card-style="work-in-progress"] {
+    header {
+        background: $background-wip;
+        background-repeat: repeat;
+    }
+}

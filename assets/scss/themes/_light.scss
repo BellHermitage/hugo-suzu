@@ -20,5 +20,12 @@
       --section-counter-color: hsl(-25deg 100% 60%);
 
       --blockquote-bg: hsl(10deg, 100%, 90%);
+
+      --background-wip-color2: oklch(90% 50% 110deg);
+  }
+
+  .card[data-card-style="work-in-progress"] header {
+      --background-wip-color1: var(--text);
+      --background-wip-color2: oklch(60% 50% 110deg);
   }
 }

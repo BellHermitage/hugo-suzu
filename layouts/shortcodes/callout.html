@@ -1,0 +1,13 @@
+{{ if not (.Get "aria-label") }}
+    {{ errorf "PLEASE write an aria-label for the shortcode %q! See %s" .Name .Position }}
+{{ end }}
+
+<aside class="border flow callout" aria-label="{{ .Get "aria-label" }}" {{ if .Get "style" }} data-callout-style="{{ .Get "style" }}" {{ end }}>
+    {{ if .Get "title" }}
+        <p class="h2"><strong>{{ .Get "title" }}</strong></p>
+    {{ end }}
+
+    <div class="flow">
+    {{ .Inner | markdownify }}
+    </div>
+</aside>

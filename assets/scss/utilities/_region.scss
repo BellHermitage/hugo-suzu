@@ -1,7 +1,3 @@
 .region {
-  margin-block: var(--region-space, var(--space-l-xl));
-}
-
-.region[data-region-start="auto"] {
-  margin-block-start: auto;
+    padding-block: var(--region-space, var(--space-l-xl));
 }

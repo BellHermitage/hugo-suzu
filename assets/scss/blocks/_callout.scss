@@ -1,0 +1,9 @@
+.callout {
+    inline-size: fit-content;
+    padding: var(--callout-size, var(--space-xs-s));
+    font-size: var(--fluid-step-1);
+}
+
+.callout[data-callout-style="wip"] {
+    background: $background-wip;
+}

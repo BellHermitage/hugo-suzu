@@ -5,3 +5,8 @@
   align-items: var(--repel-vertical-alignment, center);
   gap: var(--gutter, var(--space-s-m));
 }
+
+
+.repel[data-repel-direciton='vertical'] {
+  flex-direction: column;
+}

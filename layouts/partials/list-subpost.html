@@ -1,13 +1,14 @@
-<article class="post-list-elem u-flex">
-    <header>
-        <h2>
-        <a href="{{ .RelPermalink }}">
-                {{ .Title }}
-        </a>
+<article class="border cluster post-list-elem card" {{ if .Params.unfinished }} data-card-style="work-in-progress" {{ end }} >
+    <header class="region wrapper full-w vfill" >
+        <h2 class="h3">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h2>
         {{ partial "metadata.html" . }}
     </header>
-    <a class="post-content" href="{{ .RelPermalink }}">
-        <p>{{ .Summary }}</p>
+
+    <!-- <div class="vfill full-w" data-vfill="start"></div> -->
+
+    <a class="vfill" data-vfill="end" href="{{ .RelPermalink }}">
+        <p class="wrapper region">{{ .Summary }}</p>
     </a>
 </article>

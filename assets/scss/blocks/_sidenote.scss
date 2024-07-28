@@ -1,0 +1,21 @@
+.sidenote {
+  --flow-space: 2.5em;
+
+  padding: var(--space-s);
+  inline-size: fit-content;
+}
+
+// Restore default flow space to avoid cascade.
+.sidenote > * {
+  --flow-space: 1em;
+}
+
+.sidenote .title {
+  margin-block-start: -1em;
+  line-height: 0.9;
+}
+
+
+.sidenote[data-sidenote-style="wip"] {
+  background: $background-wip;
+}

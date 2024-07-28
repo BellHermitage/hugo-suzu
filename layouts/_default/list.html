@@ -11,12 +11,14 @@
     <hr />
     {{ end }}
 
-    <section class="subposts flow">
-        <div class="subpost-list">
+    <section class="flow">
+        <ol role="list" class="grid focus-on-hover">
         {{ range .Pages.ByPublishDate.Reverse }}
-        {{ partial "list-subpost.html" . }}
+            <li>
+            {{ partial "list-subpost.html" . }}
+            </li>
         {{ end }}
-        </div>
+        </ol>
     </section>
 
 </article>

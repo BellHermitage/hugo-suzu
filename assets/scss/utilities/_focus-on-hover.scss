@@ -1,0 +1,8 @@
+.focus-on-hover > * {
+  transition: opacity var(--focus-hover-duration, var(--base-transition-duration)) var(--focus-hover-function, var(--base-transition-function));
+}
+
+.focus-on-hover:has(:hover) > :not(:hover) {
+    opacity: 0.80;
+}
+

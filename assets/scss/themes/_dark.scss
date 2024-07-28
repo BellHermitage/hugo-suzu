@@ -8,9 +8,9 @@
       --text: oklch(90% 0% 0);
       --link: oklch(100% 40% 0.05turn);
       --link-hover: hsl(0 0% 90%);
-      --link-hover: oklch(100% 60% 0.05turn);
-      --link-visited: hsl(0 25% 75%);
-      --link-visited: oklch(100% 30% 0.05turn);
+      --link-hover: oklch(80% 30% -90deg);
+      /* --link-visited: hsl(0 25% 75%); */
+      /* --link-visited: oklch(100% 30% 0.05turn); */
 
       --separator: #AAA;
 
@@ -22,5 +22,12 @@
       --code-bg: Oklch(40% 0 0);
 
       --blockquote-bg: hsl(-10, 70%, 10%);
+
+      --background-wip-color2: oklch(50% 90% 110deg);
+  }
+
+  .card[data-card-style="work-in-progress"] header {
+      --background-wip-color1: var(--text);
+      --background-wip-color2: oklch(80% 60% 110deg);
   }
 }

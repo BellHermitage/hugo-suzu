@@ -1,3 +1,20 @@
 .popout-box {
-    box-shadow: var(--box-offset) var(--box-offset);
+    box-shadow: calc(var(--box-multiplier-x, 1) * var(--box-offset))  calc(var(--box-multiplier-y, 1) * var(--box-offset)) var(--box-color, var(--border-color, currentColor));
+}
+
+.popout-box[data-popout-direction="top-left"] {
+    --box-multiplier-x: -1;
+    --box-multiplier-y: -1;
+}
+
+.popout-box[data-popout-direction="top-right"] {
+    --box-multiplier-y: -1;
+}
+
+.popout-box[data-popout-direction="bottom-left"] {
+    --box-multiplier-x: -1;
+}
+
+.popout-box[data-popout-direction="bottom-right"] {
+    // default style.
 }

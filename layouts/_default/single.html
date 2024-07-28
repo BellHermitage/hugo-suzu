@@ -1,14 +1,21 @@
 {{ define "main" }}
-<article class="wrapper flow">
-    <header class="post">
+<article class="flow">
+    <header class="post wrapper flow">
         <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
 
         {{ if eq (.Params.hideMeta | default false) false }}
         {{ partial "metadata.html" . }}
         {{ end }}
+
+        {{ if eq (.Params.unfinished | default false) true }}
+        <aside class="flow sidenote" data-sidenote-style="wip">
+            <p class="h3 title">🌱 Unfinished</p>
+            <p>This garden is still growing.</p>
+        </aside>
+        {{ end }}
     </header>
 
-    <div class="sidebar" data-direction="reverse">
+    <div class="wrapper sidebar" data-direction="reverse">
         {{ with .TableOfContents }}
         <!-- the variable is set -->
         {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}

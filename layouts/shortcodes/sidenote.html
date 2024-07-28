@@ -1,3 +1,12 @@
-<aside class="sidenote">
-    {{ .Inner | markdownify }}
+{{ if not (.Get "aria-label") }}
+    {{ errorf "PLEASE write an aria-label for the shortcode %q! See %s" .Name .Position }}
+{{ end }}
+
+<aside class="flow sidenote" aria-label="{{ .Get "aria-label" }}">
+    {{ if .Get "title" }}
+        <p class="h3 title">{{ .Get "title" }}</p>
+    {{ end }}
+    <div class="flow">
+        {{ .Inner | markdownify }}
+    </div>
 </aside>

@@ -1,0 +1,16 @@
+{{ if (.Get "as-details" | default false) }}
+<details>
+    <summary>{{ .Get "summary" }}</summary>
+{{ end }}
+
+<iframe
+    {{ if .Get "src" }}
+    src="{{ .Get "src" }}"
+    {{ else if .Get "rel-src" }}
+    src="{{ .Page.RelPermalink }}{{ .Get "rel-src" }}"
+    {{ end }}>
+</iframe>
+
+{{ if (.Get "as-details" | default false) }}
+</details>
+{{ end }}

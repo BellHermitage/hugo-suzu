@@ -1,0 +1,14 @@
+/* Similar to region, but vfill applies _margin_ to
+ * top and bottom. */
+
+.vfill {
+    margin-block: var(--vfill-space);
+}
+
+.vfill[data-vfill="start"] {
+    margin-block-start: auto;
+}
+
+.vfill[data-vfill="end"] {
+    margin-block-end: auto;
+}

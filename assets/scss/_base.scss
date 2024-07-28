@@ -1,35 +1,8 @@
 @use 'mixins' as *;
 
 :root {
-    --accent: oklch(85% 85% 15deg);
-
     color-scheme: light dark;
     accent-color: var(--accent);
-
-    --accent-to-base-1:  color-mix(in oklch, var(--accent), var(--base-mix) 10%);
-    --accent-to-base-2:  color-mix(in oklch, var(--accent), var(--base-mix) 20%);
-    --accent-to-base-3:  color-mix(in oklch, var(--accent), var(--base-mix) 30%);
-    --accent-to-base-4:  color-mix(in oklch, var(--accent), var(--base-mix) 40%);
-    --accent-to-base-5:  color-mix(in oklch, var(--accent), var(--base-mix) 50%);
-    --accent-to-base-6:  color-mix(in oklch, var(--accent), var(--base-mix) 60%);
-    --accent-to-base-7:  color-mix(in oklch, var(--accent), var(--base-mix) 70%);
-    --accent-to-base-8:  color-mix(in oklch, var(--accent), var(--base-mix) 80%);
-
-    --accent-to-inverted-1: color-mix(in oklch, var(--accent), var(--inverted-mix) 10%);
-    --accent-to-inverted-2: color-mix(in oklch, var(--accent), var(--inverted-mix) 20%);
-    --accent-to-inverted-3: color-mix(in oklch, var(--accent), var(--inverted-mix) 30%);
-    --accent-to-inverted-4: color-mix(in oklch, var(--accent), var(--inverted-mix) 40%);
-    --accent-to-inverted-5: color-mix(in oklch, var(--accent), var(--inverted-mix) 50%);
-
-    --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
-
-    --heading-color: color-mix(in oklch, var(--text), var(--inverted-mix) 30%);
-    --section-counter-color: var(--heading-color);
-    --target-bg: var(--accent-to-base-4);
-
-    --card-hover-bg: var(--accent-to-base-6);
-
-    --table-hover-bg: var(--accent-to-base-6);
 
     --max-page-width: 95%;
     --readable-width: 71rem;
@@ -184,7 +157,7 @@
 html {
     margin: 0 auto;
     height: 100%;
-    min-height: 100%;
+    min-block-size: 100%;
     line-height: 1.5;
 
     hanging-punctuation: first last;
@@ -209,18 +182,12 @@ body {
         color var(--duration) var(--timing),
         background-color var(--duration) var(--timing);
 
-    font-family: Suzu Sans;
-
-    /* padding-block-start: var(--space-s-l); */
-
-    /* Let the footer stick to the bottom of the page
-     *
-     */
+    font-family: 'Suzu Sans';
 
     display: flex;
     flex-direction: column;
 
-    min-height: 100%;
+    min-block-size: 100%;
     margin: 0;
 }
 
@@ -231,8 +198,51 @@ body > main {
 body > header,
 body > footer,
 body > main {
-    width: 100%;
+    inline-size: 100%;
 }
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    font-family: 'Suzu Sans';
+    line-height: 1.1;
+    text-wrap: balance;
+    font-weight: 600;
+    color: var(--heading-color);
+
+    a {
+        color: var(--heading-color);
+    }
+}
+
+
+h1, .h1 {
+    font-size: var(--fluid-step-5);
+}
+
+h2, .h2 {
+    font-size: var(--fluid-step-4);
+}
+
+h3, .h3 {
+    font-size: var(--fluid-step-3);
+}
+
+h4, .h4 {
+    font-size: var(--fluid-step-2);
+}
+
+h5, .h5 {
+    font-size: var(--fluid-step-1);
+}
+
+pre, code {
+  font-family: 'Suzu Mono';
+}
+
 
 p {
     text-wrap: pretty;
@@ -282,16 +292,61 @@ a#link-to-main {
     }
 }
 
-ul, ol {
-    margin-block: 0;
+[role="list"] {
+  padding: 0;
+  margin-block: 0;
 }
 
+ul[role="list"],
+ol[role="list"] {
+  list-style-type: none;
+}
+
+table {
+  border-collapse: collapse;
+
+  // TODO(anri): Figure out if we can use table-layout: fixed and make it look
+  //             good in general?
+
+/*   table-layout: fixed; */
+/*   inline-size: 100%; */
+/**/
+/*   th, caption { */
+/*     text-align: start; */
+/*   } */
+/**/
+/*   td:first-of-type { */
+/*     text-align: start; */
+/*   } */
+/**/
+/*   thead th:not(:first-child), */
+/*   td { */
+/*     text-align: end; */
+/*   } */
+/**/
+/*   th, td { */
+/*     vertical-align: baseline; */
+/*   } */
+/*   */
+/*   thead th { */
+/*     vertical-align: bottom; */
+/*   } */
+/**/
+/*   th:first-of-type { */
+/*     width: 10ch; */
+/*   } */
+}
 
 hr {
     width: 100%;
     border: none;
     border-bottom: 1px dashed;
     margin-block: 0;
+}
+
+body > :last-child {
+    margin-block-start: auto;
+    padding-block-start: var(--space-l-xl);
 }
 
 a {
@@ -311,6 +366,12 @@ a {
     scroll-margin-top: var(--space-m);
 }
 
+iframe {
+    block-size: 80vh;
+}
+
+@import 'themes/base.scss';
+
 @import 'compositions/flow';
 @import 'compositions/grid';
 @import 'compositions/cluster';
@@ -320,30 +381,17 @@ a {
 @import 'utilities/visually-hidden';
 @import 'utilities/wrapper';
 @import 'utilities/region';
+@import 'utilities/vfill';
+@import 'utilities/full-w';
+@import 'utilities/radius';
 @import 'utilities/border';
 @import 'utilities/popout-box';
+@import 'utilities/focus-on-hover';
 
 @import 'blocks/dropdown';
-
-#wei {
-    border: solid red var(--border-size-md);
-    padding: var(--space-m);
-    margin-block: var(--space-m);
-    font-size: var(--fluid-step-0);
-
-    > * {
-      margin: 0;
-    }
-
-    > * + * {
-      margin-block-start: 1em;
-    }
-
-    &>span {
-        font-size: var(--fluid-step-2);
-        font-weight: 700;
-    }
-}
+@import 'blocks/callout';
+@import 'blocks/card';
+@import 'blocks/sidenote';
 
 @import 'themes/light.scss';
 @import 'themes/dark.scss';

@@ -26,3 +26,7 @@
 .grid[data-grid-layout='1/12'] {
   --grid-min-item-width: clamp(10rem, 8%, 20rem);
 }
+
+.grid[data-grid-layout='masonry'] {
+  grid-template-rows: masonry;
+}

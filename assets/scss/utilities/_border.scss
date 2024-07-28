@@ -1,3 +1,7 @@
 .border {
-  border: var(--border-size, var(--border-size-sm));
+  border: var(--border-size, var(--border-size-sm)) var(--border-style, solid) var(--border-color, currentColor);
+}
+
+.border[data-border-style="danger"] {
+  --border-color: var(--color-danger, red);
 }
