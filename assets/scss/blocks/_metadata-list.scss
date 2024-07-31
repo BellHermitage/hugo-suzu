@@ -1,0 +1,12 @@
+/* Used in the metadata for a post to disable wrapping for the icons.
+ *
+ */
+
+.metadata-list {
+    --cluster-vertical-alignment: start;
+    flex-wrap: nowrap;
+
+    > .icon {
+        flex-shrink: 0;
+    }
+}

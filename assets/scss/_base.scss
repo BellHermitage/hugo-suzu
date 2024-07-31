@@ -191,10 +191,6 @@ body {
     margin: 0;
 }
 
-body > main {
-    margin-block-end: auto;
-}
-
 body > header,
 body > footer,
 body > main {
@@ -307,34 +303,6 @@ table {
 
   // TODO(anri): Figure out if we can use table-layout: fixed and make it look
   //             good in general?
-
-/*   table-layout: fixed; */
-/*   inline-size: 100%; */
-/**/
-/*   th, caption { */
-/*     text-align: start; */
-/*   } */
-/**/
-/*   td:first-of-type { */
-/*     text-align: start; */
-/*   } */
-/**/
-/*   thead th:not(:first-child), */
-/*   td { */
-/*     text-align: end; */
-/*   } */
-/**/
-/*   th, td { */
-/*     vertical-align: baseline; */
-/*   } */
-/*   */
-/*   thead th { */
-/*     vertical-align: bottom; */
-/*   } */
-/**/
-/*   th:first-of-type { */
-/*     width: 10ch; */
-/*   } */
 }
 
 hr {
@@ -345,8 +313,7 @@ hr {
 }
 
 body > :last-child {
-    margin-block-start: auto;
-    padding-block-start: var(--space-l-xl);
+    --region-space: 0;
 }
 
 a {
@@ -377,11 +344,13 @@ iframe {
 @import 'compositions/cluster';
 @import 'compositions/repel';
 @import 'compositions/sidebar';
+@import 'compositions/icon';
 
 @import 'utilities/visually-hidden';
 @import 'utilities/wrapper';
 @import 'utilities/region';
 @import 'utilities/vfill';
+@import 'utilities/push';
 @import 'utilities/full-w';
 @import 'utilities/radius';
 @import 'utilities/border';
@@ -392,6 +361,8 @@ iframe {
 @import 'blocks/callout';
 @import 'blocks/card';
 @import 'blocks/sidenote';
+@import 'blocks/pill';
+@import 'blocks/metadata-list';
 
 @import 'themes/light.scss';
 @import 'themes/dark.scss';

@@ -1,0 +1,36 @@
+.pill {
+    border: 0.1em solid;
+    padding-inline: 0.30em;
+    padding-block: 0.1em;
+
+    text-decoration: none;
+
+    transition:
+        background var(--base-transition-duration),
+        color var(--base-transition-duration),
+        border var(--base-transition-duration);
+}
+
+.pill:hover,
+.pill:focus,
+.pill:focus-visible {
+    color: var(--page-bg);
+    background-color: var(--text);
+    border-color: var(--text);
+}
+
+.pill:focus,
+.pill:focus-visible {
+    outline-offset: calc(var(--space-3xs) / 2);
+}
+
+.pill[data-pill-style="unimportant"] {
+    opacity: 0.9;
+    border-style: dotted;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      opacity: 1.0;
+    }
+}

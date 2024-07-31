@@ -10,3 +10,13 @@ translations:
 
 also_in:
   other: "Also available in"
+
+home_latest_posts: Latest entries
+home_categories: Categories
+home_tags: Tags
+
+metadata_date: Published on
+metadata_lastmod: Updated on
+
+article_unfinished_title: Unfinished
+article_unfinished_message: This garden is still growing.

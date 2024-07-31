@@ -1,16 +1,37 @@
-<div class="post-metadata">
-    {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-    {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
-    <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+<div class="flow post-metadata">
+    <span>
+        {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+        {{ $modTime := .Lastmod.Format "2006-01-02" }}
 
-    {{ partial "i18nlist.html" . }}
+        <time datetime="{{ $dateTime }}">{{ .PublishDate | time.Format ":date_medium" }}</time>
 
-    {{ with .Params.tags }}
-    <div class="tags">
-        {{ range . }}
-        {{ $href := print (absLangURL "tags/") (urlize .) }}
-        <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href | absLangURL }}">{{ . }}</a>
+        {{ if ne $dateTime $modTime }}
+        ·
+        {{ T "metadata_lastmod" }} <time datetime="{{ $modTime }}">{{ .Lastmod | time.Format ":date_medium" }}</time>
         {{ end }}
+    </span>
+
+    {{ with .GetTerms "categories" }}
+    <div class="cluster metadata-list">
+        {{ partial "icon" (dict "icon" "category") }}
+        <ol role="list" class="cluster categories">
+            {{ range . }}
+            <li><a class="pill" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{ end }}
+        </ol>
     </div>
     {{ end }}
+
+    {{ with .GetTerms "tags" }}
+    <div class="cluster metadata-list">
+        {{ partial "icon" (dict "icon" "tags") }}
+        <ol role="list" class="cluster tags">
+            {{ range . }}
+            <li><a class="pill" data-pill-style="unimportant" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{ end }}
+        </ol>
+    </div>
+    {{ end }}
+
+    {{ partial "i18nlist.html" . }}
 </div>

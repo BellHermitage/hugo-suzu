@@ -10,3 +10,13 @@ translations:
 
 also_in:
   other: "Anche disponibile in"
+
+home_latest_posts: Ultimi post
+home_categories: Categories
+home_tags: Tag
+
+metadata_date: Pubblicato il
+metadata_lastmod: Aggiornato il
+
+article_unfinished_title: Seminato
+article_unfinished_message: Questo giardino è ancora in crescita.

@@ -5,6 +5,7 @@
         <h1>{{ .Title }}</h1>
         {{ end }}
     </header>
+
     <div class="post-content flow">
         {{ .Content }}
     </div>
@@ -12,7 +13,7 @@
     {{ if (ge site.RegularPages 1) }}
     <section class="flow region">
         <header>
-            <h2>Latest entries</h2>
+            <h2>{{ T "home_latest_posts" }}</h2>
         </header>
         <ol role="list" class="grid focus-on-hover subpost-list">
         {{ range (where site.RegularPages "Params.ignore" "!=" "true") }}
@@ -23,6 +24,17 @@
         </ol>
     {{ end }}
     </section>
+
+    {{ if (ge site.Taxonomies.categories 1) }}
+    <section class="flow region">
+        <header><h2>{{ T "home_categories" }}</h2></header>
+        <ul role="list" class="cluster home-categories">
+            {{ range site.Taxonomies.categories }}
+            <li><a class="pill" href="{{ .Page.RelPermalink }}" >{{ .Page.Title }} ({{ .Count }})</a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
 </article>
 {{ end }}
 

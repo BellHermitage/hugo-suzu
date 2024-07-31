@@ -21,8 +21,8 @@ header {
         overflow-x: scroll;
         overflow-y: hidden;
 
-        >* {
-            min-width: fit-content;
+        > * {
+            min-inline-size: fit-content;
         }
 
     }
@@ -41,7 +41,7 @@ header {
         --_clr: var(--text);
         --_clr-hover: var(--page-bg);
 
-        outline: var(--border-size-sm) solid var(--_clr);
+        border: var(--border-size-sm) solid var(--_clr);
 
 
         transition: background-color var(--base-transition-duration) var(--base-transition-function);

@@ -1,14 +1,13 @@
 <article class="border cluster post-list-elem card" {{ if .Params.unfinished }} data-card-style="work-in-progress" {{ end }} >
-    <header class="region wrapper full-w vfill" >
+    <header class="region wrapper full-w" >
         <h2 class="h3">
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h2>
-        {{ partial "metadata.html" . }}
     </header>
 
-    <!-- <div class="vfill full-w" data-vfill="start"></div> -->
-
-    <a class="vfill" data-vfill="end" href="{{ .RelPermalink }}">
-        <p class="wrapper region">{{ .Summary }}</p>
+    {{ if ne .Summary "" }}
+    <a class="push-block-end" href="{{ .RelPermalink }}">
+        <div class="flow region wrapper post-list-elem-summary">{{ .Summary }}</div>
     </a>
+    {{ end }}
 </article>

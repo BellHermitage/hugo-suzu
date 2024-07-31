@@ -2,6 +2,7 @@
 
 article {
     --max-text-width: 70ch;
+    --flow-space: var(--space-l-xl);
 
     font-size: var(--fluid-step-0);
     /* grid-template-columns: */
@@ -16,34 +17,8 @@ article * {
     margin: 0;
 }
 
-article > * {
-    grid-column: content;
-}
-
 article > header {
-    grid-column: header;
-    grid-row: header;
-
-    .post-metadata {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        column-gap: var(--space-s-l);
-
-        > time {
-            flex-shrink: 0;
-            min-width: fit-content;
-            flex-grow: 999;
-        }
-
-        // > .translations {
-        //     // flex-grow: 0.5;
-        // }
-        //
-        // > .tags {
-        //     // flex-grow: 0.5;
-        // }
-    }
+    --flow-space: 1em;
 }
 
 /* article .sidenote { */
@@ -58,9 +33,9 @@ article > header {
 article .post-content {
     /* grid-column: content; */
     /* grid-row: content; */
-
+    --flow-space: 1em;
     --grid-gutter: 0;
-    grid-template-columns: [content sidenotes] 1fr;
+    /* grid-template-columns: [content sidenotes] 1fr; */
     // grid-row-gap: 0;
 
     > *:not(aside) {
@@ -266,8 +241,8 @@ article .post-content {
 
         > * + * {
           margin: 0;
-          margin-block-start: 1em;
-          width: 100%;
+          margin-block-start: var(--flow-space, 1em);
+          inline-size: 100%;
         }
     }
 }
@@ -351,52 +326,6 @@ article aside.toc nav#TableOfContents {
 }
 
 
-// NOTE: This hack is needed to place the ToC before the content at smaller
-//       screen sizes.
-//       Remember that the ToC comes _after_ the content in the HTML to have it
-//       go on the right side of the page.
-//
-//       Here we create two rows and place the items accordingly.
-//
-//       Exchanging the positions in the HTML results in the same hack but done
-//       on the columns. Life is hard.
-@include tablet {
-    article {
-        grid-template-columns: [header-start content] 2fr [toc] auto [header-end];
-        grid-template-rows: [header] auto [toc content] auto;
-    }
-
-    // article .post-content {
-    //     grid-template-columns: [content sidenotes] fit-content(Min(100%, var(--max-text-width)));
-    // }
-}
-
-@include desktop {
-    // article .post-content {
-    //     grid-template-columns:
-    //         [content-start]
-    //             fit-content(Min(100%, var(--max-text-width)))
-    //         [sidenotes-start]
-    //             fit-content(20ch)
-    //         [sidenotes-end content-end];
-    //
-    // }
-
-    /* article .sidenote { */
-    /*     margin: var(--space-xs); */
-    /*     outline: none; */
-    /*     border-inline-start: var(--border-size-sm) solid var(--accent); */
-    /*     border-block-end: var(--border-size-sm) solid var(--accent); */
-    /*     padding: 0; */
-    /*     padding-inline-start: var(--space-xs); */
-    /*     padding-block-end: var(--space-xs); */
-    /*     height: fit-content; */
-    /*     float: inline-end; */
-    /*     max-width: 25%; */
-    /*     font-size: var(--fluid-step--1); */
-    /* } */
-}
-
 article table {
     /* padding: var(--space-m); */
     outline: var(--border-size-sm) solid;
@@ -456,6 +385,10 @@ article.post-list-elem {
     --gutter: 0;
     --region-space: var(--_space);
 
+    a {
+        text-decoration: none;
+    }
+
     > header {
         --gutter: var(--_space);
         background-color: var(--_header-bg-clr);
@@ -476,8 +409,8 @@ article.post-list-elem {
       --gutter: var(--_space);
     }
 
-    > a p {
-        max-block-size: 20ch;
+    .post-list-elem-summary {
+        /* max-block-size: 20ch; */
         overflow-y: scroll;
     }
 }

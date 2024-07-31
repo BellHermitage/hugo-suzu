@@ -9,8 +9,8 @@
 
         {{ if eq (.Params.unfinished | default false) true }}
         <aside class="flow sidenote" data-sidenote-style="wip">
-            <p class="h3 title">🌱 Unfinished</p>
-            <p>This garden is still growing.</p>
+            <p class="h3 title">🌱 {{ T "article_unfinished_title" }}</p>
+            <p>{{ T "article_unfinished_message" }}</p>
         </aside>
         {{ end }}
     </header>
@@ -27,7 +27,7 @@
         {{ end }}
         {{ end }}
 
-        <div class="post-content u-grid flow" data-pagefind-body>
+        <div class="post-content flow" data-pagefind-body>
             {{ .Content }}
         </div>
     </div>

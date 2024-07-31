@@ -1,18 +1,17 @@
 {{ define "main" }}
-<article class="wrapper u-grid">
+<article class="flow wrapper">
     <header>
         <h1>{{ .Title }}</h1>
     </header>
 
     {{ if .Content }}
-    <div class="post-content">
-        <p>{{ .Content }}</p>
-    </div>
-    <hr />
+    <section class="flow post-content">
+        {{ .Content }}
+    </section>
     {{ end }}
 
     <section class="flow">
-        <ol role="list" class="grid focus-on-hover">
+        <ol role="list" class="grid focus-on-hover subpost-list">
         {{ range .Pages.ByPublishDate.Reverse }}
             <li>
             {{ partial "list-subpost.html" . }}
@@ -20,6 +19,5 @@
         {{ end }}
         </ol>
     </section>
-
 </article>
 {{ end }}
