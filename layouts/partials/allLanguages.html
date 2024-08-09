@@ -1,11 +1,14 @@
 {{ if (ge (len .Site.Home.AllTranslations) 2) }}
-<div class="dropdown-initiator" role="navigation" aria-haspopup="true" tabindex="0">
-    <span>🌐</span>
+<button type="button" class="dropdown-initiator" aria-haspopup="true">
+    <span>
+        <span aria-hidden="true">🌐</span>
+        <span class="visually-hidden" data-hide-mode="sr">{{ T "site_language_switcher_aria" }}</span>
+    </span>
     <!-- TODO:  Permalink to the current page. -->
-    <ul class="dropdown" aria-label="submenu">
+    <ul class="dropdown" role="list" aria-label="submenu">
         {{ range $.Site.Home.AllTranslations }}
         <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
         {{ end }}
     </ul>
-</div>
+</button>
 {{ end }}

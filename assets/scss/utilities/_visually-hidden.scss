@@ -1,6 +1,17 @@
-[aria-disabled="true"],
-.visually-hidden {
+// Hide in general.
+[aria-disabled="true"] {
     display: none;
+}
+
+// Hide from screen reader
+.visually-hidden[data-hide-mode="sr"]:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
 }
 
 // A way to hide an element without using display: none.

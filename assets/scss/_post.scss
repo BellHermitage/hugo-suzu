@@ -199,7 +199,7 @@ article .post-content {
 
     pre {
         padding: var(--space-xs);
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 
     :target {
@@ -267,7 +267,7 @@ article aside.toc nav#TableOfContents {
     outline: var(--border-size-sm) solid var(--_border-color);
     box-shadow: var(--box-offset) calc(-1 * var(--box-offset)) var(--_border-color);
     padding: var(--space-xs);
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 80vh;
     max-height: 80svh;
 
@@ -411,6 +411,6 @@ article.post-list-elem {
 
     .post-list-elem-summary {
         /* max-block-size: 20ch; */
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 }

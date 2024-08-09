@@ -1,22 +1,36 @@
 ---
 
 music:
-  one: "Music"
-  other: "Music"
+  one: Music
+  other: Music
 
-translations:
-  one: "Translation"
-  other: "Translations"
+translation:
+  one: Translation
+  other: Translations
+
+category:
+  one: Category
+  other: Categories
+
+tag:
+  one: Tag
+  other: Tags
+
+language:
+  one: Language
+  other: Languages
 
 also_in:
   other: "Also available in"
+
+site_language_switcher_aria: "Focus to change site language."
 
 home_latest_posts: Latest entries
 home_categories: Categories
 home_tags: Tags
 
-metadata_date: Published on
-metadata_lastmod: Updated on
+article_metadata_date: Published on
+article_metadata_lastmod: Updated on
 
 article_unfinished_title: Unfinished
 article_unfinished_message: This garden is still growing.

@@ -1,6 +1,10 @@
 {{ if .IsTranslated }}
+{{ $icon_settings := dict
+    "icon" "language"
+    "title" (T "translation" .Translations.Len)
+}}
 <nav class="cluster metadata-list">
-    {{ partial "icon" (dict "icon" "language") }}
+    {{ partial "icon" $icon_settings }}
     <ul role="list">
     {{ range .Translations }}
     <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>

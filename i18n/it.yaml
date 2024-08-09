@@ -1,22 +1,32 @@
 ---
 
 music:
-  one: "Musica"
-  other: "Musica"
+  one: Musica
+  other: Musica
 
-translations:
-  one: "Traduzione"
-  other: "Traduzioni"
+translation:
+  one: Traduzione
+  other: Traduzioni
+
+category:
+  one: Categoria
+  other: Categorie
+
+tag:
+  one: Tag
+  other: Tag
 
 also_in:
   other: "Anche disponibile in"
 
+site_language_switcher_aria: "Attiva per cambiare la lingua del sito."
+
 home_latest_posts: Ultimi post
-home_categories: Categories
+home_categories: Categorie
 home_tags: Tag
 
-metadata_date: Pubblicato il
-metadata_lastmod: Aggiornato il
+article_metadata_date: Pubblicato il
+article_metadata_lastmod: Aggiornato il
 
 article_unfinished_title: Seminato
 article_unfinished_message: Questo giardino è ancora in crescita.

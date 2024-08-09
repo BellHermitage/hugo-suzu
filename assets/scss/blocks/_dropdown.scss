@@ -26,6 +26,14 @@
 .dropdown-initiator {
     cursor: pointer;
     position: relative;
+}
+
+button.dropdown-initiator {
+    background: var(--page-bg);
+    border-style: solid;
+    border-color: var(--text);
+    padding: 0.1em;
+    padding-inline: 0.2em;
 
 }
 

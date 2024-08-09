@@ -1,19 +1,20 @@
 <div class="flow post-metadata">
-    <span>
+    <p>
         {{ $dateTime := .PublishDate.Format "2006-01-02" }}
         {{ $modTime := .Lastmod.Format "2006-01-02" }}
 
+        <span>{{ T "article_metadata_date" }}</span>
         <time datetime="{{ $dateTime }}">{{ .PublishDate | time.Format ":date_medium" }}</time>
 
         {{ if ne $dateTime $modTime }}
         ·
-        {{ T "metadata_lastmod" }} <time datetime="{{ $modTime }}">{{ .Lastmod | time.Format ":date_medium" }}</time>
+        {{ T "article_metadata_lastmod" }} <time datetime="{{ $modTime }}">{{ .Lastmod | time.Format ":date_medium" }}</time>
         {{ end }}
-    </span>
+    </p>
 
     {{ with .GetTerms "categories" }}
     <div class="cluster metadata-list">
-        {{ partial "icon" (dict "icon" "category") }}
+        {{ partial "icon" (dict "icon" "category" "title" (T "category" .Len)) }}
         <ol role="list" class="cluster categories">
             {{ range . }}
             <li><a class="pill" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -24,7 +25,7 @@
 
     {{ with .GetTerms "tags" }}
     <div class="cluster metadata-list">
-        {{ partial "icon" (dict "icon" "tags") }}
+        {{ partial "icon" (dict "icon" "tags" "title" (T "tag" .Len)) }}
         <ol role="list" class="cluster tags">
             {{ range . }}
             <li><a class="pill" data-pill-style="unimportant" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
