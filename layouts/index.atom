@@ -18,11 +18,9 @@
   {{- with .Site.Copyright }}
   <rights>{{ . }}</rights>
   {{- end }}
-  {{- with .Site.Params.brand.icon }}
-  <icon>{{ . | absURL }}</icon>
-  {{- end }}
-  {{- with .Site.Params.brand.logo }}
-  <logo>{{ . | absURL }}</logo>
+  {{- with resources.Get .Site.Params.logo.filename }}
+  <logo>{{ .Permalink }}</logo>
+  <icon>{{ .Permalink }}</logo>
   {{- end }}
   <updated>{{ dateFormat "2006-01-02T15:04:05Z" now.UTC | safeHTML }}</updated>
   {{- with .OutputFormats.Get "ATOM" }}

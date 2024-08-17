@@ -30,10 +30,39 @@
 {{ range .Params.categories }}<meta property="article:section" content="{{ . }}">{{ end }}
 {{ if isset .Params "date" }}<meta property="article:published_time" content="{{ (time .Date).Format "2006-01-02T15:04:05Z" }}">{{ end }}
 
+{{ if isset .Site.Params.contacts "github" }}
+<link href="{{ .Site.Params.contacts.github }}" rel="me" />
+{{ end }}
+
+{{ if isset .Site.Params.indieauth "authorization_endpoint" }}
+<link href="{{ .Site.Params.indieauth.authorization_endpoint }}" rel="authorization_endpoint" />
+{{ end }}
+
+{{ if isset .Site.Params.indieauth "token_endpoint" }}
+<link href="{{ .Site.Params.indieauth.token_endpoint }}" rel="token_endpoint" />
+{{ end }}
+
 {{ if .IsTranslated }}
     {{ range .Translations }}
     <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
     {{ end }}
+{{ end }}
+
+<!-- Favicon -->
+{{ if isset .Site.Params.favicon "filename" }}
+    {{ $favicon := resources.Get .Site.Params.favicon.filename }}
+    {{ $resize_alg := "Lanczos" }}
+    {{ if eq (.Site.Params.favicon.pixelart | default false) true }}
+        {{ $resize_alg = "NearestNeighbor" }}
+    {{ end }}
+
+    {{ range $i := slice 16 32 48 }}
+        {{ $icon := $favicon.Resize  (printf "%dx%d png %s" $i $i $resize_alg) }}
+        <link rel="icon" type="image/png" sizes="{{ $i }}x{{ $i }}" href="{{ $icon.Permalink }}" />
+    {{ end }}
+
+    {{ $apple_icon := $favicon.Resize (printf "180x %s" $resize_alg) }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $apple_icon.Permalink }}" />
 {{ end }}
 
 {{- range .AlternativeOutputFormats }}

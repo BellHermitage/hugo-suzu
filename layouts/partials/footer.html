@@ -2,13 +2,17 @@
     <div class="">
         {{ if .Site.Params.contacts }}
         <div class="footer-col">
-            <ul class="footer-row contact-list">
+            <ul class="footer-row contact-list h-card">
                 {{ if .Site.Params.contacts.name }}
-                <li class="p-name">{{ .Site.Params.contacts.name }}</li>
+                <li class="p-name">
+                    {{ if isset .Site.Params.logo "filename" }}
+                    <img class="u-logo icon {{ if eq (.Site.Params.logo.pixelart | default false) true }} pixelart {{ end }}" width="24" src="{{ resources.Get .Site.Params.logo.filename }}" />
+                    {{ end }}
+                    {{ .Site.Params.contacts.name }}
+                </li>
                 {{ end }}
                 {{ if .Site.Params.contacts.email }}
-                <li><a class="u-email" href="mailto:{{ .Site.Params.contacts.email }}">{{ .Site.Params.contacts.email
-                        }}</a></li>
+                <li><a class="u-email" rel="me" href="mailto:{{ .Site.Params.contacts.email }}">{{ .Site.Params.contacts.email }}</a></li>
                 {{ end }}
             </ul>
 

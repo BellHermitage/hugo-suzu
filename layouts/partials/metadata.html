@@ -3,12 +3,12 @@
         {{ $dateTime := .PublishDate.Format "2006-01-02" }}
         {{ $modTime := .Lastmod.Format "2006-01-02" }}
 
-        <span>{{ T "article_metadata_date" }}</span>
-        <time datetime="{{ $dateTime }}">{{ .PublishDate | time.Format ":date_medium" }}</time>
+        {{ T "article_metadata_date" }}
+        <time class="dt-published" datetime="{{ $dateTime }}">{{ .PublishDate | time.Format ":date_medium" }}</time>
 
         {{ if ne $dateTime $modTime }}
         ·
-        {{ T "article_metadata_lastmod" }} <time datetime="{{ $modTime }}">{{ .Lastmod | time.Format ":date_medium" }}</time>
+        {{ T "article_metadata_lastmod" }} <time class="dt-updated" datetime="{{ $modTime }}">{{ .Lastmod | time.Format ":date_medium" }}</time>
         {{ end }}
     </p>
 
@@ -17,7 +17,7 @@
         {{ partial "icon" (dict "icon" "category" "title" (T "category" .Len)) }}
         <ol role="list" class="cluster categories">
             {{ range . }}
-            <li><a class="pill" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            <li><a class="pill p-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
             {{ end }}
         </ol>
     </div>

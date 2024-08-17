@@ -1,7 +1,7 @@
 {{ define "main" }}
-<article class="flow">
+<article class="flow h-entry">
     <header class="post wrapper flow">
-        <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
+        <h1 class="post-title p-name" data-pagefind-meta="title">{{ .Title }}</h1>
 
         {{ if eq (.Params.hideMeta | default false) false }}
         {{ partial "metadata.html" . }}
@@ -27,7 +27,7 @@
         {{ end }}
         {{ end }}
 
-        <div class="post-content flow" data-pagefind-body>
+        <div class="post-content flow e-content" data-pagefind-body>
             {{ .Content }}
         </div>
     </div>
