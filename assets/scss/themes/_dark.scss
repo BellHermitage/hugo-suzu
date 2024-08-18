@@ -6,9 +6,7 @@
       --page-bg: black;
 
       --text: oklch(90% 0% 0);
-      --link: oklch(100% 40% 0.05turn);
-      --link-hover: hsl(0 0% 90%);
-      --link-hover: oklch(80% 30% -90deg);
+      --link: oklch(80% 30% -90deg);
       /* --link-visited: hsl(0 25% 75%); */
       /* --link-visited: oklch(100% 30% 0.05turn); */
 
@@ -26,6 +24,10 @@
       --blockquote-bg: hsl(-10, 70%, 10%);
 
       --background-wip-color2: oklch(50% 90% 110deg);
+  }
+
+  footer {
+      --link: oklch(50% 30% -90deg);
   }
 
   .card[data-card-style="work-in-progress"] header {

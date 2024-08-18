@@ -1,59 +1,64 @@
-<footer class="region wrapper push-block-end" data-pagefind-ignore="all">
-    <div class="">
-        {{ if .Site.Params.contacts }}
-        <div class="footer-col">
-            <ul class="footer-row contact-list h-card">
-                {{ if .Site.Params.contacts.name }}
-                <li class="p-name">
-                    {{ if isset .Site.Params.logo "filename" }}
-                    <img class="u-logo icon {{ if eq (.Site.Params.logo.pixelart | default false) true }} pixelart {{ end }}" width="24" src="{{ resources.Get .Site.Params.logo.filename }}" />
+<footer class="region push-block-end" data-pagefind-ignore="all">
+    <div class="wrapper">
+        <div class="repel">
+            {{ if .Site.Params.contacts }}
+            <div class="footer-col">
+                <ul class="footer-row contact-list h-card" role="list">
+                    {{ if .Site.Params.contacts.name }}
+                    <li class="p-name">
+                        {{ if isset .Site.Params.logo "filename" }}
+                        <img class="u-logo icon {{ if eq (.Site.Params.logo.pixelart | default false) true }} pixelart {{ end }}" width="24" src="{{ resources.Get .Site.Params.logo.filename }}" alt="Logo or photo of the person associated to the website." />
+                        {{ end }}
+                        {{ .Site.Params.contacts.name }}
+                    </li>
                     {{ end }}
-                    {{ .Site.Params.contacts.name }}
-                </li>
-                {{ end }}
-                {{ if .Site.Params.contacts.email }}
-                <li><a class="u-email" rel="me" href="mailto:{{ .Site.Params.contacts.email }}">{{ .Site.Params.contacts.email }}</a></li>
-                {{ end }}
-            </ul>
+                    {{ if .Site.Params.contacts.email }}
+                    <li><a class="u-email" rel="me" href="mailto:{{ .Site.Params.contacts.email }}">{{ .Site.Params.contacts.email }}</a></li>
+                    {{ end }}
+                    {{ if .Site.Params.contacts.github }}
+                    <li><a rel="me" href="{{ .Site.Params.contacts.github }}">Github</a></li>
+                    {{ end }}
+                </ul>
 
-            {{ if .Site.Params.subtitle }}
-            <div class="footer-row">
-                <p>{{ .Site.Params.subtitle }}</p>
+                {{ if .Site.Params.subtitle }}
+                <div class="footer-row">
+                    <p>{{ .Site.Params.subtitle }}</p>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+            {{ if .Site.Params.subsites }}
+            <div class="footer-col">
+                <ul class="footer-row contact-list" role="list">
+                    {{ range $subsite := $.Site.Params.subsites }}
+                    <li><a href="https://{{ $subsite.link }}">{{ $subsite.name }}</a></li>
+                    {{ end }}
+                </ul>
             </div>
             {{ end }}
         </div>
-        {{ end }}
-        {{ if .Site.Params.subsites }}
-        <div class="footer-col">
-            <ul class="footer-row contact-list">
-                {{ range $subsite := $.Site.Params.subsites }}
-                <li><a href="https://{{ $subsite.link }}">{{ $subsite.name }}</a></li>
+        {{ if .Site.Params.webbuttons }}
+        <div class="web-buttons">
+            <!--
+                Credits:
+                https://buttoncollection.neocities.org/
+                https://anlucas.neocities.org/88x31Buttons
+                https://ko-fi.com/s/4662b19f61
+
+                Done for fun
+            -->
+            {{ range $btn := .Site.Params.webbuttons }}
+            {{ $btn_link := resources.Get (printf "buttons/%s" $btn.file) }}
+            {{ if $btn.link }}<a href="{{ $btn.link }}">
+                {{ else if $btn.page }}
+                {{ with $.Site.GetPage $btn.page }}
+                <a href="{{ .RelPermalink }}">
+                    {{ end }}
+                    {{ end }}
+                    <img width="88px" height="31px" alt="{{ $btn.alt }}" src="{{ $btn_link.Permalink }}" />
+                    {{ if (or $btn.link $btn.page) }}</a>{{ end }}
                 {{ end }}
-            </ul>
         </div>
         {{ end }}
     </div>
-    {{ if .Site.Params.webbuttons }}
-    <div class="web-buttons">
-        <!--
-            Credits:
-            https://buttoncollection.neocities.org/
-            https://anlucas.neocities.org/88x31Buttons
-            https://ko-fi.com/s/4662b19f61
-
-            Done for fun
-        -->
-        {{ range $btn := .Site.Params.webbuttons }}
-        {{ $btn_link := resources.Get (printf "buttons/%s" $btn.file) }}
-        {{ if $btn.link }}<a href="{{ $btn.link }}">
-        {{ else if $btn.page }}
-            {{ with $.Site.GetPage $btn.page }}
-                <a href="{{ .RelPermalink }}">
-            {{ end }}
-        {{ end }}
-        <img width="88px" height="31px" alt="{{ $btn.alt }}" src="{{ $btn_link.Permalink }}" />
-        {{ if (or $btn.link $btn.page) }}</a>{{ end }}
-        {{ end }}
-    </div>
-    {{ end }}
 </footer>

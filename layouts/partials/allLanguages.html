@@ -1,4 +1,29 @@
 {{ if (ge (len .Site.Home.AllTranslations) 2) }}
+{{ if false }}
+<details class="dropdown2">
+    <summary class="pill">
+        <span aria-hidden="true">🌐</span>
+        <span class="visually-hidden" data-hide-mode="sr">{{ T "site_language_switcher_aria" }}</span>
+    </summary>
+
+    <ul class="cluster" role="list" aria-label="submenu">
+        {{ range $.Site.Home.AllTranslations }}
+        <li><a class="pill" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+    </ul>
+</details>
+{{ end }}
+
+<nav class="wrapper region cluster site-language-menu">
+    <span>{{ T "also_in" }}</span>
+    <ul class="cluster" role="list">
+        {{ range $.Site.Home.AllTranslations }}
+        <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+    </ul>
+</nav>
+
+{{ if false }}
 <button type="button" class="dropdown-initiator" aria-haspopup="true">
     <span>
         <span aria-hidden="true">🌐</span>
@@ -11,4 +36,5 @@
         {{ end }}
     </ul>
 </button>
+{{ end }}
 {{ end }}

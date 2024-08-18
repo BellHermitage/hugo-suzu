@@ -1,15 +1,9 @@
 @use 'mixins' as *;
 
 footer {
-    ul, ol {
-        margin-block-start: 0;
-    }
+    --repel-vertical-alignment: start;
 
-    .wrapper {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-    }
+    border-top: var(--space-3xs) double;
 
     .footer-col {
         display: flex;
@@ -24,7 +18,6 @@ footer {
     }
 
     .contact-list, .social-media-list {
-        list-style: none;
         margin-inline-start: 0;
         padding-inline-start: 0; 
     }

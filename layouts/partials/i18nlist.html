@@ -7,7 +7,7 @@
     {{ partial "icon" $icon_settings }}
     <ul role="list">
     {{ range .Translations }}
-    <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+    <li><a class="pill" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
     {{ end }}
     </ul>
 </nav>

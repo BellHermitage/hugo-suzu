@@ -305,19 +305,8 @@ table {
   //             good in general?
 }
 
-hr {
-    width: 100%;
-    border: none;
-    border-bottom: 1px dashed;
-    margin-block: 0;
-}
-
-body > :last-child {
-    --region-space: 0;
-}
-
 a {
-    color: currentColor;
+    color: var(--link);
 
     &:hover,
     &:focus {
@@ -350,6 +339,7 @@ iframe {
 @import 'utilities/wrapper';
 @import 'utilities/region';
 @import 'utilities/vfill';
+@import 'utilities/text';
 @import 'utilities/push';
 @import 'utilities/full-w';
 @import 'utilities/radius';
@@ -358,12 +348,15 @@ iframe {
 @import 'utilities/focus-on-hover';
 @import 'utilities/pixelart';
 
-@import 'blocks/dropdown';
+@import 'blocks/hr';
+/* @import 'blocks/dropdown'; */
 @import 'blocks/callout';
 @import 'blocks/card';
 @import 'blocks/sidenote';
 @import 'blocks/pill';
 @import 'blocks/metadata-list';
+@import 'blocks/site-header';
+@import 'blocks/site-language-menu';
 
 @import 'themes/light.scss';
 @import 'themes/dark.scss';

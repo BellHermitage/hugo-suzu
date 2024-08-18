@@ -1,0 +1,53 @@
+hr {
+    border: none;
+    border-block-end: 2px solid;
+
+    color: currentColor;
+}
+
+hr[data-style="asterisk"],
+hr[data-style="asterisks"] {
+  position: relative;
+  overflow: visible;
+  height: 1.05lh;
+
+}
+
+// ONE asterisk
+hr[data-style="asterisk"] {
+  inline-size: 50%;
+
+  &::before {
+    content: '*';
+    position: absolute;
+    font-size: var(--fluid-step-4);
+    padding-inline: var(--space-3xs);
+    top: 0;
+    left: calc(50% - 2 * var(--space-3xs));
+
+    background-color: var(--page-bg);
+  }
+}
+
+// TWO asterisks
+hr[data-style="asterisks"] {
+  inline-size: 50%;
+
+  &::before, &::after {
+    content: '*';
+    position: absolute;
+    font-size: var(--fluid-step-4);
+    padding-inline: var(--space-3xs);
+    top: 0;
+
+    background-color: var(--page-bg);
+  }
+
+  &::before {
+    left: 25%;
+  }
+
+  &::after {
+    right: 25%;
+  }
+}

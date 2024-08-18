@@ -1,65 +1,73 @@
 :root {
-    --accent: oklch(85% 85% 15deg);
+  --accent: oklch(85% 85% 15deg);
 
-    --accent-to-base-1:  color-mix(in oklch, var(--accent), var(--base-mix) 10%);
-    --accent-to-base-2:  color-mix(in oklch, var(--accent), var(--base-mix) 20%);
-    --accent-to-base-3:  color-mix(in oklch, var(--accent), var(--base-mix) 30%);
-    --accent-to-base-4:  color-mix(in oklch, var(--accent), var(--base-mix) 40%);
-    --accent-to-base-5:  color-mix(in oklch, var(--accent), var(--base-mix) 50%);
-    --accent-to-base-6:  color-mix(in oklch, var(--accent), var(--base-mix) 60%);
-    --accent-to-base-7:  color-mix(in oklch, var(--accent), var(--base-mix) 70%);
-    --accent-to-base-8:  color-mix(in oklch, var(--accent), var(--base-mix) 80%);
+  --accent-to-base-1:  color-mix(in oklch, var(--accent), var(--base-mix) 10%);
+  --accent-to-base-2:  color-mix(in oklch, var(--accent), var(--base-mix) 20%);
+  --accent-to-base-3:  color-mix(in oklch, var(--accent), var(--base-mix) 30%);
+  --accent-to-base-4:  color-mix(in oklch, var(--accent), var(--base-mix) 40%);
+  --accent-to-base-5:  color-mix(in oklch, var(--accent), var(--base-mix) 50%);
+  --accent-to-base-6:  color-mix(in oklch, var(--accent), var(--base-mix) 60%);
+  --accent-to-base-7:  color-mix(in oklch, var(--accent), var(--base-mix) 70%);
+  --accent-to-base-8:  color-mix(in oklch, var(--accent), var(--base-mix) 80%);
 
-    --accent-to-inverted-1: color-mix(in oklch, var(--accent), var(--inverted-mix) 10%);
-    --accent-to-inverted-2: color-mix(in oklch, var(--accent), var(--inverted-mix) 20%);
-    --accent-to-inverted-3: color-mix(in oklch, var(--accent), var(--inverted-mix) 30%);
-    --accent-to-inverted-4: color-mix(in oklch, var(--accent), var(--inverted-mix) 40%);
-    --accent-to-inverted-5: color-mix(in oklch, var(--accent), var(--inverted-mix) 50%);
+  --accent-to-inverted-1: color-mix(in oklch, var(--accent), var(--inverted-mix) 10%);
+  --accent-to-inverted-2: color-mix(in oklch, var(--accent), var(--inverted-mix) 20%);
+  --accent-to-inverted-3: color-mix(in oklch, var(--accent), var(--inverted-mix) 30%);
+  --accent-to-inverted-4: color-mix(in oklch, var(--accent), var(--inverted-mix) 40%);
+  --accent-to-inverted-5: color-mix(in oklch, var(--accent), var(--inverted-mix) 50%);
+  --accent-to-inverted-6: color-mix(in oklch, var(--accent), var(--inverted-mix) 60%);
+  --accent-to-inverted-7: color-mix(in oklch, var(--accent), var(--inverted-mix) 70%);
+  --accent-to-inverted-8: color-mix(in oklch, var(--accent), var(--inverted-mix) 80%);
 
-    --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
+  --accent-subtle: color-mix(in oklch, var(--accent), transparent 25%);
 
-    --heading-color: color-mix(in oklch, var(--text), var(--inverted-mix) 30%);
-    --section-counter-color: var(--heading-color);
-    --target-bg: var(--accent-to-base-4);
+  --link-hover: color-mix(in oklch, var(--link), var(--inverted-mix) 40%);
 
-    --card-hover-bg: var(--accent-to-base-6);
+  --heading-color: color-mix(in oklch, var(--text), var(--inverted-mix) 30%);
+  --section-counter-color: var(--heading-color);
+  --target-bg: var(--accent-to-base-4);
 
-    --table-hover-bg: var(--accent-to-base-6);
+  --card-hover-bg: var(--accent-to-base-6);
 
-    --sidenote-bg: var(--accent-to-base-7);
+  --table-hover-bg: var(--accent-to-base-6);
+
+  --sidenote-bg: var(--accent-to-base-7);
+
+  --site-header-bg: var(--accent-to-inverted-3);
+  --footer-bg: var(--accent-to-inverted-8);
 }
 
 // We use a SASS variable because color inheritance for linear gradient
 // is broken on Firefox <=128.
 $background-wip: linear-gradient(-45deg,
-                var(--background-wip-color1, transparent) 10%,
+                                  var(--background-wip-color1, transparent) 10%,
 
-                var(--background-wip-color2, yellow) 10%,
-                var(--background-wip-color2, yellow) 20%,
+                                  var(--background-wip-color2, yellow) 10%,
+                                  var(--background-wip-color2, yellow) 20%,
 
-                var(--background-wip-color1, transparent) 20%,
-                var(--background-wip-color1, transparent) 30%,
+                                  var(--background-wip-color1, transparent) 20%,
+                                  var(--background-wip-color1, transparent) 30%,
 
-                var(--background-wip-color2, yellow) 30%,
-                var(--background-wip-color2, yellow) 40%,
+                                  var(--background-wip-color2, yellow) 30%,
+                                  var(--background-wip-color2, yellow) 40%,
 
-                var(--background-wip-color1, transparent) 40%,
-                var(--background-wip-color1, transparent) 50%,
+                                  var(--background-wip-color1, transparent) 40%,
+                                  var(--background-wip-color1, transparent) 50%,
 
-                var(--background-wip-color2, yellow) 50%,
-                var(--background-wip-color2, yellow) 60%,
+                                  var(--background-wip-color2, yellow) 50%,
+                                  var(--background-wip-color2, yellow) 60%,
 
-                var(--background-wip-color1, transparent) 60%,
-                var(--background-wip-color1, transparent) 70%,
+                                  var(--background-wip-color1, transparent) 60%,
+                                  var(--background-wip-color1, transparent) 70%,
 
-                var(--background-wip-color2, yellow) 70%,
-                var(--background-wip-color2, yellow) 80%,
+                                  var(--background-wip-color2, yellow) 70%,
+                                  var(--background-wip-color2, yellow) 80%,
 
-                var(--background-wip-color1, transparent) 80%,
-                var(--background-wip-color1, transparent) 90%,
+                                  var(--background-wip-color1, transparent) 80%,
+                                  var(--background-wip-color1, transparent) 90%,
 
-                var(--background-wip-color2, yellow) 90%,
-                var(--background-wip-color2, yellow) 100%);
+                                  var(--background-wip-color2, yellow) 90%,
+                                  var(--background-wip-color2, yellow) 100%);
 
 
 .background-wip {
@@ -68,4 +76,10 @@ $background-wip: linear-gradient(-45deg,
 
 .sidenote {
   background: var(--sidenote-bg);
+}
+
+footer {
+  --link-hover: color-mix();
+  background-color: var(--footer-bg);
+  color: var(--page-bg);
 }

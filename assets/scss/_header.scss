@@ -4,7 +4,6 @@ header {
     --font-size: var(--fluid-step-1);
     --gap: var(--space-s);
 
-    flex: none;
     font-size: var(--font-size);
 
     [aria-label="Breadcrumb"] {
@@ -27,59 +26,6 @@ header {
 
     }
 
-    nav ul {
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: var(--gap);
-    }
-
-    nav ul li {
-        --_clr: var(--text);
-        --_clr-hover: var(--page-bg);
-
-        border: var(--border-size-sm) solid var(--_clr);
-
-
-        transition: background-color var(--base-transition-duration) var(--base-transition-function);
-
-        a {
-            transition: color var(--base-transition-duration) var(--base-transition-function);
-        }
-
-        &:hover,
-        &:focus {
-            background-color: var(--_clr);
-
-            a {
-              color: var(--_clr-hover);
-            }
-        }
-    }
-
-    nav ul a {
-        color: var(--_clr);
-        text-decoration: none;
-
-        /* Padding 25% of the font size */
-        padding: 0.25em;
-
-        font-weight: 400;
-
-        &:visited,
-        &:active {
-            color: var(--_clr);
-        }
-
-    }
-
-    & nav ul,
-    & nav ol {
-        list-style-type: none;
-    }
 
     .logo-wrapper {
         display: block;

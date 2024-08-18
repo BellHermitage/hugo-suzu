@@ -47,3 +47,24 @@ button.dropdown-initiator {
 }
 
 
+details.dropdown2 {
+    position: relative;
+
+    > summary {
+        font-weight: 700;
+    }
+
+    > summary:hover {
+        cursor: pointer;
+    }
+
+    > :not(summary) {
+        position: absolute;
+        top: calc(100% + var(--space-xs));
+        right: 0;
+        /* flex-direction: row-reverse; */
+        /* width: calc(90rem - var(--gutter)); */
+        /* padding-inline-start: var(--gutter); */
+        --gutter: var(--space-xs);
+    }
+}

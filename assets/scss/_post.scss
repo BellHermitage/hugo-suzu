@@ -17,7 +17,7 @@ article * {
     margin: 0;
 }
 
-article > header {
+article > * {
     --flow-space: 1em;
 }
 
@@ -29,6 +29,22 @@ article > header {
 /*     // grid-column: sidenotes; */
 /* } */
 
+
+article {
+  ul:not([class]) > li + li,
+  ol:not([class]) > li + li {
+      margin-block-start: 0.75em;
+  }
+
+
+  ul:not([class]),
+  ol:not([class]) {
+    > li > * + * {
+        margin-block-start: 0.5em;
+    }
+  }
+
+}
 
 article .post-content {
     /* grid-column: content; */
@@ -42,18 +58,6 @@ article .post-content {
         grid-column: content;
     }
 
-    ul:not([class]) > li + li,
-    ol:not([class]) > li + li {
-        margin-block-start: 0.75em;
-    }
-
-
-    ul:not([class]),
-    ol:not([class]) {
-      > li > * + * {
-          margin-block-start: 0.5em;
-      }
-    }
 
     .link-anchor {
         margin-block-start: 1.5em;
@@ -307,8 +311,13 @@ article aside.toc nav#TableOfContents {
 
         counter-reset: toc-counter;
 
-        >li ul,
-        >li ol {
+        li + li {
+            margin-block-start: 0.25em;
+        }
+
+        > li ul,
+        > li ol {
+            margin-block-start: 0.25em;
             padding-inline-start: var(--space-m);
         }
 
@@ -413,4 +422,11 @@ article.post-list-elem {
         /* max-block-size: 20ch; */
         overflow-y: auto;
     }
+}
+
+article hr {
+    --flow-space: 2em;
+
+    margin-block: 2em;
+    margin-inline: auto;
 }

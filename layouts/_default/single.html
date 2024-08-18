@@ -27,9 +27,28 @@
         {{ end }}
         {{ end }}
 
-        <div class="post-content flow e-content" data-pagefind-body>
-            {{ .Content }}
+        <div class="flow">
+            <div class="post-content flow e-content" data-pagefind-body>
+                {{ .Content }}
+
+
+            </div>
+
+        {{ if .Params.syndications }}
+        <hr data-style="asterisks" />
+
+        <section class="flow">
+            <p>{{ T "syndicated_on" }}</p>
+
+            <ul>
+            {{ range .Params.syndications }}
+            <li><a class="u-syndication" rel="syndication" href="{{ .link }}">{{ .name }}</a></li>
+            {{ end }}
+            </ul>
+        </section>
+        {{ end }}
         </div>
+
     </div>
 </article>
 {{ end }}

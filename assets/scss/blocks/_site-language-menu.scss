@@ -1,0 +1,29 @@
+.site-language-menu {
+  --gutter: var(--space-3xs);
+  --wrapper-max-width: calc(100% - var(--space-3xs));
+  --region-space: 0;
+
+  font-family: Suzu Mono;
+  font-size: var(--fluid-step--2);
+  text-transform: uppercase;
+
+  a {
+    text-decoration: none;
+  }
+
+  ul, ol {
+    --gutter: 0;
+  }
+
+  li {
+    > a {
+      padding-inline: var(--space-3xs);
+    }
+
+    &:not(:last-child) {
+      border-inline-end: 0.1em dashed;
+    }
+  }
+
+  border-bottom: 0.1em dashed;
+}
