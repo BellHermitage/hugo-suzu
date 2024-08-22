@@ -10,6 +10,8 @@
         background var(--base-transition-duration),
         color var(--base-transition-duration),
         border var(--base-transition-duration);
+
+    word-break: normal;
 }
 
 button.pill {

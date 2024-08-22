@@ -3,7 +3,7 @@
     <script defer src="{{ absURL "pagefind/pagefind-ui.js" }}"></script>
 
     {{ $js := resources.Get "js/search.js" | minify  | fingerprint }}
-    <script defer src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+    <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 {{ end }}
 
 {{ define "main" }}

@@ -15,15 +15,11 @@
 
 {{ $print_style := resources.Get "scss/print.scss" | toCSS $opts | minify | fingerprint }}
 
-<link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
+<link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
 
-<link rel="stylesheet" type="text/css" href="{{ $print_style.Permalink }}"
+<link rel="stylesheet" type="text/css" href="{{ $print_style.RelPermalink }}"
     integrity="{{ $print_style.Data.Integrity }}" media="print" />
 
-{{ with resources.Get "icons-spritesheet.svg" }}
-<link rel="preload" href="{{ .Permalink }}" as="image" />
-{{ end }}
-
 {{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
-<link rel="preload" href="{{ $themejs.Permalink }}" as="script" />
-<script defer src="{{ $themejs.Permalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>
+<link rel="preload" href="{{ $themejs.RelPermalink }}" as="script" integrity="{{ $themejs.Data.Integrity }}" />
+<script defer src="{{ $themejs.RelPermalink }}" integrity="{{ $themejs.Data.Integrity }}"></script>

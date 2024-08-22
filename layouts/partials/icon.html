@@ -1,2 +1,2 @@
 {{ $ss := resources.Get "icons-spritesheet.svg" }}
-<svg class="icon"><title>{{ .title }}</title><use xlink:href="{{ $ss.RelPermalink }}#{{ .icon }}"></use></svg>
+<svg class="icon"><title>{{ .title }}</title><use href="{{ $ss.RelPermalink }}#{{ .icon }}"></use></svg>

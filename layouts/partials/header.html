@@ -3,7 +3,7 @@
     <a class="logo-wrapper" rel="author" href='{{ "/" | absLangURL }}'>
         {{ $logo := resources.Get .Site.Params.logo.filename }}
         {{ $alt := .Site.Params.logo.alt | default "Logo of the webpage." }}
-        <img loading="lazy" id="logo" height="96"  src="{{ $logo.Permalink }}"
+        <img id="logo" height="96"  src="{{ $logo.RelPermalink }}"
             {{ if (.Site.Params.logo.pixelart | default false) }} class="pixelart" {{ end }}
         alt="{{ $alt }}" />
     </a>

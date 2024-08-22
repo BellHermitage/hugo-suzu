@@ -62,17 +62,15 @@
 
     {{ range $i := slice 16 32 48 }}
         {{ $icon := $favicon.Resize  (printf "%dx%d png %s" $i $i $resize_alg) }}
-        <link rel="icon" type="image/png" sizes="{{ $i }}x{{ $i }}" href="{{ $icon.Permalink }}" />
+        <link rel="icon" type="image/png" sizes="{{ $i }}x{{ $i }}" href="{{ $icon.RelPermalink }}" />
     {{ end }}
 
     {{ $apple_icon := $favicon.Resize (printf "180x %s" $resize_alg) }}
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ $apple_icon.Permalink }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $apple_icon.RelPermalink }}" />
 {{ end }}
 
 {{- range .AlternativeOutputFormats }}
-{{ printf `
-<link rel="%s" type="%s" href="%s" hreflang="%s" />` .Rel .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML
-}}
+{{ printf `<link rel="%s" type="%s" href="%s" hreflang="%s" />` .Rel .MediaType.Type .Permalink $.Site.LanguageCode | safeHTML }}
 {{- end }}
 
 {{ if not .IsHome }}
