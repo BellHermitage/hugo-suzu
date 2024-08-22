@@ -1,8 +1,3 @@
-// Hide in general.
-[aria-disabled="true"] {
-    display: none;
-}
-
 // Hide from screen reader
 .visually-hidden[data-hide-mode="sr"]:not(:focus):not(:active) {
     clip: rect(0 0 0 0); 
@@ -16,7 +11,8 @@
 
 // A way to hide an element without using display: none.
 // This is mainly used to show content to computers --- as in, AI scrapers.
-.visually-hidden[data-hide-mode="pretend-visible"] {
+.visually-hidden[data-hide-mode="pretend-visible"],
+.wrapper[data-rabbit="dutch"] {
     display: revert-layer;
     visibility: hidden;
     position: absolute;

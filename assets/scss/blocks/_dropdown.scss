@@ -1,70 +1,47 @@
 .dropdown {
-    display: flex;
     visibility: hidden;
     opacity: 0;
+
     position: absolute;
-    margin: 0;
-    padding: 0;
+
+    cursor: initial;
+    word-break: break-word;
+
+    z-index: 2;
+
+    top: calc(100% - 0.5rem);
+
+    transition: opacity var(--base-transition-duration) 250ms var(--base-transition-function);
+}
+
+.dropdown[data-dropdown-align="center"] {
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.dropdown[data-dropdown-align="end"] {
     right: 0;
+}
 
-    flex-direction: column;
-    align-items: start;
-    // gap: 0.5rem;
-
-    border: var(--border-size-sm) solid;
-    background-color: var(--page-bg);
-
-    list-style-type: none;
-
-    li>* {
-        padding: var(--space-xs);
-    }
-
-    transition: opacity var(--base-transition-duration) var(--base-transition-function);
+.dropdown[data-dropdown-align="start"] {
+    left: 0;
 }
 
 .dropdown-initiator {
+    position: relative;
     cursor: pointer;
-    position: relative;
 }
 
+.dropdown-initiator > button,
 button.dropdown-initiator {
-    background: var(--page-bg);
-    border-style: solid;
-    border-color: var(--text);
-    padding: 0.1em;
-    padding-inline: 0.2em;
-
+    cursor: pointer;
 }
 
-.dropdown-initiator:hover>.dropdown,
-.dropdown-initiator:active>.dropdown,
-.dropdown-initiator:focus>.dropdown,
-.dropdown-initiator:focus-visible>.dropdown,
-.dropdown-initiator:focus-within>.dropdown {
-    visibility: visible;
-    opacity: 1;
+.dropdown-initiator:focus-within,
+.dropdown-initiator:hover {
+  > .dropdown {
+      visibility: visible;
+      opacity: 1;
+  }
 }
 
-
-details.dropdown2 {
-    position: relative;
-
-    > summary {
-        font-weight: 700;
-    }
-
-    > summary:hover {
-        cursor: pointer;
-    }
-
-    > :not(summary) {
-        position: absolute;
-        top: calc(100% + var(--space-xs));
-        right: 0;
-        /* flex-direction: row-reverse; */
-        /* width: calc(90rem - var(--gutter)); */
-        /* padding-inline-start: var(--gutter); */
-        --gutter: var(--space-xs);
-    }
-}

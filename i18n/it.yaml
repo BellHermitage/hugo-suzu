@@ -16,8 +16,17 @@ tag:
   one: Tag
   other: Tag
 
+language:
+  one: Lingua
+  other: Lingue
+
 also_in:
   other: "Anche disponibile in"
+
+site_language_switcher_info: |
+  Scegli la tua lingua preferita.
+  Siccome il blog è prima di tutto in Inglese, la maggior parte degli articoli
+  potrebbe non avere una traduzione nella lingua desiderata.
 
 site_language_switcher_aria: "Attiva per cambiare la lingua del sito."
 

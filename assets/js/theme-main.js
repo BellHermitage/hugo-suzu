@@ -1,9 +1,18 @@
-const ua = navigator.userAgent;
+class NoChrome extends HTMLElement {
+    constructor() {
+        super();
+    }
 
-if (
-  ua.includes("Chrome") || ua.includes("Chromium") ||
-  ua.includes("Safari") || ua.includes("Edge")
-) {
-  const element = document.getElementById("wei");
-  element.setAttribute("aria-disabled", false);
-}
+    connectedCallback() {
+        const isChromium = !!window.chrome;
+
+        if (isChromium) {
+          const element = this.querySelector("div");
+          element.toggleAttribute("hidden");
+        }
+    }
+};
+
+addEventListener('DOMContentLoaded', () => {
+    customElements.define('no-chrome', NoChrome);
+});

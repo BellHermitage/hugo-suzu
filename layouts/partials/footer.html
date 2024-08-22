@@ -1,13 +1,13 @@
 <footer class="region push-block-end" data-pagefind-ignore="all">
     <div class="wrapper">
-        <div class="repel">
+        <nav class="repel">
             {{ if .Site.Params.contacts }}
             <div class="footer-col">
                 <ul class="footer-row contact-list h-card" role="list">
                     {{ if .Site.Params.contacts.name }}
                     <li class="p-name">
                         {{ if isset .Site.Params.logo "filename" }}
-                        <img class="u-logo icon {{ if eq (.Site.Params.logo.pixelart | default false) true }} pixelart {{ end }}" width="24" src="{{ resources.Get .Site.Params.logo.filename }}" alt="Logo or photo of the person associated to the website." />
+                        <img loading="lazy" class="u-logo icon {{ if eq (.Site.Params.logo.pixelart | default false) true }} pixelart {{ end }}" width="24" src="{{ resources.Get .Site.Params.logo.filename }}" alt="Logo or photo of the person associated to the website." />
                         {{ end }}
                         {{ .Site.Params.contacts.name }}
                     </li>
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             {{ end }}
-        </div>
+        </nav>
         {{ if .Site.Params.webbuttons }}
         <div class="web-buttons">
             <!--
@@ -55,7 +55,7 @@
                 <a href="{{ .RelPermalink }}">
                     {{ end }}
                     {{ end }}
-                    <img width="88px" height="31px" alt="{{ $btn.alt }}" src="{{ $btn_link.Permalink }}" />
+                    <img loading="lazy" width="88px" height="31px" alt="{{ $btn.alt }}" src="{{ $btn_link.Permalink }}" />
                     {{ if (or $btn.link $btn.page) }}</a>{{ end }}
                 {{ end }}
         </div>

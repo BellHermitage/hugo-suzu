@@ -20,7 +20,7 @@
 }
 
 .grid[data-grid-layout='1/6'] {
-  --grid-min-item-width: clamp(10rem, 16%, 20rem);
+  --grid-min-item-width: clamp(5rem, 16.666%, 10rem);
 }
 
 .grid[data-grid-layout='1/12'] {

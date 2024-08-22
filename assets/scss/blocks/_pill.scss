@@ -1,8 +1,8 @@
 .pill {
     color: currentColor;
-    border: 0.1em solid;
-    padding-inline: 0.30em;
-    padding-block: 0.1em;
+    border: var(--pill-border, 0.1em) solid;
+    padding-inline: var(--pill-padding-inline, var(--pill-padding, 0.30em));
+    padding-block: var(--pill-padding-block, var(--pill-padding, 0.15em));
 
     text-decoration: none;
 
@@ -12,9 +12,22 @@
         border var(--base-transition-duration);
 }
 
+button.pill {
+  background-color: transparent;
+}
+
 .pill a {
-    color: currentColor;
+    color: var(--pill-color, currentColor);
     text-decoration: none;
+}
+
+.pill[aria-current="true"] {
+  border-width: calc(2 * var(--pill-border, 0.1em));
+}
+
+.pill[aria-disabled="true"] {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .pill:hover,

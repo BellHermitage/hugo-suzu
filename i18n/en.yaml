@@ -23,6 +23,11 @@ language:
 also_in:
   other: "Also available in"
 
+
+site_language_welcome: |
+    Hello.
+
+site_language_switcher_info: "Select your preferred language. Note that the content may not be translated in your language of choice."
 site_language_switcher_aria: "Focus to change site language."
 
 home_latest_posts: Latest entries

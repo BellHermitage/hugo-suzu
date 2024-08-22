@@ -32,18 +32,8 @@ header {
         line-height: 0;
 
         & img {
-            width: 4em;
+            aspect-ratio: 1;
+            block-size: 4em;
         }
     }
 }
-
-// @include tablet {
-//     header nav {
-//         flex-direction: row;
-//     }
-//
-//     header .translations {
-//         flex-direction: row;
-//         align-items: center;
-//     }
-// }

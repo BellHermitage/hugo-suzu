@@ -48,6 +48,10 @@
     {{ end }}
 {{ end }}
 
+{{ with .Site.Params.webmention.url }}
+    <link rel="webmention" href="{{ . }}" />
+{{ end }}
+
 <!-- Favicon -->
 {{ if isset .Site.Params.favicon "filename" }}
     {{ $favicon := resources.Get .Site.Params.favicon.filename }}

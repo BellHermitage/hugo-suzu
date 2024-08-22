@@ -2,6 +2,13 @@
 
 {{- partial "head/meta.html" . -}}
 
+{{ $title := print .Site.Title " | " .Title }}
+{{ if .IsHome }}
+    {{ $title = .Site.Title }}
+{{ end }}
+
+<title>{{ $title }}</title>
+
 {{ $opts := dict "transpiler" "dartsass" }}
 
 {{ $style := resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
@@ -13,12 +20,9 @@
 <link rel="stylesheet" type="text/css" href="{{ $print_style.Permalink }}"
     integrity="{{ $print_style.Data.Integrity }}" media="print" />
 
-
-{{ $title := print .Site.Title " | " .Title }}
-
-{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
-
-<title>{{ $title }}</title>
+{{ with resources.Get "icons-spritesheet.svg" }}
+<link rel="preload" href="{{ .Permalink }}" as="image" />
+{{ end }}
 
 {{ $themejs := resources.Get "js/theme-main.js" | minify | fingerprint }}
 <link rel="preload" href="{{ $themejs.Permalink }}" as="script" />

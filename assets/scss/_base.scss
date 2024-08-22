@@ -78,81 +78,75 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Suzu Sans';
-    src: local('system-ui'),
-        local('-apple-system'),
-        local('BlinkMacSystemFont'),
-        local('Verdana'),
-        local('Segoe UI'),
-        local('Roboto'),
-        local('Oxygen'),
-        local('Ubuntu'),
-        local('Cantarell'),
-        local('Open Sans'),
-        local('Helvetica Neue'),
-        local('sans-serif'),
-        local('ヒラギノ角ゴ ProN'),
-        local('Hiragino Kaku Gothic ProN'),
-        local('游ゴシック'),
-        local('游ゴシック体'),
-        local('YuGothic'),
-        local('Yu Gothic'),
-        local('メイリオ'),
-        local('Meiryo'),
-        local('ＭＳ ゴシック'),
-        local('MS Gothic'),
-        local('HiraKakuProN-W3'),
-        local('TakaoExゴシック'),
-        local('TakaoExGothic'),
-        local('MotoyaLCedar'),
-        local('Droid Sans Japanese'),
-        local('Noto Sans CJK JP'),
-        local('IPAmGothic'),
-        local('Apple Color Emoji'),
-        local('Segoe UI Emoji'),
-        local('Segoe UI Symbol');
-}
+$font-suzu-sans:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        Verdana,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Open Sans,
+        Helvetica Neue,
+        sans-serif,
+        ヒラギノ角ゴ ProN,
+        Hiragino Kaku Gothic ProN,
+        游ゴシック,
+        游ゴシック体,
+        YuGothic,
+        Yu Gothic,
+        メイリオ,
+        Meiryo,
+        ＭＳ ゴシック,
+        MS Gothic,
+        HiraKakuProN-W3,
+        TakaoExゴシック,
+        TakaoExGothic,
+        MotoyaLCedar,
+        Droid Sans Japanese,
+        Noto Sans CJK JP,
+        IPAmGothic,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol;
 
-@font-face {
-    font-family: 'Suzu Serif';
-    src: local('Georgia'),
-        local('Times New Roman'),
-        local('Palatino'),
-        local('Baskerville'),
-        local('serif'),
-        local('ヒラギノ明朝 ProN'),
-        local('Hiragino Mincho ProN'),
-        local('游明朝'),
-        local('游明朝体'),
-        local('YuMincho'),
-        local('Yu Mincho'),
-        local('ＭＳ 明朝'),
-        local('MS Mincho'),
-        local('HiraMinProN-W3'),
-        local('TakaoEx明朝'),
-        local('TakaoExMincho'),
-        local('MotoyaLCedar'),
-        local('Noto Serif CJK JP'),
-        local('IPAexMincho'),
-        local('Apple Color Emoji'),
-        local('Segoe UI Emoji'),
-        local('Segoe UI Symbol');
-}
+$font-suzu-serif:
+        Georgia,
+        Times New Roman,
+        Palatino,
+        Baskerville,
+        serif,
+        ヒラギノ明朝 ProN,
+        Hiragino Mincho ProN,
+        游明朝,
+        游明朝体,
+        YuMincho,
+        Yu Mincho,
+        ＭＳ 明朝,
+        MS Mincho,
+        HiraMinProN-W3,
+        TakaoEx明朝,
+        TakaoExMincho,
+        MotoyaLCedar,
+        Noto Serif CJK JP,
+        IPAexMincho,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol;
 
-@font-face {
-    font-family: 'Suzu Mono';
-    src: local('SFMono-Regular'),
-        local('Menlo'),
-        local('Monaco'),
-        local('Consolas'),
-        local('Liberation Mono'),
-        local('Courier New'),
-        local('monospace'),
-        local('Apple Color Emoji'),
-        local('Segoe UI Emoji'),
-        local('Segoe UI Symbol');
-}
+$font-suzu-mono:
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        Liberation Mono,
+        Courier New,
+        monospace,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol;
 
 html {
     margin: 0 auto;
@@ -182,7 +176,7 @@ body {
         color var(--duration) var(--timing),
         background-color var(--duration) var(--timing);
 
-    font-family: 'Suzu Sans';
+    font-family: $font-suzu-sans;
 
     display: flex;
     flex-direction: column;
@@ -203,7 +197,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-    font-family: 'Suzu Sans';
+    font-family: $font-suzu-sans;
     line-height: 1.1;
     text-wrap: balance;
     font-weight: 600;
@@ -236,7 +230,7 @@ h5, .h5 {
 }
 
 pre, code {
-  font-family: 'Suzu Mono';
+  font-family: $font-suzu-mono;
 }
 
 
@@ -270,6 +264,8 @@ textarea:not([rows]) {
 a#link-to-main {
     --margin: var(--font-size-sm);
     position: absolute;
+
+    z-index: 10;
 
     top: 0;
     left: var(--margin);
@@ -346,12 +342,14 @@ iframe {
 @import 'utilities/border';
 @import 'utilities/popout-box';
 @import 'utilities/focus-on-hover';
+@import 'utilities/scroll-shadow';
 @import 'utilities/pixelart';
 
 @import 'blocks/hr';
-/* @import 'blocks/dropdown'; */
+@import 'blocks/dropdown';
 @import 'blocks/callout';
 @import 'blocks/card';
+@import 'blocks/carousel';
 @import 'blocks/sidenote';
 @import 'blocks/pill';
 @import 'blocks/metadata-list';

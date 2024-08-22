@@ -14,27 +14,75 @@
 </details>
 {{ end }}
 
-<nav class="wrapper region cluster site-language-menu">
-    <span>{{ T "also_in" }}</span>
-    <ul class="cluster" role="list">
-        {{ range $.Site.Home.AllTranslations }}
-        <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
-        {{ end }}
-    </ul>
-</nav>
+{{ $icon_settings := dict
+    "icon" "language-kanji"
+    "title" (T "translation" .Translations.Len)
+}}
 
 {{ if false }}
-<button type="button" class="dropdown-initiator" aria-haspopup="true">
-    <span>
-        <span aria-hidden="true">🌐</span>
-        <span class="visually-hidden" data-hide-mode="sr">{{ T "site_language_switcher_aria" }}</span>
-    </span>
-    <!-- TODO:  Permalink to the current page. -->
-    <ul class="dropdown" role="list" aria-label="submenu">
-        {{ range $.Site.Home.AllTranslations }}
-        <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
-        {{ end }}
-    </ul>
-</button>
+<nav class="region font-mono site-language-menu" aria-haspopup="true">
+    <div class="wrapper repel">
+        <div class="dropdown-initiator">
+            <button class="text-uppercase">{{ partial "icon" $icon_settings }} {{ .Site.Language.LanguageName }}</button>
+
+            <div class="flow dropdown" data-dropdown-align="start">
+                <p>{{ T "site_language_info" }}
+
+                Select your preferred language for the website.
+                Keep in mind that English is the main language, so the content may not be
+                fully translated in other languages.</p>
+
+                <ul class="grid" data-grid-layout="1/6" role="list">
+                    {{ range $.Site.Home.AllTranslations }}
+                    <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-uppercase">{{ T "site_language_switcher_head" }}</p>
+
+    </div>
+</nav>
 {{ end }}
+
+{{ if true }}
+<nav class="font-mono cluster site-language-menu-2" aria-label="{{ T "language" 2 }}" aria-haspopup="true">
+    <div class="dropdown-initiator">
+        <button class="pill text-uppercase">{{ partial "icon" $icon_settings }} {{ .Site.Language.LanguageName }} ▼</button>
+
+        <div class="flow popout-box dropdown" data-dropdown-align="end">
+            <p>{{ T "site_language_switcher_info" }}</p>
+
+            {{ $current_lang := .Site.Language.LanguageName }}
+            <ul class="grid" data-grid-layout="1/6" role="list">
+                {{ range $.Site.Home.AllTranslations }}
+                <li> 
+                    <a class="pill" {{ if eq .Language.LanguageName $current_lang }} aria-current="true" aria-disabled="true" {{ end }} href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</nav>
+{{ end }}
+
+{{ if false }}
+<nav class="font-mono wrapper region site-language-menu-3" aria-haspopup="true">
+    <div class="cluster site-language-menu-wrapper">
+        {{ $current_lang := .Site.Language.LanguageName }}
+
+        <button class="pill">{{ partial "icon" $icon_settings }}</button>
+
+        <ul class="cluster scroll-shadow carousel site-language-menu-list" data-scroll-shadow="horizontal" data-carousel-direction="horizontal" role="list">
+            {{ range $.Site.Home.AllTranslations }}
+                <li {{ if eq .Language.LanguageName $current_lang }} aria-current="true" {{ end }} >
+                    <a class="pill" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>
+{{ end }}
+
 {{ end }}

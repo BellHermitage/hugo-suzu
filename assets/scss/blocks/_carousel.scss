@@ -1,0 +1,26 @@
+.carousel {
+  flex-wrap: nowrap;
+}
+
+ol.carousel, ul.carousel {
+  li {
+    scroll-snap-align: start;
+    margin-block: var(--space-s-m);
+  }
+}
+
+.carousel[data-carousel-direction="horizontal"] {
+  overflow-x: auto;
+  scroll-snap-type: x var(--carousel-snap, proximity);
+
+  min-inline-size: var(--carousel-min-size, auto);
+  max-inline-size: var(--carousel-max-size, 100%);
+}
+
+.carousel[data-carousel-direction="vertical"] {
+  overflow-y: auto;
+  scroll-snap-type: y var(--carousel-snap, proximity);
+
+  min-block-size: var(--carousel-min-size, auto);
+  max-block-size: var(--carousel-max-size, 100%);
+}

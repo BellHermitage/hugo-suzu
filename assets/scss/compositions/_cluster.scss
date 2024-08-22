@@ -1,6 +1,6 @@
 .cluster {
     display: flex;
-    flex-direction: row;
+    flex-direction: var(--cluster-direction, row);
     flex-wrap: wrap;
 
     gap: var(--gutter, var(--space-s));
@@ -10,7 +10,7 @@
 }
 
 .cluster[data-cluster-direction='vertical'] {
-  flex-direction: column;
+  --cluster-direction: column;
 }
 
 .adjacent-elements {
