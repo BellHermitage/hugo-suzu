@@ -26,6 +26,7 @@
 
 .site-language-menu-2 {
   --cluster-horizontal-alignment: flex-end;
+  --dropdown-inline-offset: calc(-0.5 * var(--gutter));
   margin-inline-start: auto;
 
   font-size: var(--fluid-step-0);
@@ -39,7 +40,7 @@
   }
 
   .dropdown {
-    inline-size: min(90vw - var(--space-m), 40ch);
+    inline-size: min(90vw, 40ch);
     border: 2px solid;
     padding: var(--space-m);
     background-color: var(--page-bg);

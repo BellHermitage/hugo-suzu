@@ -10,22 +10,24 @@
         {{ .Content }}
     </div>
 
-    {{ if (ge site.RegularPages 1) }}
+    {{ if (ge .Site.RegularPages 1) }}
     <section class="flow region">
         <header>
             <h2>{{ T "home_latest_posts" }}</h2>
         </header>
         <ol role="list" class="grid focus-on-hover subpost-list">
-        {{ range (where site.RegularPages "Params.ignore" "!=" "true") }}
+        {{ range .Site.RegularPages }}
+            {{ if eq (.Params.ignore | default false) false }}
             <li>
             {{ partial "list-subpost.html" . }}
             </li>
+            {{ end }}
         {{ end }}
         </ol>
     {{ end }}
     </section>
 
-    {{ if (ge site.Taxonomies.categories 1) }}
+    {{ if (ge .Site.Taxonomies.categories 1) }}
     <section class="flow region">
         <header><h2>{{ T "home_categories" }}</h2></header>
         <ul role="list" class="cluster home-categories">

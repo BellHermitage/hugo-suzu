@@ -1,3 +1,7 @@
+{{ if not (.Get "title") }}
+    {{ errorf "Write the title for the shortcode %q! See %s" .Name .Position }}
+{{ end }}
+
 {{ if not (.Get "aria-label") }}
     {{ errorf "PLEASE write an aria-label for the shortcode %q! See %s" .Name .Position }}
 {{ end }}

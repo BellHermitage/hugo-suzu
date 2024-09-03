@@ -27,11 +27,11 @@
         {{ end }}
         {{ end }}
 
+        {{- $content := .Content -}}
+
         <div class="flow">
             <div class="post-content flow e-content" data-pagefind-body>
-                {{ .Content }}
-
-
+                {{- $content -}}
             </div>
 
         {{ if .Params.syndications }}

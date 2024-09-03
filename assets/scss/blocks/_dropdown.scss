@@ -20,11 +20,11 @@
 }
 
 .dropdown[data-dropdown-align="end"] {
-    right: 0;
+    right: var(--dropdown-inline-offset, 0);
 }
 
 .dropdown[data-dropdown-align="start"] {
-    left: 0;
+    left: var(--dropdown-inline-offset, 0);
 }
 
 .dropdown-initiator {

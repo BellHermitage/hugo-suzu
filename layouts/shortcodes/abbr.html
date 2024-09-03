@@ -1,0 +1,56 @@
+{{/*
+
+    Usage: {{< abbr NAME [n] >}}
+
+    Parameters:
+
+       NAME
+       The name of the abbreviation in the abbreviations data file.
+
+       n (default: 1)
+       Set to 2 to use the plural version.
+
+    Data file (assuming yaml):
+
+        - SEO:
+            one: Search Engine Optimization
+            many: Search Engine Optimizations
+
+        - LLM:
+            one: Large-Language Model
+            many: Large-Language Models
+
+          LLMs: Large-Language Models
+
+        - CSS: Cascading Style Sheets
+
+*/}}
+{{ $entry := (.Get 0 | lower) }}
+{{ $how_many := (.Get 1 | default 1 ) }}
+{{ $count_id := print $entry "_count"}}
+
+{{- range $.Site.Data.abbreviations -}}
+    {{- range $abbr, $term := . -}}
+        {{- if eq ( $abbr | lower ) $entry -}}
+            {{- warnf "Found match for abbreviation %s: %s" $abbr $term -}}
+
+            {{- if reflect.IsMap $term -}}
+                {{- if eq $how_many 1 -}}
+                    {{ $term = $term.one }}
+                {{- else -}}
+                    {{ $term = $term.many }}
+                {{- end -}}
+            {{- end -}}
+
+            {{- if gt ( $.Page.Scratch.Get ($count_id) ) 0 -}}
+                <abbr title="{{- $term -}}">{{- $abbr -}}</abbr>
+            {{- else -}}
+                {{- printf "%s (%s)" $term $abbr -}}
+
+                {{- $.Page.Scratch.Set ($count_id) 1 -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- else -}}
+    {{ errorf "Abbreviations data file does not exist!" }}
+{{- end -}}

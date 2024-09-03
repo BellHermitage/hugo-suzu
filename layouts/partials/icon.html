@@ -1,2 +1,16 @@
 {{ $ss := resources.Get "icons-spritesheet.svg" }}
-<svg class="icon"><title>{{ .title }}</title><use href="{{ $ss.RelPermalink }}#{{ .icon }}"></use></svg>
+{{ if not .title }}
+    {{ errorf "partials/icon: No title specified for SVG '%s'. Label the icon for screen readers." .icon }}
+{{ end }}
+{{ if not .description }}
+    {{ warnf "partials/icon: No description specified for SVG '%s'. Label the icon for screen readers." .icon }}
+{{ end }}
+
+{{ if .description }}
+    {{ if not .id }}
+        {{ errorf "partials/icon: No ID specified for SVG '%s'. Label the icon for screen readers." .icon }}
+    {{ end }}
+    <span id="{{ .id }}" hidden>{{ .description }}</span>
+{{ end }}
+
+<svg class="icon" {{ if .description }} aria-describedby="{{ .id }}" {{ end }}><title>{{ .title }}</title><use href="{{ $ss.RelPermalink }}#{{ .icon }}"></use></svg>

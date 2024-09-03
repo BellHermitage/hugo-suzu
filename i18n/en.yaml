@@ -40,4 +40,8 @@ article_metadata_lastmod: Updated on
 article_unfinished_title: Unfinished
 article_unfinished_message: This garden is still growing.
 
+article_translation_description: "List of translations for this article."
+article_category_description: "List of categories for this article."
+article_tag_description: "List of tags for this article."
+
 syndicated_on: "This article is syndicated on:"

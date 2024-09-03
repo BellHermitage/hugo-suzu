@@ -1,7 +1,9 @@
 {{ if .IsTranslated }}
 {{ $icon_settings := dict
     "icon" "language-kanji"
+    "id" "article-translation-description"
     "title" (T "translation" .Translations.Len)
+    "description" (T "article_translation_description")
 }}
 <nav class="cluster metadata-list">
     {{ partial "icon" $icon_settings }}

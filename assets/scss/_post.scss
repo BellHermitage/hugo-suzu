@@ -18,14 +18,19 @@ article > * {
 article {
   ul:not([class]) > li + li,
   ol:not([class]) > li + li {
-      margin-block-start: 0.75em;
+      margin-block-start: 1em;
   }
+
 
 
   ul:not([class]),
   ol:not([class]) {
     > li > * + * {
         margin-block-start: 0.5em;
+    }
+
+    > li > blockquote:last-of-type {
+        margin-block-end: var(--space-m-l);
     }
   }
 
@@ -336,9 +341,12 @@ article table {
 }
 
 article blockquote {
+    inline-size: fit-content;
     padding: var(--space-m);
     border: var(--border-size-sm) solid;
     box-shadow: calc(-1 * var(--box-offset)) var(--box-offset);
+    font-family: var(--font-suzu-serif);
+    font-style: italic;
 
     > * + * {
         margin-block-start: var(--flow-space, 1em);
@@ -385,7 +393,7 @@ article.post-list-elem {
     }
 
     .post-list-elem-summary {
-        /* max-block-size: 20ch; */
+        max-block-size: 30ex;
         overflow-y: auto;
     }
 }

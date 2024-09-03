@@ -14,7 +14,13 @@
 
     {{ with .GetTerms "categories" }}
     <div class="cluster metadata-list">
-        {{ partial "icon" (dict "icon" "category" "title" (T "category" .Len)) }}
+        {{ partial "icon" (dict
+            "icon" "category"
+            "title" (T "category" .Len)
+            "id" "article-category-description"
+            "description" (T "article_category_description")
+            )
+        }}
         <ol role="list" class="cluster categories">
             {{ range . }}
             <li><a class="pill p-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -25,7 +31,13 @@
 
     {{ with .GetTerms "tags" }}
     <div class="cluster metadata-list">
-        {{ partial "icon" (dict "icon" "tags" "title" (T "tag" .Len)) }}
+        {{ partial "icon" (dict
+            "icon" "tags"
+            "id" "article-tag-description"
+            "title" (T "tag" .Len)
+            "description" (T "article_tag_description")
+            )
+        }}
         <ol role="list" class="cluster tags">
             {{ range . }}
             <li><a class="pill" data-pill-style="unimportant" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
